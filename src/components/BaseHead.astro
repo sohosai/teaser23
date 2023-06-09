@@ -1,0 +1,26 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+
+const ogpSrc = "/ogp.png";
+const { title } = Astro.props;
+---
+
+<meta charset="utf-8" />
+<link rel="icon" href="/favicon.ico" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<meta name="keywords" content="雙峰祭,筑波大学,学園祭,つくば" />
+<meta name="description" content={SITE_DESCRIPTION} />
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://sohosai.com/" />
+<meta property="og:image" content={ogpSrc} />
+<meta property="og:site_name" content="{SITE_TITLE}" />
+<meta property="og:description" content={SITE_DESCRIPTION} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="Twitter:site" content="@sohosai" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={SITE_DESCRIPTION} />
+<meta name="twitter:image" content={ogpSrc} />
+
+<title>{title}</title>
