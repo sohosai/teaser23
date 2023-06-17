@@ -1,15 +1,14 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import {SITE_TITLE} from '../consts' 
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_TITLE } from "../consts";
 ---
 
 <!DOCTYPE html>
 <html lang="ja">
-        <head>
-            <BaseHead title={SITE_TITLE}/>
-        </head>
-        <body>
-            <slot/>
-        </body>
+  <head>
+    <BaseHead title={SITE_TITLE} />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-

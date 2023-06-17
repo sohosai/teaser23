@@ -1,9 +1,10 @@
 # teaser23
 
-またの名を準備期間Webと言います。
+またの名を準備期間 Web と言います。
 
 ## 環境
-とりあえずAstro Starter Kit: Minimalでテンプレートを作成しました。
+
+とりあえず Astro Starter Kit: Minimal でテンプレートを作成しました。
 
 ```
 npm create astro@latest -- --template minimal
