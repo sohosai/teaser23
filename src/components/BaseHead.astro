@@ -1,26 +1,38 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-
 const ogpSrc = "/ogp.png";
-const { title } = Astro.props;
+
+import { getLangFromUrl, useTranslations } from "../utils/i18n";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export type Props = {
+  pageName?: string;
+  description?: string;
+  ogpImage?: { src: string; alt: string };
+  canonJicalURL?: URL | null;
+  pageType?: "website" | "article";
+};
+const { pageName, description, ogpImage } = Astro.props;
+
+let title = t("base.サイト名");
+if (pageName) {
+  title = `${pageName} - ${t("base.サイト名")}`;
+}
 ---
 
 <meta charset="utf-8" />
 <link rel="icon" href="/favicon.ico" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-<meta name="keywords" content="雙峰祭,筑波大学,学園祭,つくば" />
-<meta name="description" content={SITE_DESCRIPTION} />
-<meta property="og:title" content={title} />
+<meta name="description" content={t("base.サイト説明文")} />
+<meta property="og:title" content={t("base.サイト名")} />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://sohosai.com/" />
 <meta property="og:image" content={ogpSrc} />
-<meta property="og:site_name" content="{SITE_TITLE}" />
-<meta property="og:description" content={SITE_DESCRIPTION} />
+<meta property="og:site_name" content={t("base.サイト名")} />
+<meta property="og:description" content={t("base.サイト説明文")} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="Twitter:site" content="@sohosai" />
-<meta name="twitter:title" content={title} />
-<meta name="twitter:description" content={SITE_DESCRIPTION} />
+<meta name="twitter:title" content={t("base.サイト名")} />
+<meta name="twitter:description" content={t("base.サイト説明文")} />
 <meta name="twitter:image" content={ogpSrc} />
-
-<title>{title}</title>
