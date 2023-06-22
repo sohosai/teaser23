@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import i18n from "astro-i18n-aut";
+import { i18n as i18nAut } from "astro-i18n-aut";
 import sitemap from "@astrojs/sitemap";
 
 const defaultLocale = "ja";
@@ -16,7 +16,7 @@ export default defineConfig({
     format: "directory",
   },
   integrations: [
-    i18n({
+    i18nAut({
       locales,
       defaultLocale,
     }),
