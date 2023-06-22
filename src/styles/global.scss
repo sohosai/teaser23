@@ -1,0 +1,27 @@
+$fonts-zen: "Zen Maru Gothic";
+$fonts-ryo: "ryo-gothic-plusn";
+$fonts-museoSans: "museo-sans";
+
+$sp-query: "max-width: 599px";
+$pc-query: "min-width: 600px";
+
+h1,
+h2 {
+  font-family: $fonts-zen, sans-serif;
+}
+
+h1 {
+  font-size: 4em;
+  font-weight: 300;
+  margin-bottom: 8px;
+
+  @media screen and ($sp-query) {
+    font-size: 3.2em;
+  }
+}
+h2 {
+  line-height: 1.5;
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0;
+}

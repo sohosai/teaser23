@@ -1,0 +1,20 @@
+---
+import { getLangFromUrl, useTranslations } from "../utils/i18n";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+import BaseHead, { type Props as HeadProps } from "../components/BaseHead.astro";
+
+export type Props = HeadProps;
+const { ...head } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html {lang}>
+  <head>
+    <BaseHead {...head} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
