@@ -4,6 +4,7 @@ import type { i18nAdapterConfig } from "../types";
 class I18nAdapter implements i18nAdapterConfig {
   defaultLocale: string;
   supportedLocales: string[];
+  translates: any;
   #locale: string;
 
   constructor() {
@@ -46,9 +47,10 @@ class I18nAdapter implements i18nAdapterConfig {
     this.locale = locale || this.defaultLocale;
   }
 
-  #init(config: i18nAdapterConfig) {
+  #init(config: i18nAdapterConfig, translates: any) {
     this.defaultLocale = config.defaultLocale;
     this.supportedLocales = config.supportedLocales;
+    this.translates = translates;
   }
 }
 
