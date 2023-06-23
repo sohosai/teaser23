@@ -15,9 +15,17 @@ export default function i18nPlus({ locales, defaultLocale }: i18nProps): AstroIn
         const stringifiedConfig = JSON.stringify(config);
         options.injectScript(
           "page-ssr",
-          [`import { i18nAdapter } from "src/utils/i18n"`, `i18nAdapter.internals().init(${stringifiedConfig})`].join(
-            ";"
-          )
+          [
+            `import { getCollection } from "astro:content";`,
+            `const localeJSONs = await getCollection("locales");`,
+            `let translates = {};`,
+            `await Promise.all([...localeJSONs].map(async (entry) => {`,
+            `  translates[entry.id.split("/")[0]] = entry.data;`,
+            `}));`,
+            ``,
+            `import { i18nAdapter } from "src/utils/i18n";`,
+            `i18nAdapter.internals().init(${stringifiedConfig}, translates);`,
+          ].join("")
         );
       },
     },
