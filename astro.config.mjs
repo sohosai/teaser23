@@ -16,7 +16,10 @@ export default defineConfig({
     format: "directory",
   },
   integrations: [
-    i18n(defaultLocale, locales),
+    i18n({
+      defaultLocale,
+      locales,
+    }),
     sitemap({
       i18n: {
         locales,

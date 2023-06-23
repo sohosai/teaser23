@@ -1,11 +1,9 @@
 ---
-import { getLangFromUrl, useTranslations } from "../utils/i18n";
-
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
-
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.scss";
+
+import { i18nAdapter, t } from "../utils/i18n";
+i18nAdapter.init(Astro);
 ---
 
 <BaseLayout>

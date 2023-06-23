@@ -1,9 +1,8 @@
 ---
-const ogpSrc = "/ogp.png";
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
 
-import { getLangFromUrl, useTranslations } from "../utils/i18n";
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const ogpSrc = "/ogp.png";
 
 export type Props = {
   pageName?: string;
