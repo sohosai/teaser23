@@ -1,0 +1,53 @@
+---
+import { getLangFromUrl, useTranslations } from "../utils/i18n";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const logoSrc = "/logo-white.svg";
+---
+
+<nav>
+  <a href="/" aria-label={t("accessibility.トップページへ")}><img src={logoSrc} alt={t("base.雙峰祭")} /></a>
+
+  <ul>
+    <li><a href="./news">{t("nav.お知らせ")}</a></li>
+    <li><a href="./coverage">{t("nav.協賛・取材")}</a></li>
+    <li><a href="./committee">{t("nav.実委")}</a></li>
+    <li><a href="./shinkan">{t("nav.新歓")}</a></li>
+  </ul>
+</nav>
+
+<style lang="scss">
+  $font-white: #fff;
+
+  nav {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 1.5em;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    & ul {
+      display: flex;
+
+      & li {
+        margin: 0 0.75em;
+      }
+    }
+  }
+
+  a {
+    color: $font-white;
+    font-size: 1rem;
+    padding: 1em;
+  }
+
+  img {
+    height: 2.5em;
+    margin: 0 1em;
+  }
+</style>

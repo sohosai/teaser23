@@ -18,6 +18,8 @@ let title = t("base.サイト名");
 if (pageName) {
   title = `${pageName} - ${t("base.サイト名")}`;
 }
+
+import "the-new-css-reset";
 ---
 
 <meta charset="utf-8" />
@@ -36,3 +38,5 @@ if (pageName) {
 <meta name="twitter:title" content={t("base.サイト名")} />
 <meta name="twitter:description" content={t("base.サイト説明文")} />
 <meta name="twitter:image" content={ogpSrc} />
+
+<title>{title}</title>
