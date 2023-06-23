@@ -1,6 +1,6 @@
 import type { i18nAdapterConfig } from "../types";
 
-class i18nAdapter implements i18nAdapterConfig {
+class I18nAdapter implements i18nAdapterConfig {
   defaultLocale: string;
   #locale: string;
   constructor() {
@@ -11,3 +11,7 @@ class i18nAdapter implements i18nAdapterConfig {
     let locale = Astro.url.pathname;
   }
 }
+
+const i18nAdapter = new I18nAdapter();
+
+export default i18nAdapter;
