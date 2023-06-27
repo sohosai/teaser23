@@ -6,12 +6,13 @@ $sp-query: "max-width: 599px";
 $pc-query: "min-width: 600px";
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: $fonts-zen, sans-serif;
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 4rem;
   font-weight: 300;
 
   @media screen and ($sp-query) {
@@ -20,8 +21,16 @@ h1 {
 }
 
 h2 {
-  line-height: 1.5;
-  font-size: 1.2em;
+  font-size: 1.5rem;
   font-weight: 400;
-  margin: 0;
+  line-height: 1.5;
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+small {
+  font-size: 0.9rem;
 }
