@@ -24,6 +24,34 @@ h3 {
   font-weight: 400;
 }
 
+p {
+  line-height: 1.8;
+}
+
+a {
+  text-decoration: underline;
+}
+
 small {
   font-size: 0.9rem;
+}
+
+main {
+  background-color: $background;
+  height: 250vh;
+  padding: 0.5rem $side-margin;
+}
+
+main section {
+  margin: 1.5rem 0;
+}
+
+main h2 {
+  font-family: $fonts-ryo, sans-serif;
+  font-weight: 600;
+  margin: 0.25em 0;
+
+  line-height: 1.5;
+  border-left: 0.25em solid $orange;
+  padding-left: 1ch;
 }
