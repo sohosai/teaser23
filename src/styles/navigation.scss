@@ -1,0 +1,28 @@
+nav {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 5%;
+  transition: background-color 0.25s ease;
+
+  & .logo {
+    padding: 0.75em 0.5em;
+
+    & img {
+      height: 2.5em;
+      margin: 0 1em;
+    }
+  }
+}
+
+nav[data-navigation_style="transparent"] {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+nav[data-navigation_style="white"] {
+  background-color: $background;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+}

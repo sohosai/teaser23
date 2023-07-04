@@ -4,50 +4,55 @@ import { getLangFromUrl, useTranslations } from "../utils/i18n";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const logoSrc = "/logo-white.svg";
+import NavigationItems from "./NavigationItems.astro";
+import "../styles/navigation.scss";
+
+const white_logo_src = "/logo-white.svg";
+const black_logo_src = "/logo-black.svg";
 ---
 
-<nav>
-  <a href="/" aria-label={t("accessibility.トップページへ")}><img src={logoSrc} alt={t("base.雙峰祭")} /></a>
-
-  <ul>
-    <li><a href="./news">{t("nav.お知らせ")}</a></li>
-    <li><a href="./coverage">{t("nav.協賛・取材")}</a></li>
-    <li><a href="./committee">{t("nav.実委")}</a></li>
-    <li><a href="./shinkan">{t("nav.新歓")}</a></li>
-  </ul>
+<nav id="top-navigation" data-navigation_style="transparent">
+  <a href="/" class="logo" aria-label={t("accessibility.トップページへ")}>
+    <img
+      src={white_logo_src}
+      alt={t("base.雙峰祭")}
+      id="logo-image"
+      data-logo_black={black_logo_src}
+      data-logo_white={white_logo_src}
+    />
+    <!-- FrontmatterからJavaScriptにdata-*で値を渡す。ダサい気もするが、Astro公式がこれを推奨しているので仕方ない -->
+  </a>
+  <NavigationItems navigation_style="transparent" />
 </nav>
 
-<style lang="scss">
-  $font-white: #fff;
+<script>
+  const hero = document.getElementById("hero");
+  const navigation = document.getElementById("top-navigation");
+  const navigation_items = document.getElementById("navigation-items");
+  const logo = document.getElementById("logo-image");
 
-  nav {
-    position: fixed;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 1.5em;
-    background-color: rgba(0, 0, 0, 0.2);
+  const navigation_height = navigation?.offsetHeight;
+  const white_logo_src = logo?.dataset.logo_black ?? "";
+  const black_logo_src = logo?.dataset.logo_white ?? "";
 
-    & ul {
-      display: flex;
+  const observer_options = {
+    root: null,
+    rootMargin: `-${navigation_height}px`,
+    threshold: 0,
+  };
 
-      & li {
-        margin: 0 0.75em;
-      }
+  const observer = new IntersectionObserver((entries) => {
+    const entry = entries[0];
+    if (entry.isIntersecting) {
+      if (navigation) navigation.dataset.navigation_style = "transparent";
+      if (navigation_items) navigation_items.dataset.navigation_style = "transparent";
+      if (logo) (logo as HTMLImageElement).src = black_logo_src;
+    } else {
+      if (navigation) navigation.dataset.navigation_style = "white";
+      if (navigation_items) navigation_items.dataset.navigation_style = "white";
+      if (logo) (logo as HTMLImageElement).src = white_logo_src;
     }
-  }
+  }, observer_options);
 
-  a {
-    color: $font-white;
-    font-size: 1rem;
-    padding: 1em;
-  }
-
-  img {
-    height: 2.5em;
-    margin: 0 1em;
-  }
-</style>
+  if (hero) observer.observe(hero);
+</script>
