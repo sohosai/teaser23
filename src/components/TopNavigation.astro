@@ -28,26 +28,33 @@ const black_logo_src = "/logo-black.svg";
 <script>
   const hero = document.getElementById("hero");
   const navigation = document.getElementById("top-navigation");
+  // 苦肉の策でNavigationItems.astroのDOMをここから操作
   const navigation_items = document.getElementById("navigation-items");
   const logo = document.getElementById("logo-image");
 
+  // ナビゲーションバーの高さ(maginを含む)を計測
   const navigation_height = navigation?.offsetHeight;
+
+  // undefindチェック。undefindだったら空文字列を返す
   const white_logo_src = logo?.dataset.logo_black ?? "";
   const black_logo_src = logo?.dataset.logo_white ?? "";
 
   const observer_options = {
-    root: null,
-    rootMargin: `-${navigation_height}px`,
-    threshold: 0,
+    root: null, // ビューポート全体を対象
+    rootMargin: `-${navigation_height}px`, // ナビゲーションバーの分を引く
+    threshold: 0, // 全部隠れたときにintersectionしていないと判定
   };
 
   const observer = new IntersectionObserver((entries) => {
+    // 今回はtargetのDOMをidで指定しているので1番目だけ見れば良い
     const entry = entries[0];
     if (entry.isIntersecting) {
+      // 動画が見えているとき
       if (navigation) navigation.dataset.navigation_style = "transparent";
       if (navigation_items) navigation_items.dataset.navigation_style = "transparent";
       if (logo) (logo as HTMLImageElement).src = black_logo_src;
     } else {
+      // 見えていないとき
       if (navigation) navigation.dataset.navigation_style = "white";
       if (navigation_items) navigation_items.dataset.navigation_style = "white";
       if (logo) (logo as HTMLImageElement).src = white_logo_src;

@@ -50,8 +50,9 @@ main h2 {
   font-family: $fonts-ryo, sans-serif;
   font-weight: 600;
   margin: 0.25em 0;
-
   line-height: 1.5;
+
+  // 左側のオレンジ線
   border-left: 0.25em solid $orange;
   padding-left: 1ch;
 }
