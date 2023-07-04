@@ -9,7 +9,7 @@ export type Props = {
   pageName?: string;
   description?: string;
   ogpImage?: { src: string; alt: string };
-  canonJicalURL?: URL | null;
+  canonicalURL?: URL | null;
   pageType?: "website" | "article";
 };
 const { pageName, description, ogpImage } = Astro.props;
