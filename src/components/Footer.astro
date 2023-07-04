@@ -5,22 +5,26 @@ const t = useTranslations(lang);
 ---
 
 <footer>
-  <h2>{t("base.筑波大学学園祭実行委員会")}</h2>
-  <address>
-    <p class="address">
-      {t("info.住所")}
-    </p>
-    <dl>
-      <dt>{t("footer.Email")}</dt><dd><a href="mailto:info@sohosai.com">info@sohosai.com</a></dd>
-      <dt>{t("footer.TEL/FAX")}</dt><dd>029-853-2899</dd>
-    </dl>
-  </address>
+  <section>
+    <h2>{t("base.筑波大学学園祭実行委員会")}</h2>
+    <address>
+      <p class="address">
+        {t("info.住所")}
+      </p>
+      <dl>
+        <dt>{t("footer.Email")}</dt><dd><a href="mailto:info@sohosai.com">info@sohosai.com</a></dd>
+        <dt>{t("footer.TEL/FAX")}</dt><dd>029-853-2899</dd>
+      </dl>
+    </address>
+  </section>
 
-  <h3>外部対応時間</h3>
-  <dl>
-    <dt>{t("footer.平日")}</dt><dd>{t("info.平日対応時間")}</dd>
-    <dt>{t("footer.休日")}</dt><dd>{t("info.休日対応時間")}</dd>
-  </dl>
+  <section>
+    <h3>外部対応時間</h3>
+    <dl>
+      <dt>{t("footer.平日")}</dt><dd>{t("info.平日対応時間")}</dd>
+      <dt>{t("footer.休日")}</dt><dd>{t("info.休日対応時間")}</dd>
+    </dl>
+  </section>
 
   <hr />
   <p class="copy"><small>&copy 2023 筑波大学学園祭実行委員会 All rights reserved.</small></p>
