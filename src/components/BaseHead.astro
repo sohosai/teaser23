@@ -2,40 +2,47 @@
 import { i18nAdapter, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
-const ogpSrc = "/ogp.png";
+import { DEFAULT_OGP_IMAGE } from "src/consts";
+const DEFAULT_OGP_ALT = t("accessibility.OGP代替テキスト");
 
 export type Props = {
   pageName?: string;
   description?: string;
-  ogpImage?: { src: string; alt: string };
+  ogpImage?: { src: URL; alt: string };
   canonicalURL?: URL | null;
   pageType?: "website" | "article";
 };
-const { pageName, description, ogpImage } = Astro.props;
+const { pageName, description, ogpImage = { src: DEFAULT_OGP_IMAGE, alt: DEFAULT_OGP_ALT } } = Astro.props;
 
 let title = t("base.サイト名");
 if (pageName) {
   title = `${pageName} - ${t("base.サイト名")}`;
 }
-
-import "the-new-css-reset";
 ---
 
+<!-- Global Metadata -->
 <meta charset="utf-8" />
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
 <meta name="description" content={t("base.サイト説明文")} />
-<meta property="og:title" content={t("base.サイト名")} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- Social Media -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://sohosai.com/" />
-<meta property="og:image" content={ogpSrc} />
-<meta property="og:site_name" content={t("base.サイト名")} />
+<meta property="og:title" content={t("base.サイト名")} />
 <meta property="og:description" content={t("base.サイト説明文")} />
+<meta property="og:site_name" content={t("base.サイト名")} />
+<meta property="og:image" content={new URL(ogpImage.src, Astro.url)} />
+<meta property="og:image:alt" content={ogpImage.alt} />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="Twitter:site" content="@sohosai" />
+<meta name="twitter:url" content={Astro.url} />
 <meta name="twitter:title" content={t("base.サイト名")} />
+<meta name="twitter:site" content="@sohosai" />
 <meta name="twitter:description" content={t("base.サイト説明文")} />
-<meta name="twitter:image" content={ogpSrc} />
-
-<link rel="sitemap" href="/sitemap-index.xml" />
+<meta name="twitter:image" content={new URL(ogpImage.src, Astro.url)} />
+<meta name="twitter:image:alt" content={ogpImage.alt} />
