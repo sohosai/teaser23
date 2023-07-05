@@ -3,7 +3,7 @@ import { i18nAdapter } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 const lang = i18nAdapter.locale;
 
-import BaseHead, { type Props as HeadProps } from "../components/BaseHead.astro";
+import BaseHead, { type Props as HeadProps } from "src/components/BaseHead.astro";
 
 export type Props = HeadProps;
 const { ...head } = Astro.props;
