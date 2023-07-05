@@ -3,39 +3,39 @@ import { i18nAdapter, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
 import BaseLayout from "./BaseLayout.astro";
-import TopNavigation from "../components/TopNavigation.astro";
+import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 
 const videoSrc = "/bg-compressed.mp4";
+
+const isTop = Astro.url.pathname == "/";
 ---
 
 <BaseLayout>
-  <header id="wrapper">
-    <TopNavigation />
-    <div id="hero">
-      <div class="description">
-        <h1>{t("base.雙峰祭")}</h1>
-        <h2>{t("top.筑波大学園祭")}</h2>
-        <hr />
-        <p class="schedule">
-          <span class="year">{t("top.2023年")}</span>
-          <br />
-          <time datetime="2023-11-04">
-            <span class="date">11/4</span>
-            <span class="day-of-week">({t("top.土曜日")})</span>
-          </time>
-          <time datetime="2023-11-04">
-            <span class="date">5</span>
-            <span class="day-of-week">({t("top.日曜日")})</span>
-          </time>
-        </p>
-      </div>
-      <div class="video-filter"></div>
-      <video class="background-vid" autoplay muted loop playsinline>
-        <source src={videoSrc} type="video/mp4" />
-      </video>
+  <Header />
+  <div id="hero">
+    <div class="description">
+      <h1>{t("base.雙峰祭")}</h1>
+      <h2>{t("top.筑波大学園祭")}</h2>
+      <hr />
+      <p class="schedule">
+        <span class="year">{t("top.2023年")}</span>
+        <br />
+        <time datetime="2023-11-04">
+          <span class="date">11/4</span>
+          <span class="day-of-week">({t("top.土曜日")})</span>
+        </time>
+        <time datetime="2023-11-04">
+          <span class="date">5</span>
+          <span class="day-of-week">({t("top.日曜日")})</span>
+        </time>
+      </p>
     </div>
-  </header>
+    <div class="video-filter"></div>
+    <video class="background-vid" autoplay muted loop playsinline>
+      <source src={videoSrc} type="video/mp4" />
+    </video>
+  </div>
 
   <main>
     <slot />
@@ -44,12 +44,6 @@ const videoSrc = "/bg-compressed.mp4";
 </BaseLayout>
 
 <style lang="scss">
-  #wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 30rem;
-  }
-
   #hero {
     height: 30rem;
     display: flex;
@@ -113,3 +107,37 @@ const videoSrc = "/bg-compressed.mp4";
     overflow: hidden;
   }
 </style>
+
+<script>
+  const hero = document.getElementById("hero");
+  const navigation = document.getElementById("top-navigation");
+
+  // ナビゲーションバーの高さ(maginを含む)を計測
+  const navigation_height = navigation?.offsetHeight;
+
+  const observer_options = {
+    root: null, // ビューポート全体を対象
+    rootMargin: `-${navigation_height}px`, // ナビゲーションバーの分を引く
+    threshold: 0, // 全部隠れたときにintersectionしていないと判定
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    // 今回はtargetのDOMをidで指定しているので1番目だけ見れば良い
+    const entry = entries[0];
+    if (entry.isIntersecting) {
+      // 動画が見えているとき
+      if (navigation) {
+        navigation.dataset.navigation_style = "transparent";
+      }
+    } else {
+      // 見えていないとき
+      if (navigation) {
+        navigation.dataset.navigation_style = "white";
+      }
+    }
+  }, observer_options);
+
+  if (hero) {
+    observer.observe(hero);
+  }
+</script>

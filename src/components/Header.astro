@@ -1,0 +1,103 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import "../styles/navigation.scss";
+import HamburgerButton from "./HamburgerButton.astro";
+
+const logoWhite = "/logo-white.svg";
+const logoBlack = "/logo-black.svg";
+
+const isTop = Astro.url.pathname == "/";
+const defaultNavigationStyle = isTop ? "transparent" : "white";
+---
+
+<header>
+  <nav id="top-navigation" data-navigation_style={defaultNavigationStyle}>
+    <a href="/" class="logo" aria-label={t("accessibility.トップページへ")}>
+      <img src={logoWhite} alt={t("base.雙峰祭")} class="logo-white" />
+      <img src={logoBlack} alt={t("base.雙峰祭")} class="logo-black" />
+    </a>
+
+    <ul id="navigation-items">
+      <li><a href="./news/">{t("nav.お知らせ")}</a></li>
+      <li><a href="./coverage/">{t("nav.協賛・取材")}</a></li>
+      <li><a href="./committee/">{t("nav.実委")}</a></li>
+      <li><a href="./shinkan/">{t("nav.新歓")}</a></li>
+    </ul>
+    <HamburgerButton />
+  </nav>
+</header>
+
+<style lang="scss">
+  ul {
+    display: flex;
+
+    & li {
+      margin: 0 0.25em;
+
+      & a {
+        position: relative;
+        padding: 1em 0.5em;
+        font-size: 1rem;
+        text-decoration: none;
+      }
+    }
+  }
+
+  nav[data-navigation_style="transparent"] {
+    & .logo-black {
+      display: none;
+    }
+    & .logo-white {
+      display: block;
+    }
+
+    & li {
+      & a {
+        color: $font-white;
+      }
+
+      & a::before {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        border-radius: 1.5rem;
+        background: linear-gradient($blue, $orange);
+        filter: blur(1rem);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      & a:hover::before {
+        opacity: 50%;
+      }
+    }
+  }
+
+  nav[data-navigation_style="white"] {
+    & .logo-black {
+      display: block;
+    }
+
+    & .logo-white {
+      display: none;
+    }
+
+    & li {
+      & a {
+        color: $font-black;
+        transition: opacity 0.5s ease;
+      }
+
+      & a:hover {
+        opacity: 50%;
+      }
+    }
+  }
+</style>
