@@ -1,7 +1,6 @@
 ---
-import { getLangFromUrl, useTranslations } from "../utils/i18n";
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
 ---
 
 <footer>
