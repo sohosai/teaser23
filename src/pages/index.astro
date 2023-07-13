@@ -13,5 +13,41 @@ i18nAdapter.init(Astro);
   </section>
   <section>
     <h2>{t("top.お知らせ")}</h2>
+    <div class="news">
+      <p>
+        <time class="date" datetime="2023-07-14">2023年7月14日</time>
+        <a href="https://example.com" class="news_link">これらは表示確認用のダミーです</a>
+      </p>
+      <p>
+        <time class="date" datetime="2023-07-03">2023年7月3日</time>
+        <a href="https://twitter.com/spspsptn/status/1675691076844417025" class="news_link">
+          そぽたんが「そぽたんにはテストなんかないそぽ～」とツイートしました
+        </a>
+      </p>
+      <p>
+        <time class="date" datetime="2023-01-01">2023年1月1日</time>
+        <a class="news_link">あけましておめでとうございます！</a>
+      </p>
+    </div>
   </section>
 </TopLayout>
+
+<style lang="scss">
+  .news {
+    p {
+      display: flex;
+      align-items: center;
+      margin: 1em 0;
+
+      & time {
+        flex-shrink: 0;
+        margin-right: 1ic;
+        font-size: 0.9rem;
+      }
+
+      & a {
+        line-height: 1.25;
+      }
+    }
+  }
+</style>
