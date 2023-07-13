@@ -306,6 +306,9 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
   }
 
   @media screen and ($sp-query) {
+    #navigation-items li {
+      margin: 0 1.5em;
+    }
     #navigation-items[aria-hidden="false"] li {
       $animation-duration: 400ms;
       $animation-timing: 50ms;
@@ -342,7 +345,6 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
   }
 
   #navigation-items li {
-    margin: 0 1.5em;
     & a {
       position: relative;
       font-size: 1rem;
