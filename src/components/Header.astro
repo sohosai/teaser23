@@ -2,7 +2,9 @@
 import { i18nAdapter, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
-import HamburgerButton from "src/components/HamburgerButton.astro";
+import { spQuery } from "src/styles/css-variables";
+
+import { Icon } from "astro-icon";
 
 const logoWhite = "/logo-white.svg";
 const logoBlack = "/logo-black.svg";
@@ -12,45 +14,148 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
 ---
 
 <header>
-  <nav id="top-navigation" data-navigation_style={defaultNavigationStyle}>
-    <a href="/" class="logo" aria-label={t("accessibility.トップページへ")}>
-      <img src={logoWhite} alt={t("base.雙峰祭")} class="logo-white" />
-      <img src={logoBlack} alt={t("base.雙峰祭")} class="logo-black" />
-    </a>
+  <nav id="top-navigation" data-navigation_style={defaultNavigationStyle} data-spquery={spQuery}>
+    <section id="navigation-wrapper">
+      <a href="/" class="logo" aria-label={t("accessibility.トップページへ")}>
+        <img src={logoWhite} alt={t("base.雙峰祭")} class="logo-white" />
+        <img src={logoBlack} alt={t("base.雙峰祭")} class="logo-black" />
+      </a>
+      <button id="hamburger-button" type="button" aria-controls="navigation-items">
+        <Icon name="hamburger-menu" height="48" width="136" />
+        <span id="menu-open-text" class="aria" aria-hidden="false"> {t("accessibility.メニューを開く")}</span>
+        <span id="menu-close-text" class="aria" aria-hidden="true"> {t("accessibility.メニューを閉じる")}</span>
+      </button>
+    </section>
 
-    <ul id="navigation-items">
+    <ul id="navigation-items" aria-hidden="true">
       <li><a href="./news/">{t("nav.お知らせ")}</a></li>
       <li><a href="./coverage/">{t("nav.協賛・取材")}</a></li>
       <li><a href="./committee/">{t("nav.実委")}</a></li>
       <li><a href="./shinkan/">{t("nav.新歓")}</a></li>
     </ul>
-    <HamburgerButton />
   </nav>
 </header>
+
+<script>
+  class HTMLElementWrapper {
+    e: HTMLElement | null = null;
+
+    constructor(htmlElement: HTMLElement | null) {
+      if (htmlElement) {
+        this.e = htmlElement;
+      }
+    }
+
+    set isAriaExpanded(status: boolean | undefined) {
+      if (this.e) {
+        if (status == undefined) {
+          this.e.removeAttribute("aria-expanded");
+        } else {
+          this.e.setAttribute("aria-expanded", status.toString());
+        }
+      }
+    }
+
+    set isAriaHidden(status: boolean) {
+      if (this.e) {
+        this.e.setAttribute("aria-hidden", status.toString());
+      }
+    }
+  }
+
+  const navigation = new HTMLElementWrapper(document.getElementById("top-navigation"));
+  const navigationItems = new HTMLElementWrapper(document.getElementById("navigation-items"));
+  const hamburgerButton = new HTMLElementWrapper(document.getElementById("hamburger-button"));
+  const menuOpenText = new HTMLElementWrapper(document.getElementById("menu-open-text"));
+  const menuCloseText = new HTMLElementWrapper(document.getElementById("menu-close-text"));
+
+  const spQuery = navigation.e?.dataset.spquery ?? "";
+
+  const mediaQuery = window.matchMedia(spQuery);
+
+  let isOpen = false;
+
+  type navigationStatus = "open" | "closed" | "pcLayout";
+
+  function setNavigationStatus(target: navigationStatus): navigationStatus {
+    switch (target) {
+      case "open":
+        navigation.isAriaExpanded = true;
+        navigationItems.isAriaHidden = false;
+        menuOpenText.isAriaHidden = true;
+        menuCloseText.isAriaHidden = false;
+
+        return "open";
+      case "closed":
+        navigation.isAriaExpanded = false;
+        navigationItems.isAriaHidden = true;
+        menuOpenText.isAriaHidden = false;
+        menuCloseText.isAriaHidden = true;
+
+        return "closed";
+      case "pcLayout":
+        navigation.isAriaExpanded = undefined;
+        navigationItems.isAriaHidden = false;
+
+        return "pcLayout";
+    }
+  }
+
+  function handleWidthChange(e: MediaQueryList | MediaQueryListEvent) {
+    // ウィンドウの幅が変更されたときの処理
+    // アクセシビリティのため、aria-expandedとaria-hiddenを画面幅によって動的に書き換える必要がある
+    if (e.matches) {
+      // スマホの幅になったら、前回スマホ表示だったときのメニューの状態を反映させてスマホの表示を適用する
+      const target = isOpen ? "open" : "closed";
+      setNavigationStatus(target);
+    } else {
+      // PCの幅になったら、PCの表示を適用する
+      // ただし、スマホレイアウトのときにのメニューの状態には触らないようにする
+      setNavigationStatus("pcLayout");
+    }
+  }
+
+  mediaQuery.addEventListener("change", handleWidthChange);
+  // 最初に1回実行しておく
+  handleWidthChange(mediaQuery);
+
+  hamburgerButton.e?.addEventListener("click", () => {
+    const toggled = isOpen ? "closed" : "open";
+    isOpen = setNavigationStatus(toggled) === "open";
+  });
+</script>
 
 <style lang="scss">
   nav {
     position: fixed;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    padding: 0 5%;
     transition: background-color 0.25s ease;
 
-    & .logo {
-      padding: 0.75em 0.5em;
+    justify-content: space-between;
 
-      & img {
-        height: 2.5em;
-        margin: 0 1em;
-      }
+    @media screen and ($pc-query) {
+      flex-direction: row;
+      align-items: center;
+      padding: 0 1.5rem;
+    }
+
+    @media screen and ($sp-query) {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0;
     }
   }
 
   nav[data-navigation_style="transparent"] {
-    background-color: rgba(0, 0, 0, 0.25);
+    &[aria-expanded="false"] {
+      background-color: rgba(0, 0, 0, 0.25);
+    }
+
+    &[aria-expanded="true"] {
+      background-color: rgba(0, 0, 0, 0.75);
+    }
+
     & .logo-black {
       display: none;
     }
@@ -63,31 +168,47 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
         color: $font-white;
       }
 
-      & a::before {
-        content: "";
-        display: inline-block;
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        border-radius: 1.5rem;
-        background: linear-gradient($blue, $orange);
-        filter: blur(1rem);
-        opacity: 0;
-        transition: opacity 0.5s ease;
+      @media screen and ($pc-query) {
+        & a::before {
+          content: "";
+          display: inline-block;
+          height: 100%;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: -1;
+          border-radius: 1.5rem;
+          background: linear-gradient($blue, $orange);
+          filter: blur(1rem);
+          opacity: 0;
+          transition: opacity 0.25s ease;
+        }
+
+        & a:hover::before {
+          opacity: 50%;
+        }
       }
 
-      & a:hover::before {
-        opacity: 50%;
+      @media screen and ($sp-query) {
+        & a {
+          transition: color 0.25s ease;
+        }
+        & a:hover {
+          color: $blue;
+        }
       }
+    }
+
+    & [astro-icon="hamburger-menu"] {
+      stroke: $font-white;
     }
   }
 
   nav[data-navigation_style="white"] {
     background-color: $background;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+
     & .logo-black {
       display: block;
     }
@@ -99,11 +220,145 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     & li {
       & a {
         color: $font-black;
-        transition: opacity 0.5s ease;
+        transition: color 0.5s ease;
       }
 
       & a:hover {
-        opacity: 50%;
+        color: $blue;
+      }
+    }
+
+    & [astro-icon="hamburger-menu"] {
+      stroke: $font-black;
+    }
+  }
+
+  #navigation-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @media screen and ($sp-query) {
+      width: 100%;
+    }
+
+    & .logo {
+      padding: 0.75em 0.5em;
+
+      & img {
+        height: 2.5em;
+        margin: 0 1em;
+      }
+    }
+  }
+
+  #hamburger-button {
+    cursor: pointer;
+
+    & [astro-icon="hamburger-menu"] {
+      transition: all 50ms ease;
+    }
+
+    & [astro-icon="hamburger-menu"]:hover {
+      width: 110%;
+      height: 110%;
+      //margin-top: 5%;
+      margin-left: -5%;
+    }
+
+    @media screen and ($pc-query) {
+      display: none;
+    }
+
+    @media screen and ($sp-query) {
+      display: block;
+    }
+  }
+
+  #navigation-items {
+    display: flex;
+    transition: opacity 0.5s ease;
+
+    @media screen and ($pc-query) {
+      flex-direction: row;
+
+      & li {
+        margin: 0 0.25em;
+      }
+    }
+
+    @media screen and ($sp-query) {
+      flex-direction: column;
+      padding-bottom: 0.5em;
+      width: 100%;
+
+      &li {
+        width: 100%;
+      }
+    }
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+
+    &[aria-hidden="false"] {
+      height: auto;
+    }
+  }
+
+  @media screen and ($sp-query) {
+    #navigation-items[aria-hidden="false"] li {
+      $animation-duration: 400ms;
+      $animation-timing: 50ms;
+
+      &:nth-child(1) {
+        animation: $animation-duration ease 0s 1 normal both slidein;
+      }
+      &:nth-child(2) {
+        animation: $animation-duration ease ($animation-timing * 1) 1 normal both slidein;
+      }
+      &:nth-child(3) {
+        animation: $animation-duration ease ($animation-timing * 2) 1 normal both slidein;
+      }
+      &:nth-child(4) {
+        animation: $animation-duration ease ($animation-timing * 3) 1 normal both slidein;
+      }
+
+      @keyframes slidein {
+        0% {
+          margin-left: -16em;
+        }
+        100% {
+          margin-left: 1.5em;
+        }
+      }
+
+      @media (prefers-reduced-motion) {
+        &:nth-child(n) {
+          animation-name: dissolve;
+        }
+        margin: 0 1.5em;
+      }
+    }
+  }
+
+  #navigation-items li {
+    margin: 0 1.5em;
+    & a {
+      position: relative;
+      font-size: 1rem;
+      text-decoration: none;
+
+      @media screen and ($pc-query) {
+        display: inline;
+        padding: 1em 0.5em;
+      }
+
+      @media screen and ($sp-query) {
+        display: inline-block;
+        padding: 0.5em 0.5em;
+        width: 100%;
       }
     }
   }
