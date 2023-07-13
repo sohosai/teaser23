@@ -121,23 +121,42 @@ const isTop = Astro.url.pathname == "/";
     threshold: 0, // 全部隠れたときにintersectionしていないと判定
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    // 今回はtargetのDOMをidで指定しているので1番目だけ見れば良い
-    const entry = entries[0];
-    if (entry.isIntersecting) {
-      // 動画が見えているとき
-      if (navigation) {
-        navigation.dataset.navigation_style = "transparent";
+  function makeIntersectionObserver() {
+    return new IntersectionObserver((entries) => {
+      // 今回はtargetのDOMをidで指定しているので1番目だけ見れば良い
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        // 動画が見えているとき
+        if (navigation) {
+          navigation.dataset.navigation_style = "transparent";
+        }
+      } else {
+        // 見えていないとき
+        if (navigation) {
+          navigation.dataset.navigation_style = "white";
+        }
       }
-    } else {
-      // 見えていないとき
-      if (navigation) {
-        navigation.dataset.navigation_style = "white";
-      }
-    }
-  }, observer_options);
+    }, observer_options);
+  }
 
+  let observer = makeIntersectionObserver();
   if (hero) {
     observer.observe(hero);
+  }
+
+  const resizeObserver = new ResizeObserver((entries) => {
+    const entry = entries[0];
+    if (hero) {
+      observer.unobserve(hero);
+    }
+
+    observer_options.rootMargin = `-${entry.contentRect.height}px`;
+    observer = makeIntersectionObserver();
+    if (hero) {
+      observer.observe(hero);
+    }
+  });
+  if (navigation) {
+    resizeObserver.observe(navigation);
   }
 </script>
