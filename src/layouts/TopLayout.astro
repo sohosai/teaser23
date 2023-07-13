@@ -117,7 +117,7 @@ const isTop = Astro.url.pathname == "/";
 
   const observer_options = {
     root: null, // ビューポート全体を対象
-    rootMargin: `-${navigation_height}px`, // ナビゲーションバーの分を引く
+    rootMargin: `-${navigation_height}px 0px 0px 0px`, // ナビゲーションバーの分を引く
     threshold: 0, // 全部隠れたときにintersectionしていないと判定
   };
 
@@ -150,7 +150,7 @@ const isTop = Astro.url.pathname == "/";
       observer.unobserve(hero);
     }
 
-    observer_options.rootMargin = `-${entry.contentRect.height}px`;
+    observer_options.rootMargin = `-${entry.contentRect.height}px 0px 0px 0px`;
     observer = makeIntersectionObserver();
     if (hero) {
       observer.observe(hero);
