@@ -1,27 +1,80 @@
-$fonts-zen: "Zen Maru Gothic";
-$fonts-ryo: "ryo-gothic-plusn";
-$fonts-museoSans: "museo-sans";
-
-$sp-query: "max-width: 599px";
-$pc-query: "min-width: 600px";
+* {
+  outline: initial;
+}
 
 h1,
-h2 {
+h2,
+h3 {
   font-family: $fonts-zen, sans-serif;
 }
 
 h1 {
-  font-size: 4em;
+  font-size: 4rem;
   font-weight: 300;
-  margin-bottom: 8px;
 
   @media screen and ($sp-query) {
     font-size: 3.2em;
   }
 }
+
 h2 {
-  line-height: 1.5;
-  font-size: 1.2em;
+  font-size: 1.5rem;
   font-weight: 400;
-  margin: 0;
+  line-height: 1.5;
+}
+
+h3 {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+p {
+  line-height: 1.8;
+}
+
+a {
+  color: $dark-gray;
+  text-decoration: underline;
+}
+
+small {
+  font-size: 0.9rem;
+}
+
+main {
+  background-color: $background;
+  height: 250vh;
+  padding: 0.5rem $side-margin;
+}
+
+main section {
+  margin: 1.5rem 0;
+}
+
+main h2 {
+  font-family: $fonts-ryo, sans-serif;
+  font-weight: 600;
+  margin: 0.25em 0;
+  line-height: 1.5;
+
+  /* 左側のオレンジ線 */
+  border-left: 0.25em solid $orange;
+  padding-left: 1ch;
+}
+
+/* 秘伝のタレ */
+.aria {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+span[aria-hidden="true"] {
+  display: none;
 }

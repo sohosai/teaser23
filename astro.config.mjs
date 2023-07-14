@@ -15,6 +15,15 @@ export default defineConfig({
   build: {
     format: "directory",
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@import "src/styles/variables.scss";`,
+        },
+      },
+    },
+  },
   integrations: [
     i18n({
       defaultLocale,
