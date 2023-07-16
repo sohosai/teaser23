@@ -26,7 +26,7 @@ jobs:
             以下のリンクから${BRANCH_NAME}ブランチのプレビューを参照することができます。\n
             コミットが追加されると、プレビューも自動更新されます。\n
             \n
-            https://${link}.actions-test.pages.dev/
+            https://${link}.teaser23.pages.dev/
             "
         else
             message="
