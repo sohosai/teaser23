@@ -1,0 +1,37 @@
+name: Notify the preview link for pull requests
+
+on:
+  pull_request:
+    types: [opened]
+permissions:
+  pull-requests: write
+jobs:
+  add-comment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Post the preview link for pull requests
+      env: 
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH_NAME: ${{ github.head_ref }}
+        URL: ${{ github.event.pull_request.html_url }}
+      run: |
+        #BRANCH_NAMEが英数字または_、-、/のいずれかのみで構成されているなら
+        if [[ ${BRANCH_NAME} =~ ^[0-9a-zA-Z_\/-]*$ ]]; then
+            #アンダーバーとスラッシュをハイフンに変換
+            replaced=$(echo $BRANCH_NAME | sed "s/[_\/]/-/g")
+            #すべて小文字に変換
+            link=${replaced,,}
+
+            message="
+            以下のリンクから${BRANCH_NAME}ブランチのプレビューを参照することができます。\n
+            コミットが追加されると、プレビューも自動更新されます。\n
+            \n
+            https://${link}.actions-test.pages.dev/
+            "
+        else
+            message="
+            プレビューリンクの自動取得に失敗しました。
+            "
+        fi
+        
+        gh pr comment -F "${message}" "${URL}"
