@@ -9,11 +9,10 @@ jobs:
   add-comment:
     runs-on: ubuntu-latest
     steps:
-    - name: Post the preview link for pull requests
+    - name: get the head branch name and generate message
       env: 
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH_NAME: ${{ github.head_ref }}
-        URL: ${{ github.event.pull_request.html_url }}
       run: |
         #BRANCH_NAMEが英数字または_、-、/のいずれかのみで構成されているなら
         if [[ ${BRANCH_NAME} =~ ^[0-9a-zA-Z_\/-]*$ ]]; then
@@ -33,5 +32,11 @@ jobs:
             プレビューリンクの自動取得に失敗しました。
             "
         fi
-        
-        gh pr comment -b "${message}" "${URL}"
+        echo -e $message > comment
+
+    - name: Post a comment
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.html_url }}
+      run:
+          gh pr comment -F ./comment "${URL}"
