@@ -7,8 +7,20 @@ import Footer from "../components/Footer.astro";
 <BaseLayout>
   <Header />
 
-  <main>
+  <main id="content">
     <slot />
   </main>
   <Footer />
 </BaseLayout>
+
+<script>
+  const navigation = document.getElementById("top-navigation");
+  const main = document.getElementById("content");
+
+  // ナビゲーションバーの高さ(maginを含む)を計測
+  const navigation_height = navigation?.offsetHeight;
+
+  if (main) {
+    main.style.marginTop = `${navigation_height}px`;
+  }
+</script>
