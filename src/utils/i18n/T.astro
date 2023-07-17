@@ -1,0 +1,19 @@
+---
+import { default as i18nAdapter } from "./core/state";
+import { t } from "./core/translation";
+
+i18nAdapter.init(Astro);
+
+type Props = { key: string };
+
+const { key } = Astro.props;
+const paragraphs = t(key).split(/\n{2,}/);
+---
+
+{paragraphs.map((para: string) => <p>{para}</p>)}
+
+<style>
+  p {
+    white-space: pre-wrap;
+  }
+</style>
