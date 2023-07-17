@@ -1,0 +1,42 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import ContentLayout from "src/layouts/ContentLayout.astro";
+import "src/styles/global.scss";
+
+const videoSrc = "/bg-compressed.mp4";
+---
+
+<ContentLayout>
+  <h1>{t("404.見出し")}</h1>
+  <div class="description">
+    <p>{t("404.説明1")}</p>
+    <p>{t("404.説明2")}</p>
+  </div>
+  <div class="wrapper">
+    <img src="/sopotan5.png" alt={t("accessibility.404そぽたん代替テキスト")} />
+  </div>
+</ContentLayout>
+
+<style>
+  .wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .description {
+    margin: 0.5em 0;
+  }
+
+  img {
+    width: max(40vw, 20rem);
+    height: auto;
+    display: flex;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+</style>
