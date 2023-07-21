@@ -1,5 +1,5 @@
 ---
-import { i18nAdapter, t } from "src/utils/i18n";
+import { i18nAdapter, t, l } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
 import { spQuery } from "src/styles/css-variables";
@@ -28,10 +28,10 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     </section>
 
     <ul id="navigation-items" aria-hidden="true">
-      <li><a href="./news/">{t("nav.お知らせ")}</a></li>
-      <li><a href="./coverage/">{t("nav.協賛・取材")}</a></li>
-      <li><a href="./committee/">{t("nav.実委")}</a></li>
-      <li><a href="./shinkan/">{t("nav.新歓")}</a></li>
+      <li><a href={l("news/")}>{t("nav.お知らせ")}</a></li>
+      <li><a href={l("coverage/")}>{t("nav.協賛・取材")}</a></li>
+      <li><a href={l("committee/")}>{t("nav.実委")}</a></li>
+      <li><a href={l("shinkan/")}>{t("nav.新歓")}</a></li>
     </ul>
   </nav>
 </header>
