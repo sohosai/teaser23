@@ -1,0 +1,56 @@
+---
+import ContentLayout from "src/layouts/ContentLayout.astro";
+import TopLayout from "src/layouts/TopLayout.astro";
+import "src/styles/global.scss";
+
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+---
+
+<ContentLayout pageName={t("coverage.タイトル")}>
+  <h1>{t("coverage.タイトル")}</h1>
+  <section>
+    <h2>{t("coverage.ご協賛のお願い")}</h2>
+    <p>{t("coverage.協賛文面1")}</p>
+    <p>{t("coverage.協賛文面2")}</p>
+    <p>{t("coverage.協賛文面3")}</p>
+    <p>{t("coverage.協賛文面4")}</p>
+  </section>
+  <section>
+    <h2>{t("coverage.お問い合わせ・取材")}</h2>
+    <p>{t("base.筑波大学学園祭実行委員会")} {t("base.渉外局")}</p>
+    <address>
+      <dl>
+        <dt>E-mail</dt><dd><a href="mailto:info@sohosai.com">info@sohosai.com</a></dd>
+        <dt>TEL/FAX</dt><dd>029-853-2899</dd>
+      </dl>
+    </address>
+  </section>
+</ContentLayout>
+
+<style lang="scss">
+  dl {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-content: start;
+    align-content: center;
+    gap: 0.5em 1em;
+
+    margin: 0.75em 0;
+
+    & dt {
+      grid-column: 1/2;
+      padding: 0.125em 0.875em;
+
+      border-radius: 0.25em;
+      border: solid 1px $blue;
+      color: $blue;
+
+      text-align: center;
+    }
+
+    & dd {
+      grid-column: 2/3;
+    }
+  }
+</style>
