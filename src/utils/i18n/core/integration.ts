@@ -55,6 +55,8 @@ export default function i18nPlus({ locales, defaultLocale }: i18nProps): AstroIn
               }
             });
           });
+
+        //await Promise.all(config.supportedLocales.forEach);
       },
     },
   };
