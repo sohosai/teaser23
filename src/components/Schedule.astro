@@ -1,0 +1,70 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import type { YYYYMMDD } from "src/types/date";
+
+import dayjs from "dayjs";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+import "dayjs/locale/en";
+import "dayjs/locale/ja";
+dayjs.locale(i18nAdapter.locale);
+dayjs.extend(isSameOrBefore);
+
+interface Props {
+  startDate: YYYYMMDD;
+  endDate: YYYYMMDD;
+}
+
+const { startDate, endDate } = Astro.props;
+
+const schedule = new Array<dayjs.Dayjs>();
+
+for (let i = dayjs(startDate); i.isSameOrBefore(endDate); i = i.add(1, "d")) {
+  schedule.push(i);
+}
+---
+
+<p class="schedule">
+  <span class="year">{t("top.2023年")}</span>
+  <br />
+  {
+    schedule.map((item, index) => (
+      <time datetime={item.format("YYYY-MM-DD")}>
+        <span class="date">
+          {index === 0
+            ? item.format("M/D")
+            : item.month() === schedule[index - 1].month()
+            ? item.format("D")
+            : item.format("M/D")}
+        </span>
+        <span class="day-of-week">({item.format("ddd")})</span>
+      </time>
+    ))
+  }
+</p>
+
+<style lang="scss">
+  .schedule {
+    margin: 0 0.5em;
+
+    & time {
+      display: inline-flex;
+      align-items: flex-end;
+    }
+
+    & .year {
+      font-size: 1.5rem;
+    }
+
+    & .date {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    & .day-of-week {
+      font-size: 1.475em;
+      margin: 0 0.25em;
+    }
+  }
+</style>

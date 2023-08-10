@@ -2,6 +2,8 @@
 import { i18nAdapter, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
+import Schedule from "src/components/Schedule.astro";
+
 const videoSrc = "/bg-compressed.mp4";
 ---
 
@@ -10,18 +12,7 @@ const videoSrc = "/bg-compressed.mp4";
     <h1>{t("base.雙峰祭")}</h1>
     <h2>{t("top.筑波大学園祭")}</h2>
     <hr />
-    <p class="schedule">
-      <span class="year">{t("top.2023年")}</span>
-      <br />
-      <time datetime="2023-11-04">
-        <span class="date">11/4</span>
-        <span class="day-of-week">({t("top.土曜日")})</span>
-      </time>
-      <time datetime="2023-11-04">
-        <span class="date">5</span>
-        <span class="day-of-week">({t("top.日曜日")})</span>
-      </time>
-    </p>
+    <Schedule startDate="2023-11-04" , endDate="2023-11-05" />
   </div>
   <div class="video-filter"></div>
   <video class="background-vid" autoplay muted loop playsinline>
@@ -59,29 +50,6 @@ const videoSrc = "/bg-compressed.mp4";
         background: $font-white;
         height: 2px;
         margin: 0.5em 0 1em;
-      }
-    }
-
-    & .schedule {
-      margin: 0 0.5em;
-
-      & time {
-        display: inline-flex;
-        align-items: flex-end;
-      }
-
-      & .year {
-        font-size: 1.5rem;
-      }
-
-      & .date {
-        font-size: 2.5rem;
-        line-height: 1;
-      }
-
-      & .day-of-week {
-        font-size: 1.475em;
-        margin: 0 0.25em;
       }
     }
   }
