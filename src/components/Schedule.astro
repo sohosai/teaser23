@@ -26,7 +26,7 @@ for (let i = dayjs(startDate); i.isSameOrBefore(endDate); i = i.add(1, "d")) {
 ---
 
 <p class="schedule">
-  <span class="year">{t("top.2023年")}</span>
+  <span class="year">{dayjs(startDate).year()}.</span>
   <br />
   {
     schedule.map((item, index) => (
