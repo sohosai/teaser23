@@ -1,35 +1,38 @@
 ---
-import TopLayout from "src/layouts/TopLayout.astro";
-import "src/styles/global.scss";
-
 import { i18nAdapter, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
+
+import TopLayout from "src/layouts/TopLayout.astro";
+
+import Container from "src/components/Container.astro";
 ---
 
 <TopLayout>
-  <section>
-    <h2>{t("top.雙峰祭とは")}</h2>
-    <p>{t("top.雙峰祭説明文")}</p>
-  </section>
-  <section>
-    <h2>{t("top.お知らせ")}</h2>
-    <div class="news">
-      <p>
-        <time class="date" datetime="2023-07-14">2023年7月14日</time>
-        <a href="https://example.com" class="news_link">これらは表示確認用のダミーです</a>
-      </p>
-      <p>
-        <time class="date" datetime="2023-07-03">2023年7月3日</time>
-        <a href="https://twitter.com/spspsptn/status/1675691076844417025" class="news_link">
-          そぽたんが「そぽたんにはテストなんかないそぽ～」とツイートしました
-        </a>
-      </p>
-      <p>
-        <time class="date" datetime="2023-01-01">2023年1月1日</time>
-        <a class="news_link">あけましておめでとうございます！</a>
-      </p>
-    </div>
-  </section>
+  <Container>
+    <section>
+      <h2>{t("top.雙峰祭とは")}</h2>
+      <p>{t("top.雙峰祭説明文")}</p>
+    </section>
+    <section>
+      <h2>{t("top.お知らせ")}</h2>
+      <div class="news">
+        <p>
+          <time class="date" datetime="2023-07-14">2023年7月14日</time>
+          <a href="https://example.com" class="news_link">これらは表示確認用のダミーです</a>
+        </p>
+        <p>
+          <time class="date" datetime="2023-07-03">2023年7月3日</time>
+          <a href="https://twitter.com/spspsptn/status/1675691076844417025" class="news_link">
+            そぽたんが「そぽたんにはテストなんかないそぽ～」とツイートしました
+          </a>
+        </p>
+        <p>
+          <time class="date" datetime="2023-01-01">2023年1月1日</time>
+          <a class="news_link">あけましておめでとうございます！</a>
+        </p>
+      </div>
+    </section>
+  </Container>
 </TopLayout>
 
 <style lang="scss">
