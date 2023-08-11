@@ -5,7 +5,8 @@ $fonts-museoSans: "museo-sans";
 $sp-query: "max-width: 899px";
 $pc-query: "min-width: 900px";
 
-$side-margin: min(8rem, 10%);
+$content-width: 1120px;
+$side-margin: max(0px, calc((100wv - $content-width) / 2));
 
 $background: rgb(241, 241, 241);
 $background-gray: rgb(224, 224, 224);
