@@ -38,7 +38,7 @@ for (let i = dayjs(startDate); i.isSameOrBefore(endDate); i = i.add(1, "d")) {
             ? item.format("D")
             : item.format("M/D")}
         </span>
-        <span class="day-of-week">({item.format("ddd")})</span>
+        <span class="day-of-week">{item.format("ddd")}</span>
       </time>
     ))
   }
@@ -46,25 +46,31 @@ for (let i = dayjs(startDate); i.isSameOrBefore(endDate); i = i.add(1, "d")) {
 
 <style lang="scss">
   .schedule {
-    margin: 0 0.5em;
+    font-family: "Noto Sans JP", sans-serif;
+    margin: 0.5em 0;
 
-    & time {
+    time {
       display: inline-flex;
       align-items: flex-end;
     }
 
-    & .year {
-      font-size: 1.5rem;
+    .year {
+      font-size: 1.2rem;
     }
 
-    & .date {
-      font-size: 2.5rem;
+    .date {
+      font-size: 2.25rem;
       line-height: 1;
     }
 
-    & .day-of-week {
-      font-size: 1.475em;
-      margin: 0 0.25em;
+    .day-of-week {
+      display: block;
+      line-height: 1;
+      font-size: 1em;
+      margin: 0px 0.75em;
+      padding: 3px 4px 5px;
+      border: 1px solid $font-white;
+      border-radius: 4px;
     }
   }
 </style>
