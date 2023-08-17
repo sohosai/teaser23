@@ -64,8 +64,8 @@ main h2 {
   line-height: 1.5;
 
   /* 左側のオレンジ線 */
-  border-left: 0.25em solid $orange;
-  padding-left: 1ch;
+  border-inline-start: 0.25em solid $orange;
+  padding-inline-start: 1ch;
 }
 
 /* 秘伝のタレ */
