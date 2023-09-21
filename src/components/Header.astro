@@ -203,9 +203,7 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
   }
 
   nav[data-navigation_style="white"] {
-    background-color: $background-translucent;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
-    backdrop-filter: blur(10px);
 
     & .logo-black {
       display: block;
@@ -213,6 +211,14 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
 
     & .logo-white {
       display: none;
+    }
+
+    & #navigation-wrapper {
+      background-color: $background;
+    }
+    & ul {
+      background-color: $background-translucent;
+      backdrop-filter: blur(10px);
     }
 
     & li {
