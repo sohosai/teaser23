@@ -128,6 +128,7 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
 </script>
 
 <style lang="scss">
+  /* ナビゲーション全体のスタイル */
   nav {
     position: fixed;
     width: 100%;
@@ -148,16 +149,91 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
       }
     }
 
-    &[aria-expanded] #navigation-menu-wrapper,
-    &[aria-expanded] #navigation-items,
-    &:not([aria-expanded]) #navigation-wrapper {
-      width: 100%;
-      max-width: $content-width;
-      margin-inline: auto;
-      padding-inline: $side-padding;
+    & #navigation-menu-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      & .logo {
+        padding: 0.75em 0;
+
+        & img {
+          height: 2.5em;
+          margin: 0;
+        }
+      }
+    }
+
+    @media screen and ($sp-query) {
+      & #navigation-menu-wrapper,
+      & #navigation-items {
+        width: 100%;
+        max-width: $content-width;
+        margin-inline: auto;
+        padding-inline: $side-padding;
+      }
+    }
+
+    @media screen and ($pc-query) {
+      & #navigation-wrapper {
+        width: 100%;
+        max-width: $content-width;
+        margin-inline: auto;
+        padding-inline: $side-padding;
+        width: 100%;
+      }
     }
   }
 
+  #navigation-items {
+    display: flex;
+    transition: opacity 0.5s ease;
+    &[aria-hidden="true"] {
+      display: none;
+    }
+
+    &[aria-hidden="false"] {
+      height: auto;
+    }
+
+    & a {
+      position: relative;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    @media screen and ($pc-query) {
+      flex-direction: row;
+      gap: 0 0.5em;
+
+      & li {
+        margin: 0;
+      }
+
+      & a {
+        display: inline;
+        padding: 1em 0;
+      }
+    }
+
+    @media screen and ($sp-query) {
+      flex-direction: column;
+      width: 100%;
+
+      & li {
+        width: 100%;
+      }
+
+      & a {
+        margin: 0 auto;
+        padding: 0 4vw;
+        max-width: $content-width;
+      }
+    }
+  }
+
+  /* ナビゲーションが透明のときのスタイルの指定 */
   nav[data-navigation_style="transparent"] {
     background-color: rgba(0, 0, 0, 0.25);
 
@@ -214,6 +290,7 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     }
   }
 
+  /* ナビゲーションが白のときのスタイルの指定 */
   nav[data-navigation_style="white"] {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
 
@@ -249,26 +326,7 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     }
   }
 
-  #navigation-menu-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    @media screen and ($sp-query) {
-      width: 100%;
-    }
-
-    & .logo {
-      padding: 0.75em 0;
-
-      & img {
-        height: 2.5em;
-        margin: 0;
-      }
-    }
-  }
-
+  /* ハンバーガーメニュー */
   #hamburger-button {
     cursor: pointer;
 
@@ -291,36 +349,7 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     }
   }
 
-  #navigation-items {
-    display: flex;
-    transition: opacity 0.5s ease;
-
-    @media screen and ($pc-query) {
-      flex-direction: row;
-
-      & li {
-        margin: 0 0.25em;
-      }
-    }
-
-    @media screen and ($sp-query) {
-      flex-direction: column;
-      width: 100%;
-
-      &li {
-        width: 100%;
-      }
-    }
-
-    &[aria-hidden="true"] {
-      display: none;
-    }
-
-    &[aria-hidden="false"] {
-      height: auto;
-    }
-  }
-
+  /* スマホ表示でハンバーガーメニューを開いたときのアニメーション */
   @media screen and ($sp-query) {
     #navigation-items li {
       margin: 0;
@@ -357,23 +386,6 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
         }
         margin: 0;
       }
-    }
-  }
-
-  #navigation-items a {
-    position: relative;
-    font-size: 1rem;
-    text-decoration: none;
-
-    @media screen and ($pc-query) {
-      display: inline;
-      padding: 1em 0;
-    }
-
-    @media screen and ($sp-query) {
-      display: inline-block;
-      padding: 0.5em 0;
-      width: 100%;
     }
   }
 </style>
