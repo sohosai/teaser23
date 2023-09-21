@@ -1,0 +1,18 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import ContentLayout from "src/layouts/ContentLayout.astro";
+import "src/styles/global.scss";
+import NewsEntry from "src/components/NewsEntry.astro";
+
+import { getCollection } from "astro:content";
+
+const locale = i18nAdapter.locale;
+const news = (await getCollection("news")).filter((n) => n.slug.startsWith(locale));
+---
+
+<ContentLayout>
+  <h1>{t("nav.お知らせ")}</h1>
+  {news.map((newsEntry) => <NewsEntry slug={newsEntry.slug} />)}
+</ContentLayout>
