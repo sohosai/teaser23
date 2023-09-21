@@ -294,20 +294,27 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
   nav[data-navigation_style="white"] {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
 
+    @media screen and ($pc-query) {
+      background-color: $background;
+    }
+
+    @media screen and ($sp-query) {
+      & #navigation-menu-wrapper {
+        background-color: $background;
+      }
+
+      & ul {
+        background-color: $background-translucent;
+        backdrop-filter: blur(10px);
+      }
+    }
+
     & .logo-black {
       display: block;
     }
 
     & .logo-white {
       display: none;
-    }
-
-    & #navigation-menu-wrapper {
-      background-color: $background;
-    }
-    & ul {
-      background-color: $background-translucent;
-      backdrop-filter: blur(10px);
     }
 
     & li {
