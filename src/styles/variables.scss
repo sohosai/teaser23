@@ -6,10 +6,11 @@ $sp-query: "max-width: 899px";
 $pc-query: "min-width: 900px";
 
 $content-width: 1120px;
+$side-padding: min(1.25rem, 4.75vw);
 $side-margin: max(0px, calc((100vw - $content-width) / 2));
 
 $background: rgb(241, 241, 241);
-$background-translucent: rgba(241, 241, 241, 0.9);
+$background-translucent: rgb(241, 241, 241, 0.9);
 $background-gray: rgb(224, 224, 224);
 
 $light-gray: rgb(204, 204, 204);
