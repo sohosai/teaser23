@@ -1,0 +1,76 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import type { YYYYMMDD } from "src/types/date";
+
+import dayjs from "dayjs";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
+import "dayjs/locale/en";
+import "dayjs/locale/ja";
+dayjs.locale(i18nAdapter.locale);
+dayjs.extend(isSameOrBefore);
+
+interface Props {
+  startDate: YYYYMMDD;
+  endDate: YYYYMMDD;
+}
+
+const { startDate, endDate } = Astro.props;
+
+const schedule = new Array<dayjs.Dayjs>();
+
+for (let i = dayjs(startDate); i.isSameOrBefore(endDate); i = i.add(1, "d")) {
+  schedule.push(i);
+}
+---
+
+<p class="schedule">
+  <span class="year">{dayjs(startDate).year()}.</span>
+  <br />
+  {
+    schedule.map((item, index) => (
+      <time datetime={item.format("YYYY-MM-DD")}>
+        <span class="date">
+          {index === 0
+            ? item.format("M/D")
+            : item.month() === schedule[index - 1].month()
+            ? item.format("D")
+            : item.format("M/D")}
+        </span>
+        <span class="day-of-week">{item.format("ddd")}</span>
+      </time>
+    ))
+  }
+</p>
+
+<style lang="scss">
+  .schedule {
+    font-family: "Noto Sans JP", sans-serif;
+    margin: 0.5em 0;
+
+    time {
+      display: inline-flex;
+      align-items: flex-end;
+    }
+
+    .year {
+      font-size: 1.2rem;
+    }
+
+    .date {
+      font-size: 2.25rem;
+      line-height: 1;
+    }
+
+    .day-of-week {
+      display: block;
+      line-height: 1;
+      font-size: 1em;
+      margin: 0px 0.75em;
+      padding: 3px 4px 5px;
+      border: 1px solid $font-white;
+      border-radius: 4px;
+    }
+  }
+</style>
