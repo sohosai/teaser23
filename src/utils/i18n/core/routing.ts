@@ -11,5 +11,8 @@ export function l(route: string, locale = i18nAdapter.locale, routeLangCode = ""
   if (inputLangCode !== defaultLocale) {
     result = `${inputLangCode}/${result}`;
   }
-  return "/" + result + "/";
+  if (!result.endsWith("/")) {
+    result += "/";
+  }
+  return "/" + result;
 }
