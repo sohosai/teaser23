@@ -25,3 +25,5 @@ export default function i18n({
 export { default as i18nAdapter } from "./core/state";
 
 export { t } from "./core/translation";
+
+export { l } from "./core/routing";
