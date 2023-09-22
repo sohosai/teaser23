@@ -14,5 +14,8 @@ export function l(route: string, locale = i18nAdapter.locale, routeLangCode = ""
   if (!result.endsWith("/")) {
     result += "/";
   }
-  return "/" + result;
+  if (!result.startsWith("/")) {
+    result = "/" + result;
+  }
+  return result;
 }
