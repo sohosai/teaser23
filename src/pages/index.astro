@@ -55,18 +55,24 @@ const newsIds = news.map((entry) => entry.slug.replace(regex, ""));
 
 <style lang="scss">
   .news {
+    display: grid;
+    grid-template-rows: max-content 1fr;
+    align-items: center;
+    justify-content: start;
+    gap: 1em 1ic;
+    margin: 1em 0;
+
     p {
-      display: flex;
-      align-items: center;
+      display: contents;
       margin: 1em 0;
 
       & time {
-        flex-shrink: 0;
-        margin-inline-end: 1ic;
+        grid-column: 1/2;
         font-size: 0.9rem;
       }
 
       & a {
+        grid-column: 2/3;
         line-height: 1.25;
       }
     }
