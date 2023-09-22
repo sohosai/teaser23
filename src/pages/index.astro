@@ -2,7 +2,7 @@
 import TopLayout from "src/layouts/TopLayout.astro";
 import "src/styles/global.scss";
 
-import { i18nAdapter, t } from "src/utils/i18n";
+import { i18nAdapter, l, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
 import { getCollection } from "astro:content";
@@ -27,7 +27,7 @@ const newsIds = news.map((entry) => entry.slug.replace(regex, ""));
             <time class="date" datetime={entry.data.publishedAt}>
               {entry.data.publishedAt}
             </time>
-            <a href={`./news/index.html#${newsIds[index]}`} class="news_link">
+            <a href={l(`./news/index.html#${newsIds[index]}`)} class="news_link">
               {entry.data.title}
             </a>
           </p>
