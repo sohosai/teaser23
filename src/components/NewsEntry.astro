@@ -1,7 +1,20 @@
 ---
 import { i18nAdapter } from "src/utils/i18n";
+import { DEFAULT_TIMEZONE } from "src/consts";
 import { getEntry } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+
+const locale = i18nAdapter.locale;
+
+import dayjs from "dayjs";
+import "dayjs/locale/en";
+import "dayjs/locale/ja";
+import timezone from "dayjs/plugin/timezone";
+import LocalizedFormat from "dayjs/plugin/localizedFormat";
+dayjs.extend(LocalizedFormat);
+dayjs.extend(timezone);
+dayjs.tz.setDefault(DEFAULT_TIMEZONE);
+dayjs.locale(locale);
 
 type ValidSlugs = CollectionEntry<"news">["slug"];
 
@@ -20,7 +33,7 @@ const newsId = slug.replace(regex, "");
 
 <section id={newsId}>
   <h2>{entry?.data.title}</h2>
-  <span class="published-at">{entry?.data.publishedAt}</span>
+  <span class="published-at">{dayjs(entry?.data.publishedAt).tz().format("LLL")}</span>
   <div class="markdown-body">
     <Content />
   </div>
