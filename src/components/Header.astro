@@ -15,24 +15,26 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
 
 <header>
   <nav id="top-navigation" data-navigation_style={defaultNavigationStyle} data-spquery={spQuery}>
-    <section id="navigation-wrapper">
-      <a href={l("/")} class="logo" aria-label={t("accessibility.トップページへ")}>
-        <img src={logoWhite} alt={t("base.雙峰祭")} class="logo-white" />
-        <img src={logoBlack} alt={t("base.雙峰祭")} class="logo-black" />
-      </a>
-      <button id="hamburger-button" type="button" aria-controls="navigation-items">
-        <Icon name="hamburger-menu" height="48" width="136" />
-        <span id="menu-open-text" class="aria" aria-hidden="false"> {t("accessibility.メニューを開く")}</span>
-        <span id="menu-close-text" class="aria" aria-hidden="true"> {t("accessibility.メニューを閉じる")}</span>
-      </button>
-    </section>
+    <div id="navigation-wrapper">
+      <section id="navigation-menu-wrapper">
+        <a href={l("/")} class="logo" aria-label={t("accessibility.トップページへ")}>
+          <img src={logoWhite} alt={t("base.雙峰祭")} class="logo-white" />
+          <img src={logoBlack} alt={t("base.雙峰祭")} class="logo-black" />
+        </a>
+        <button id="hamburger-button" type="button" aria-controls="navigation-items">
+          <Icon name="hamburger-menu" height="48" width="48" />
+          <span id="menu-open-text" class="aria" aria-hidden="false"> {t("accessibility.メニューを開く")}</span>
+          <span id="menu-close-text" class="aria" aria-hidden="true"> {t("accessibility.メニューを閉じる")}</span>
+        </button>
+      </section>
 
-    <ul id="navigation-items" aria-hidden="true">
-      <li><a href={l("news/")}>{t("nav.お知らせ")}</a></li>
-      <li><a href={l("coverage/")}>{t("nav.協賛・取材")}</a></li>
-      <li><a href={l("committee/")}>{t("nav.実委")}</a></li>
-      <li><a href={l("shinkan/")}>{t("nav.新歓")}</a></li>
-    </ul>
+      <ul id="navigation-items" aria-hidden="true">
+        <li><a href={l("news/")}>{t("nav.お知らせ")}</a></li>
+        <li><a href={l("coverage/")}>{t("nav.協賛・取材")}</a></li>
+        <li><a href={l("committee/")}>{t("nav.実委")}</a></li>
+        <li><a href={l("shinkan/")}>{t("nav.新歓")}</a></li>
+      </ul>
+    </div>
   </nav>
 </header>
 
@@ -126,27 +128,113 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
 </script>
 
 <style lang="scss">
+  /* ナビゲーション全体のスタイル */
   nav {
     position: fixed;
-    display: flex;
     width: 100%;
     transition: background-color 0.25s ease;
 
-    justify-content: space-between;
+    & #navigation-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      @media screen and ($pc-query) {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      @media screen and ($sp-query) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    & #navigation-menu-wrapper {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+
+      & .logo {
+        padding: 0.75em 0;
+
+        & img {
+          height: 2.5em;
+          margin: 0;
+        }
+      }
+    }
+
+    @media screen and ($sp-query) {
+      & #navigation-menu-wrapper,
+      & #navigation-items {
+        width: 100%;
+        max-width: $content-width;
+        margin-inline: auto;
+        padding-inline: $side-padding;
+      }
+    }
+
+    @media screen and ($pc-query) {
+      & #navigation-wrapper {
+        width: 100%;
+        max-width: $content-width;
+        margin-inline: auto;
+        padding-inline: $side-padding;
+        width: 100%;
+      }
+    }
+  }
+
+  #navigation-items {
+    display: flex;
+    transition: opacity 0.5s ease;
+    &[aria-hidden="true"] {
+      display: none;
+    }
+
+    &[aria-hidden="false"] {
+      height: auto;
+    }
+
+    & a {
+      position: relative;
+      font-size: 1rem;
+      text-decoration: none;
+    }
 
     @media screen and ($pc-query) {
       flex-direction: row;
-      align-items: center;
-      padding: 0 1.5rem;
+      gap: 0 1em;
+
+      & li {
+        margin: 0;
+      }
+
+      & a {
+        display: inline;
+        padding: 1em 0;
+      }
     }
 
     @media screen and ($sp-query) {
       flex-direction: column;
-      align-items: flex-start;
-      padding: 0;
+      width: 100%;
+      padding-block-end: 0.75em;
+
+      & li {
+        width: 100%;
+        margin: 0.5em 0;
+      }
+
+      & a {
+        margin: 0 auto;
+        max-width: $content-width;
+      }
     }
   }
 
+  /* ナビゲーションが透明のときのスタイルの指定 */
   nav[data-navigation_style="transparent"] {
     background-color: rgba(0, 0, 0, 0.25);
 
@@ -203,9 +291,24 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     }
   }
 
+  /* ナビゲーションが白のときのスタイルの指定 */
   nav[data-navigation_style="white"] {
-    background-color: $background;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+
+    @media screen and ($pc-query) {
+      background-color: $background;
+    }
+
+    @media screen and ($sp-query) {
+      & #navigation-menu-wrapper {
+        background-color: $background;
+      }
+
+      & ul {
+        background-color: $background-translucent;
+        backdrop-filter: blur(10px);
+      }
+    }
 
     & .logo-black {
       display: block;
@@ -231,26 +334,7 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     }
   }
 
-  #navigation-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-
-    @media screen and ($sp-query) {
-      width: 100%;
-    }
-
-    & .logo {
-      padding: 0.75em 0.5em;
-
-      & img {
-        height: 2.5em;
-        margin: 0 1em;
-      }
-    }
-  }
-
+  /* ハンバーガーメニュー */
   #hamburger-button {
     cursor: pointer;
 
@@ -261,8 +345,7 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     & [astro-icon="hamburger-menu"]:hover {
       width: 110%;
       height: 110%;
-      //margin-top: 5%;
-      margin-left: -5%;
+      margin-inline-start: -5%;
     }
 
     @media screen and ($pc-query) {
@@ -274,41 +357,8 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     }
   }
 
-  #navigation-items {
-    display: flex;
-    transition: opacity 0.5s ease;
-
-    @media screen and ($pc-query) {
-      flex-direction: row;
-
-      & li {
-        margin: 0 0.25em;
-      }
-    }
-
-    @media screen and ($sp-query) {
-      flex-direction: column;
-      padding-bottom: 0.5em;
-      width: 100%;
-
-      &li {
-        width: 100%;
-      }
-    }
-
-    &[aria-hidden="true"] {
-      display: none;
-    }
-
-    &[aria-hidden="false"] {
-      height: auto;
-    }
-  }
-
+  /* スマホ表示でハンバーガーメニューを開いたときのアニメーション */
   @media screen and ($sp-query) {
-    #navigation-items li {
-      margin: 0 1.5em;
-    }
     #navigation-items[aria-hidden="false"] li {
       $animation-duration: 400ms;
       $animation-timing: 50ms;
@@ -328,10 +378,10 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
 
       @keyframes slidein {
         0% {
-          margin-left: -16em;
+          margin-inline-start: -16em;
         }
         100% {
-          margin-left: 1.5em;
+          margin-inline-start: 0;
         }
       }
 
@@ -339,26 +389,7 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
         &:nth-child(n) {
           animation-name: dissolve;
         }
-        margin: 0 1.5em;
-      }
-    }
-  }
-
-  #navigation-items li {
-    & a {
-      position: relative;
-      font-size: 1rem;
-      text-decoration: none;
-
-      @media screen and ($pc-query) {
-        display: inline;
-        padding: 1em 0.5em;
-      }
-
-      @media screen and ($sp-query) {
-        display: inline-block;
-        padding: 0.5em 0.5em;
-        width: 100%;
+        margin: 0;
       }
     }
   }

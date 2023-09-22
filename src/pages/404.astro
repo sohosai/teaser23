@@ -3,20 +3,22 @@ import { i18nAdapter, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
 import ContentLayout from "src/layouts/ContentLayout.astro";
-import "src/styles/global.scss";
+import Container from "src/components/Container.astro";
 
 const videoSrc = "/bg-compressed.mp4";
 ---
 
 <ContentLayout>
-  <h1>{t("404.見出し")}</h1>
-  <div class="description">
-    <p>{t("404.説明1")}</p>
-    <p>{t("404.説明2")}</p>
-  </div>
-  <div class="wrapper">
-    <img src="/sopotan5.png" alt={t("accessibility.404そぽたん代替テキスト")} />
-  </div>
+  <Container>
+    <h1>{t("404.見出し")}</h1>
+    <div class="description">
+      <p>{t("404.説明1")}</p>
+      <p>{t("404.説明2")}</p>
+    </div>
+    <div class="wrapper">
+      <img src="/sopotan5.png" alt={t("accessibility.404そぽたん代替テキスト")} />
+    </div>
+  </Container>
 </ContentLayout>
 
 <style>
@@ -31,7 +33,7 @@ const videoSrc = "/bg-compressed.mp4";
   }
 
   img {
-    width: max(40vw, 20rem);
+    width: max(40%, 20rem);
     height: auto;
     display: flex;
   }

@@ -1,38 +1,42 @@
 ---
 import { i18nAdapter, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
+
+import Container from "src/components/Container.astro";
 ---
 
 <footer>
-  <section>
-    <h2>{t("base.筑波大学学園祭実行委員会")}</h2>
-    <address>
-      <p class="address">
-        {t("info.住所")}
-      </p>
+  <Container>
+    <section>
+      <h2>{t("base.筑波大学学園祭実行委員会")}</h2>
+      <address>
+        <p class="address">
+          {t("info.住所")}
+        </p>
+        <dl>
+          <dt>{t("footer.Email")}</dt><dd><a href="mailto:info@sohosai.com">info@sohosai.com</a></dd>
+          <dt>{t("footer.TEL/FAX")}</dt><dd>029-853-2899</dd>
+        </dl>
+      </address>
+    </section>
+
+    <section>
+      <h3>外部対応時間</h3>
       <dl>
-        <dt>{t("footer.Email")}</dt><dd><a href="mailto:info@sohosai.com">info@sohosai.com</a></dd>
-        <dt>{t("footer.TEL/FAX")}</dt><dd>029-853-2899</dd>
+        <dt>{t("footer.平日")}</dt><dd>{t("info.平日対応時間")}</dd>
+        <dt>{t("footer.休日")}</dt><dd>{t("info.休日対応時間")}</dd>
       </dl>
-    </address>
-  </section>
+    </section>
 
-  <section>
-    <h3>外部対応時間</h3>
-    <dl>
-      <dt>{t("footer.平日")}</dt><dd>{t("info.平日対応時間")}</dd>
-      <dt>{t("footer.休日")}</dt><dd>{t("info.休日対応時間")}</dd>
-    </dl>
-  </section>
-
-  <hr />
-  <p class="copy"><small>&copy 2023 筑波大学学園祭実行委員会 All rights reserved.</small></p>
+    <hr />
+    <p class="copy"><small>&copy 2023 筑波大学学園祭実行委員会 All rights reserved.</small></p>
+  </Container>
 </footer>
 
 <style lang="scss">
   footer {
     background-color: $background-gray;
-    padding: 2rem $side-margin;
+    padding: 2.5rem 0;
 
     & address {
       padding: 0.5em 0;
