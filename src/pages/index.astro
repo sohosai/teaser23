@@ -42,7 +42,7 @@ const newsIds = news.map((entry) => entry.slug.replace(regex, ""));
               <time class="date" datetime={dayjs(entry.data.publishedAt).tz().format("YYYY-MM-DD")}>
                 {dayjs(entry.data.publishedAt).tz().format("LL")}
               </time>
-              <a href={l(`./news/index.html#${newsIds[index]}`)} class="news_link">
+              <a href={l(`news/index.html#${newsIds[index]}`)} class="news_link">
                 {entry.data.title}
               </a>
             </p>
