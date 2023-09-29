@@ -2,6 +2,10 @@
   outline: initial;
 }
 
+:target {
+  scroll-margin-top: $navigation-height;
+}
+
 h1,
 h2,
 h3 {
