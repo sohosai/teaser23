@@ -2,9 +2,8 @@
   outline: initial;
 }
 
-body {
-  scroll-behavior: smooth;
-  scroll-padding-top: $navigation-height;
+:target {
+  scroll-margin-top: $navigation-height;
 }
 
 h1,
