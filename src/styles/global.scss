@@ -1,9 +1,12 @@
-* {
-  outline: initial;
-}
-
 :target {
   scroll-margin-top: $navigation-height;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
 }
 
 h1,
@@ -41,15 +44,20 @@ a {
   text-decoration: underline;
 }
 
+address {
+  font-style: normal;
+}
+
+hr {
+  border: none;
+}
+
 small {
   font-size: 0.9rem;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-
-  min-height: 100vh;
+dt {
+  font-weight: inherit;
 }
 
 main {
