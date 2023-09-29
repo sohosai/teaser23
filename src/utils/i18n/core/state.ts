@@ -1,6 +1,5 @@
 import { getDefaultConfig } from "./config";
 import type { i18nAdapterConfig } from "../types";
-import { getLocale } from "astro-i18n-aut";
 
 class I18nAdapter implements i18nAdapterConfig {
   defaultLocale: string;
@@ -32,6 +31,11 @@ class I18nAdapter implements i18nAdapterConfig {
     this.#locale = locale;
   }
 
+  getLocaleFromUrl(url: URL): string {
+    const [, locale] = url.pathname.split("/");
+    return this.supportedLocales.includes(locale) ? locale : this.defaultLocale;
+  }
+
   internals() {
     return {
       init: this.#init.bind(this),
@@ -39,7 +43,7 @@ class I18nAdapter implements i18nAdapterConfig {
   }
 
   init(Astro: { url: URL }) {
-    let locale = getLocale(Astro.url);
+    let locale = this.getLocaleFromUrl(Astro.url);
     this.locale = locale || this.defaultLocale;
   }
 
