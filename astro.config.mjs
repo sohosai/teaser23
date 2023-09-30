@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import i18n from "./src/utils/i18n";
+import googleFontsSubsetter from "./src/utils/google-fonts-subsetter";
 import { defaultLocaleSitemapFilter } from "astro-i18n-aut";
 import sitemap from "@astrojs/sitemap";
 
@@ -9,6 +10,8 @@ const locales = {
   en: "en-US",
 };
 
+const googleFonts = [{ fonts: "", url: "" }];
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://sohosai.com",
@@ -17,6 +20,7 @@ export default defineConfig({
     format: "directory",
   },
   vite: {
+    //plugins: [googleFontsSubsetter([{name:"Mulish", url:"https://example.com" }])],
     css: {
       preprocessorOptions: {
         scss: {
@@ -37,5 +41,6 @@ export default defineConfig({
       },
       filter: defaultLocaleSitemapFilter({ defaultLocale }),
     }),
+    googleFontsSubsetter(googleFonts),
   ],
 });
