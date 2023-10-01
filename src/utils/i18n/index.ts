@@ -1,4 +1,4 @@
-import { i18n as i18nAut } from "astro-i18n-aut";
+import { i18n as i18nAut } from "astro-i18n-aut/integration";
 import i18nPlus from "./core/integration";
 import type { i18nProps } from "./types";
 
