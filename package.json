@@ -18,6 +18,7 @@
     ]
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.0.0",
     "astro": "^3.2.0",
     "astro-google-fonts-optimizer": "^0.2.2",
     "astro-i18n-aut": "^0.4.16",
