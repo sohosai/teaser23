@@ -18,9 +18,6 @@
     ]
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.0.0",
-    "@fontsource/noto-sans-jp": "^5.0.7",
-    "@fontsource/zen-maru-gothic": "^5.0.7",
     "astro": "^3.2.0",
     "astro-google-fonts-optimizer": "^0.2.2",
     "astro-i18n-aut": "^0.4.16",
