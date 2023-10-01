@@ -1,4 +1,4 @@
-import { i18nAdapter, t } from "src/utils/i18n";
+import { t } from "src/utils/i18n";
 
 import type { YYYYMMDD } from "src/types/date";
 export const DEFAULT_OGP_IMAGE = "ogp.png";
