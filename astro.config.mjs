@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 import i18n from "./src/utils/i18n";
-import { defaultLocaleSitemapFilter } from "astro-i18n-aut";
+import { filterSitemapByDefaultLocale } from "astro-i18n-aut/integration";
 import sitemap from "@astrojs/sitemap";
 
 const defaultLocale = "ja";
@@ -35,7 +35,7 @@ export default defineConfig({
         locales,
         defaultLocale,
       },
-      filter: defaultLocaleSitemapFilter({ defaultLocale }),
+      filter: filterSitemapByDefaultLocale({ defaultLocale }),
     }),
   ],
 });
