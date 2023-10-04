@@ -4,10 +4,11 @@ i18nAdapter.init(Astro);
 
 import { spQuery } from "src/styles/css-variables";
 
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon";
 
-const logoWhite = "/logo-white.svg";
-const logoBlack = "/logo-black.svg";
+import logoWhite from "src/assets/logo-white.svg";
+import logoBlack from "src/assets/logo-black.svg";
 
 const isTop = Astro.url.pathname == "/";
 const defaultNavigationStyle = isTop ? "transparent" : "white";
@@ -18,8 +19,8 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     <div id="navigation-wrapper">
       <section id="navigation-menu-wrapper">
         <a href={l("/")} class="logo" aria-label={t("accessibility.トップページへ")}>
-          <img src={logoWhite} alt={t("base.雙峰祭")} class="logo-white" />
-          <img src={logoBlack} alt={t("base.雙峰祭")} class="logo-black" />
+          <Image src={logoWhite} alt={t("base.雙峰祭")} class="logo-white" />
+          <Image src={logoBlack} alt={t("base.雙峰祭")} class="logo-black" />
         </a>
         <button id="hamburger-button" type="button" aria-controls="navigation-items">
           <Icon name="hamburger-menu" height="48" width="48" />
@@ -164,6 +165,7 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
 
         & img {
           height: 2.5em;
+          width: auto;
           margin: 0;
         }
       }

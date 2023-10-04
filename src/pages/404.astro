@@ -2,10 +2,12 @@
 import { i18nAdapter, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
+import { Image } from "astro:assets";
+
 import ContentLayout from "src/layouts/ContentLayout.astro";
 import Container from "src/components/Container.astro";
 
-const videoSrc = "/bg-compressed.mp4";
+import sopotan from "src/assets/sopotan5.png";
 ---
 
 <ContentLayout>
@@ -16,7 +18,7 @@ const videoSrc = "/bg-compressed.mp4";
       <p>{t("404.説明2")}</p>
     </div>
     <div class="wrapper">
-      <img src="/sopotan5.png" alt={t("accessibility.404そぽたん代替テキスト")} />
+      <Image src={sopotan} alt={t("404.そぽたん代替テキスト")} />
     </div>
   </Container>
 </ContentLayout>
