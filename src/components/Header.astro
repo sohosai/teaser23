@@ -182,7 +182,9 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     }
     /* ナビゲーションが白のときのスタイルの指定 */
     &[data-navigation_style="white"] {
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+      &[aria-expanded="true"] {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+      }
       background-color: $background;
       .logo-white {
         display: none;
@@ -203,8 +205,8 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
         background-color: transparent;
         .navigation-menu-wrapper {
           background-color: $background;
-        }
-        .navigation-menu-wrapper {
+          position: relative;
+          z-index: 100;
           box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
         }
         #navigation-items {
@@ -276,8 +278,6 @@ const defaultNavigationStyle = isTop ? "transparent" : "white";
     }
     @media screen and ($sp-query) {
       flex-direction: column;
-      width: 100%;
-      padding-block-end: 0.75em;
       width: 100%;
       max-width: $content-width;
       margin-inline: auto;
