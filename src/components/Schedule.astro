@@ -46,7 +46,6 @@ for (let i = dayjs(startDate); i.isSameOrBefore(endDate); i = i.add(1, "d")) {
 
 <style lang="scss">
   .schedule {
-    font-family: "Noto Sans JP", sans-serif;
     margin: 0.5em 0;
 
     time {
@@ -65,10 +64,11 @@ for (let i = dayjs(startDate); i.isSameOrBefore(endDate); i = i.add(1, "d")) {
 
     .day-of-week {
       display: block;
+      vertical-align: center;
       line-height: 1;
       font-size: 1em;
-      margin: 0px 0.75em;
-      padding: 3px 4px 5px;
+      margin: 0.2em 0.75em;
+      padding: 3px 4px;
       border: 1px solid $font-white;
       border-radius: 4px;
     }

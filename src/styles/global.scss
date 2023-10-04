@@ -7,15 +7,12 @@ body {
   flex-direction: column;
 
   min-height: 100vh;
-}
 
-h1,
-h2,
-h3 {
-  font-family: $fonts-zen, sans-serif;
+  font-family: $fonts-mulish, $fonts-latin, $fonts-japanese, sans-serif;
 }
 
 h1 {
+  font-family: $fonts-zen, sans-serif;
   font-size: 4rem;
   font-weight: 300;
 
@@ -70,7 +67,6 @@ main section {
 }
 
 main h2 {
-  font-family: $fonts-ryo, sans-serif;
   font-weight: 600;
   margin: 0.25em 0;
   line-height: 1.5;
