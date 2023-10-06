@@ -1,12 +1,13 @@
 ---
 import { i18nAdapter, t, l } from "src/utils/i18n";
 i18nAdapter.init(Astro);
+const lang = i18nAdapter.locale;
 
 import { spQuery } from "src/styles/css-variables";
 
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon";
 import type { HeaderLink } from "src/types";
+import LanguageSelect from "src/components/LanguageSelect.astro";
 
 import logoWhite from "src/assets/logo-white.svg";
 import logoBlack from "src/assets/logo-black.svg";
@@ -55,17 +56,20 @@ const links: HeaderLink[] = [
         <span id="menu-close-text" class="aria" aria-hidden="true"> {t("accessibility.メニューを閉じる")}</span>
       </button>
     </nav>
-    <ul id="navigation-items" role="list" aria-hidden="true">
-      {
-        links.map((link) => (
-          <li>
-            <a href={l(link.to)} aria-current={Astro.url.pathname == l(link.to) ? "page" : "false"}>
-              {t(link.textKey)}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+    <nav class="item-wrapper">
+      <ul id="navigation-items" role="list" aria-hidden="true">
+        {
+          links.map((link) => (
+            <li>
+              <a href={l(link.to)} aria-current={Astro.url.pathname == l(link.to) ? "page" : "false"}>
+                {t(link.textKey)}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <LanguageSelect lang={lang} label={t("accessibility.言語の選択")} />
+    </nav>
   </div>
 </header>
 
@@ -283,11 +287,18 @@ const links: HeaderLink[] = [
       margin: 0;
     }
   }
-  #navigation-items {
+  .item-wrapper {
     display: flex;
     transition: opacity 0.5s ease;
     flex-direction: row;
+    align-items: center;
     gap: 0 1em;
+    @media screen and ($sp-query) {
+      display: contents;
+    }
+  }
+  #navigation-items {
+    display: contents;
     li {
       margin: 0;
       a {
@@ -305,7 +316,10 @@ const links: HeaderLink[] = [
       height: auto;
     }
     @media screen and ($sp-query) {
+      display: flex;
+      transition: opacity 0.5s ease;
       flex-direction: column;
+      gap: 0 1em;
       width: 100%;
       max-width: $content-width;
       margin-inline: auto;
