@@ -13,11 +13,11 @@ const { lang, label } = Astro.props;
 <label>
   <span class="aria">{label}</span>
   <Icon name="ic:baseline-language" focusable="false" aria-hidden="true" role="img" />
-  <select onchange="window.location.pathname=this.value">
+  <select name="languages" onchange="window.location.pathname=this.value">
     {
       i18nAdapter.locales.map((code) => (
         <option value={l(Astro.url.pathname, code)} selected={code == lang}>
-          {t("lang", code)}&nbsp;&nbsp;&nbsp;
+          {t("lang", code)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </option>
       ))
     }
@@ -38,9 +38,6 @@ const { lang, label } = Astro.props;
       top: 0;
       height: 100%;
       pointer-events: none;
-    }
-    @media screen and ($sp-query) {
-      display: none;
     }
   }
   select {
@@ -69,7 +66,10 @@ const { lang, label } = Astro.props;
   }
   option {
     color: $font-black;
+    font-size: 105%;
+    background-color: $background;
   }
+
   html[dir="rtl"] select {
     background-position: -5%;
   }

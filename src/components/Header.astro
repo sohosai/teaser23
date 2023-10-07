@@ -46,15 +46,20 @@ const links: HeaderLink[] = [
         <Image src={logoWhite} alt={t("base.雙峰祭")} class="logo-white" />
         <Image src={logoBlack} alt={t("base.雙峰祭")} class="logo-black" />
       </a>
-      <button id="hamburger-button" type="button" aria-haspopup="menu" aria-controls="navigation-items">
-        <div class="hamburger-menu-button">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </div>
-        <span id="menu-open-text" class="aria" aria-hidden="false"> {t("accessibility.メニューを開く")}</span>
-        <span id="menu-close-text" class="aria" aria-hidden="true"> {t("accessibility.メニューを閉じる")}</span>
-      </button>
+      <nav class="button-wrapper">
+        <span class="language-select--sp">
+          <LanguageSelect lang={lang} label={t("accessibility.言語の選択")} />
+        </span>
+        <button id="hamburger-button" type="button" aria-haspopup="menu" aria-controls="navigation-items">
+          <div class="hamburger-menu-button">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </div>
+          <span id="menu-open-text" class="aria" aria-hidden="false"> {t("accessibility.メニューを開く")}</span>
+          <span id="menu-close-text" class="aria" aria-hidden="true"> {t("accessibility.メニューを閉じる")}</span>
+        </button>
+      </nav>
     </nav>
     <nav class="item-wrapper">
       <ul id="navigation-items" role="list" aria-hidden="true">
@@ -68,7 +73,9 @@ const links: HeaderLink[] = [
           ))
         }
       </ul>
-      <LanguageSelect lang={lang} label={t("accessibility.言語の選択")} />
+      <span class="language-select--pc">
+        <LanguageSelect lang={lang} label={t("accessibility.言語の選択")} />
+      </span>
     </nav>
   </div>
 </header>
@@ -330,7 +337,25 @@ const links: HeaderLink[] = [
       }
     }
   }
+  .language-select {
+    &--pc {
+      display: contents;
+      @media screen and ($sp-query) {
+        display: none;
+      }
+    }
+    &--sp {
+      display: none;
+      @media screen and ($sp-query) {
+        display: contents;
+      }
+    }
+  }
   /* ハンバーガーメニュー */
+  .button-wrapper {
+    display: flex;
+    gap: 1.2em;
+  }
   #hamburger-button {
     cursor: pointer;
     display: none;
