@@ -1,23 +1,29 @@
 ---
-import { i18nAdapter, t } from "src/utils/i18n";
+import { i18nAdapter, t, l } from "src/utils/i18n";
 i18nAdapter.init(Astro);
+const currentLocale = i18nAdapter.locale;
 
 import { DEFAULT_OGP_IMAGE } from "src/consts";
 const DEFAULT_OGP_ALT = t("accessibility.OGP代替テキスト");
+import { TWITTER_ID } from "src/consts";
 
 export type Props = {
-  pageName?: string;
+  pageName?: (locale: string) => string;
   description?: string;
   ogpImage?: { src: URL; alt: string };
-  canonicalURL?: URL | null;
   pageType?: "website" | "article";
 };
-const { pageName, description, ogpImage = { src: DEFAULT_OGP_IMAGE, alt: DEFAULT_OGP_ALT } } = Astro.props;
+const {
+  pageName,
+  description = t("base.サイト説明文"),
+  ogpImage = { src: DEFAULT_OGP_IMAGE, alt: DEFAULT_OGP_ALT },
+  pageType = "website",
+} = Astro.props;
 
-let title = t("base.サイト名");
-if (pageName) {
-  title = `${pageName} - ${t("base.サイト名")}`;
-}
+const titleList: { [key in string]: string } = {};
+i18nAdapter.locales.map((locale) => (titleList[locale] = pageName ? pageName(locale) : ""));
+
+const title = pageName ? `${pageName(currentLocale)} - ${t("base.サイト名")}` : t("base.サイト名");
 ---
 
 <!-- Global Metadata -->
@@ -32,18 +38,30 @@ if (pageName) {
 <meta name="description" content={t("base.サイト説明文")} />
 <link rel="sitemap" href="/sitemap-index.xml" />
 
+{
+  i18nAdapter.locales.map((locale) => (
+    <link
+      rel="alternate"
+      title={titleList[locale]}
+      href={new URL(l(Astro.url.pathname, locale), Astro.site)}
+      hreflang={locale}
+    />
+  ))
+}
+
 <!-- Social Media -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://sohosai.com/" />
-<meta property="og:title" content={t("base.サイト名")} />
-<meta property="og:description" content={t("base.サイト説明文")} />
+<meta property="og:type" content={pageType} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
 <meta property="og:site_name" content={t("base.サイト名")} />
-<meta property="og:image" content={new URL(ogpImage.src, Astro.url)} />
+<meta property="og:locale:alternate" content={currentLocale} />
+<meta property="og:image" content={new URL(ogpImage.src, Astro.site)} />
 <meta property="og:image:alt" content={ogpImage.alt} />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content={Astro.url} />
-<meta name="twitter:title" content={t("base.サイト名")} />
-<meta name="twitter:site" content="@sohosai" />
+<meta name="twitter:title" content={description} />
+<meta name="twitter:site" content={TWITTER_ID} />
 <meta name="twitter:description" content={t("base.サイト説明文")} />
-<meta name="twitter:image" content={new URL(ogpImage.src, Astro.url)} />
+<meta name="twitter:image" content={new URL(ogpImage.src, Astro.site)} />
 <meta name="twitter:image:alt" content={ogpImage.alt} />

@@ -29,7 +29,7 @@ const regex = new RegExp(`^${locale}/`);
 const newsIds = news.map((entry) => entry.slug.replace(regex, ""));
 ---
 
-<TopLayout>
+<TopLayout pageName={(locale) => t("base.サイト名", locale)}>
   <Container>
     <section>
       <h2>{t("top.雙峰祭とは")}</h2>
