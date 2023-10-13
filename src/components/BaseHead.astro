@@ -55,7 +55,12 @@ const title = pageName ? `${pageName(currentLocale)} - ${t("base.サイト名")}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:site_name" content={t("base.サイト名")} />
-<meta property="og:locale:alternate" content={currentLocale} />
+<meta property="og:locale" content={currentLocale} />
+{
+  i18nAdapter.locales
+    .filter((l) => l !== currentLocale)
+    .map((locale) => <meta property="og:locale:alternate" content={locale} />)
+}
 <meta property="og:image" content={new URL(ogpImage.src, Astro.site)} />
 <meta property="og:image:alt" content={ogpImage.alt} />
 <meta name="twitter:card" content="summary_large_image" />
