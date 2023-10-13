@@ -21,7 +21,7 @@ const {
 } = Astro.props;
 
 const titleList: { [key in string]: string } = {};
-i18nAdapter.locales.map((locale) => (titleList[locale] = pageName ? pageName(locale) : ""));
+i18nAdapter.locales.map((locale) => (titleList[locale] = pageName ? pageName(locale) : t("base.サイト名", locale)));
 
 const title = pageName ? `${pageName(currentLocale)} - ${t("base.サイト名")}` : t("base.サイト名");
 ---
