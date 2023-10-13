@@ -16,7 +16,7 @@ export type Props = {
 const {
   pageName,
   description = t("base.サイト説明文"),
-  ogpImage = { src: DEFAULT_OGP_IMAGE, alt: DEFAULT_OGP_ALT },
+  ogpImage = { src: DEFAULT_OGP_IMAGE, alt: t("accessibility.OGP代替テキスト") },
   pageType = "website",
 } = Astro.props;
 
