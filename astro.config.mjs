@@ -5,8 +5,8 @@ import sitemap from "@astrojs/sitemap";
 
 const defaultLocale = "ja";
 const locales = {
-  ja: "ja-JP",
-  en: "en-US",
+  ja: "ja_JP",
+  en: "en_US",
 };
 
 // https://astro.build/config

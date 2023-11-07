@@ -2,6 +2,7 @@
 import { i18nAdapter, t, l } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 const currentLocale = i18nAdapter.locale;
+const POSIXLocaleMap = i18nAdapter.supportedPOSIXLocalesMap;
 
 import { DEFAULT_OGP_IMAGE } from "src/consts";
 const DEFAULT_OGP_ALT = t("accessibility.OGP代替テキスト");
@@ -55,11 +56,11 @@ const title = pageName ? `${pageName(currentLocale)} - ${t("base.サイト名")}
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:site_name" content={t("base.サイト名")} />
-<meta property="og:locale" content={currentLocale} />
+<meta property="og:locale" content={POSIXLocaleMap[currentLocale]} />
 {
   i18nAdapter.locales
     .filter((l) => l !== currentLocale)
-    .map((locale) => <meta property="og:locale:alternate" content={locale} />)
+    .map((locale) => <meta property="og:locale:alternate" content={POSIXLocaleMap[locale]} />)
 }
 <meta property="og:image" content={new URL(ogpImage.src, Astro.site)} />
 <meta property="og:image:alt" content={ogpImage.alt} />

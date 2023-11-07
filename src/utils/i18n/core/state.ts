@@ -4,6 +4,7 @@ import type { i18nAdapterConfig } from "../types";
 class I18nAdapter implements i18nAdapterConfig {
   defaultLocale: string;
   supportedLocales: string[];
+  supportedPOSIXLocalesMap: { [key in string]: string };
   translates: any;
   #locale: string;
 
@@ -11,6 +12,7 @@ class I18nAdapter implements i18nAdapterConfig {
     const defaultConfig = getDefaultConfig();
     this.defaultLocale = defaultConfig.defaultLocale;
     this.supportedLocales = defaultConfig.supportedLocales;
+    this.supportedPOSIXLocalesMap = defaultConfig.supportedPOSIXLocalesMap;
     this.#locale = this.defaultLocale;
   }
 
@@ -50,6 +52,7 @@ class I18nAdapter implements i18nAdapterConfig {
   #init(config: i18nAdapterConfig, translates: any) {
     this.defaultLocale = config.defaultLocale;
     this.supportedLocales = config.supportedLocales;
+    this.supportedPOSIXLocalesMap = config.supportedPOSIXLocalesMap;
     this.translates = translates;
   }
 }
