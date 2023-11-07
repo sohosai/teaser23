@@ -6,7 +6,7 @@ export const END_DATE: YYYYMMDD = "2023-11-05";
 export const DEFAULT_TIMEZONE = "Asia/Tokyo";
 
 export const TWITTER_ID = "@sohosai";
-export const DEFAULT_OGP_IMAGE = "ogp.png";
+export const DEFAULT_OGP_IMAGE = "opengraph-image.png";
 
 const keys = [
   "base.雙峰祭",
