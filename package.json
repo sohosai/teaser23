@@ -29,13 +29,13 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.42.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-astro": "^0.27.1",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-astro": "^0.29.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.2",
+    "lint-staged": "^15.0.2",
     "prettier": "^3.0.0",
-    "prettier-plugin-astro": "^0.11.0",
+    "prettier-plugin-astro": "^0.12.1",
     "sass": "^1.63.6"
   }
 }
