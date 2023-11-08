@@ -14,7 +14,7 @@ const news = (await getCollection("news"))
   .sort((a, b) => (a.data.publishedAt > b.data.publishedAt ? -1 : 1));
 ---
 
-<ContentLayout>
+<ContentLayout pageName={(locale) => t("nav.お知らせ", locale)}>
   <Container>
     <h1>{t("nav.お知らせ")}</h1>
     {news.map((newsEntry) => <NewsEntry slug={newsEntry.slug} />)}
