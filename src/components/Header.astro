@@ -178,6 +178,7 @@ const links: HeaderLink[] = [
     position: fixed;
     width: 100%;
     transition: background-color 0.25s ease;
+    z-index: 100;
     /* ナビゲーションが透明のときのスタイルの指定 */
     &[data-navigation_style="transparent"] {
       background-color: rgba(0, 0, 0, 0.25);
@@ -262,10 +263,12 @@ const links: HeaderLink[] = [
     flex-direction: row;
     align-items: center;
     width: 100%;
+    height: $navigation-height;
     max-width: $content-width;
     margin-inline: auto;
     padding-inline: $side-padding;
     @media screen and ($sp-query) {
+      height: auto;
       flex-direction: column;
       align-items: flex-start;
       max-width: none;
