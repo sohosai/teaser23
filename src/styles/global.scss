@@ -11,27 +11,6 @@ body {
   font-family: $fonts-mulish, $fonts-latin, $fonts-japanese, sans-serif;
 }
 
-h1 {
-  font-family: $fonts-zen, sans-serif;
-  font-size: 4rem;
-  font-weight: 300;
-
-  @media screen and ($sp-query) {
-    font-size: 3.2em;
-  }
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  line-height: 1.5;
-}
-
-h3 {
-  font-size: 1.125rem;
-  font-weight: 400;
-}
-
 p {
   line-height: 1.8;
 }
@@ -64,16 +43,6 @@ main {
 
 main section {
   margin: 1.5rem 0;
-}
-
-main h2 {
-  font-weight: 600;
-  margin: 0.25em 0;
-  line-height: 1.5;
-
-  /* 左側のオレンジ線 */
-  border-inline-start: 0.25em solid $orange;
-  padding-inline-start: 1ch;
 }
 
 /* 秘伝のタレ */
