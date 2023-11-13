@@ -1,14 +1,18 @@
-* {
-  outline: initial;
+:target {
+  scroll-margin-top: $navigation-height;
 }
 
-h1,
-h2,
-h3 {
-  font-family: $fonts-zen, sans-serif;
+body {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 100vh;
+
+  font-family: $fonts-mulish, $fonts-latin, $fonts-japanese, sans-serif;
 }
 
 h1 {
+  font-family: $fonts-zen, sans-serif;
   font-size: 4rem;
   font-weight: 300;
 
@@ -37,21 +41,25 @@ a {
   text-decoration: underline;
 }
 
+address {
+  font-style: normal;
+}
+
+hr {
+  border: none;
+}
+
 small {
   font-size: 0.9rem;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-
-  min-height: 100vh;
+dt {
+  font-weight: inherit;
 }
 
 main {
   flex-grow: 1;
   background-color: $background;
-  padding: 0.5rem $side-margin;
 }
 
 main section {
@@ -59,14 +67,13 @@ main section {
 }
 
 main h2 {
-  font-family: $fonts-ryo, sans-serif;
   font-weight: 600;
   margin: 0.25em 0;
   line-height: 1.5;
 
   /* 左側のオレンジ線 */
-  border-left: 0.25em solid $orange;
-  padding-left: 1ch;
+  border-inline-start: 0.25em solid $orange;
+  padding-inline-start: 1ch;
 }
 
 /* 秘伝のタレ */

@@ -1,0 +1,85 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import Container from "src/components/Container.astro";
+import Schedule from "src/components/Schedule.astro";
+import { START_DATE, END_DATE } from "src/consts";
+
+const videoSrc = "/bg-compressed.mp4";
+---
+
+<div id="hero">
+  <div class="description">
+    <Container>
+      <h1>{t("base.雙峰祭")}</h1>
+      <h2>{t("top.筑波大学園祭")}</h2>
+      <hr />
+      <Schedule startDate={START_DATE} , endDate={END_DATE} />
+    </Container>
+  </div>
+  <div class="video-filter"></div>
+  <video class="background-vid" autoplay muted loop playsinline>
+    <source src={videoSrc} type="video/mp4" />
+  </video>
+</div>
+
+<style lang="scss">
+  #hero {
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    .description {
+      color: $font-white;
+      margin-bottom: 2rem;
+
+      h1 {
+        display: block;
+        font-size: 4rem;
+        font-family: $fonts-zen, sans-serif;
+        font-weight: 300;
+        margin-bottom: 0.5rem;
+      }
+      h2 {
+        display: block;
+        font-size: 1.2rem;
+        font-family: $fonts-zen, sans-serif;
+        font-weight: 400;
+        line-height: 1.5;
+        margin-bottom: 2rem;
+      }
+      hr {
+        display: block;
+        background: $font-white;
+        height: 1px;
+        width: 1000px;
+        margin-inline-start: -756px;
+      }
+    }
+
+    .video-filter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 30rem;
+      width: 100%;
+      /* ドットの画像ファイル。以下のsvgをbase64でエンコードしてある
+      <svg width="4" height="4" viewBox="0 0 4 4" xmlns="http://www.w3.org/2000/svg"><rect width="4" height="4" fill="#00000033" /><rect width="1" height="1" fill="#00000033"/></svg> */
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNCIgaGVpZ2h0PSI0IiB2aWV3Qm94PSIwIDAgNCA0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSI0IiBoZWlnaHQ9IjQiIGZpbGw9IiMwMDAwMDAzMyIgLz48cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMDAwMDAwMzMiLz48L3N2Zz4=");
+      background-size: 8px;
+      z-index: -10;
+    }
+
+    video {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -20;
+      top: 0;
+      overflow: hidden;
+      object-fit: cover;
+    }
+  }
+</style>

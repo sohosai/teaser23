@@ -1,9 +1,8 @@
 ---
+import type { Props as HeadProps } from "src/components/BaseHead.astro";
 import BaseLayout from "./BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-
-import type { Props as HeadProps } from "src/components/BaseHead.astro";
 
 export type Props = HeadProps;
 const { ...head } = Astro.props;

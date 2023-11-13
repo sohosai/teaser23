@@ -1,4 +1,4 @@
-import { i18n as i18nAut } from "astro-i18n-aut";
+import { i18n as i18nAut } from "astro-i18n-aut/integration";
 import i18nPlus from "./core/integration";
 import type { i18nProps } from "./types";
 
@@ -25,3 +25,5 @@ export default function i18n({
 export { default as i18nAdapter } from "./core/state";
 
 export { t } from "./core/translation";
+
+export { l } from "./core/routing";

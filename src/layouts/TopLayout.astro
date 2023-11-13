@@ -2,111 +2,26 @@
 import { i18nAdapter, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
+import type { Props as HeadProps } from "src/components/BaseHead.astro";
 import BaseLayout from "src/layouts/BaseLayout.astro";
 import Header from "src/components/Header.astro";
 import Footer from "src/components/Footer.astro";
+import Hero from "src/components/Hero.astro";
 
-const videoSrc = "/bg-compressed.mp4";
+export type Props = HeadProps;
+const { ...head } = Astro.props;
 
 const isTop = Astro.url.pathname == "/";
 ---
 
-<BaseLayout>
+<BaseLayout {...head}>
   <Header />
-  <div id="hero">
-    <div class="description">
-      <h1>{t("base.雙峰祭")}</h1>
-      <h2>{t("top.筑波大学園祭")}</h2>
-      <hr />
-      <p class="schedule">
-        <span class="year">{t("top.2023年")}</span>
-        <br />
-        <time datetime="2023-11-04">
-          <span class="date">11/4</span>
-          <span class="day-of-week">({t("top.土曜日")})</span>
-        </time>
-        <time datetime="2023-11-04">
-          <span class="date">5</span>
-          <span class="day-of-week">({t("top.日曜日")})</span>
-        </time>
-      </p>
-    </div>
-    <div class="video-filter"></div>
-    <video class="background-vid" autoplay muted loop playsinline>
-      <source src={videoSrc} type="video/mp4" />
-    </video>
-  </div>
-
+  <Hero />
   <main>
     <slot />
   </main>
   <Footer />
 </BaseLayout>
-
-<style lang="scss">
-  #hero {
-    height: 30rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
-    & .video-filter {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 30rem;
-      width: 100%;
-      background-color: #000;
-      opacity: 15%;
-      z-index: -10;
-    }
-
-    & .description {
-      width: fit-content;
-      padding: 1em min(3rem, 5%);
-      margin: 2em min(3rem, 5%);
-      color: $font-white;
-      background-color: rgba(0, 0, 0, 0.375);
-
-      & hr {
-        display: block;
-        background: $font-white;
-        height: 2px;
-        margin: 0.5em 0 1em;
-      }
-    }
-
-    & .schedule {
-      margin: 0 0.5em;
-
-      & time {
-        display: inline-flex;
-        align-items: flex-end;
-      }
-
-      & .year {
-        font-size: 1.5rem;
-      }
-
-      & .date {
-        font-size: 2.5rem;
-        line-height: 1;
-      }
-
-      & .day-of-week {
-        font-size: 1.475em;
-        margin: 0 0.25em;
-      }
-    }
-  }
-
-  video {
-    position: fixed;
-    z-index: -20;
-    top: 0;
-    overflow: hidden;
-  }
-</style>
 
 <script>
   const hero = document.getElementById("hero");

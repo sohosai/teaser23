@@ -1,13 +1,20 @@
 $fonts-zen: "Zen Maru Gothic";
-$fonts-ryo: "ryo-gothic-plusn";
-$fonts-museoSans: "museo-sans";
+$fonts-mulish: "Mulish";
+$fonts-latin: "Arial";
+$fonts-japanese: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", "ヒラギノ角ゴシック", "Hiragino Sans",
+  "Noto Sans Japanese", "Noto Sans JP", "Noto Sans CJK JP", "YuGothic", "Yu Gothic";
 
 $sp-query: "max-width: 899px";
 $pc-query: "min-width: 900px";
 
-$side-margin: min(8rem, 10%);
+$content-width: 1120px;
+$side-padding: min(1.25rem, 4.75vw);
+$side-margin: max(0px, calc((100vw - $content-width) / 2));
+
+$navigation-height: 4rem;
 
 $background: rgb(241, 241, 241);
+$background-translucent: rgb(241, 241, 241, 0.9);
 $background-gray: rgb(224, 224, 224);
 
 $light-gray: rgb(204, 204, 204);

@@ -12,6 +12,7 @@ export default function i18nPlus({ locales, defaultLocale }: i18nProps): AstroIn
         const config: i18nAdapterConfig = {
           defaultLocale: defaultLocale,
           supportedLocales: Object.keys(locales),
+          supportedPOSIXLocalesMap: locales,
         };
 
         const stringifiedConfig = JSON.stringify(config);
