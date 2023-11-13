@@ -11,9 +11,9 @@ const locales = {
 // https://astro.build/config
 export default defineConfig({
   site: "https://sohosai.com",
-  trailingSlash: "never",
+  trailingSlash: "always",
   build: {
-    format: "file",
+    format: "directory",
   },
   vite: {
     css: {
