@@ -16,10 +16,10 @@ const keys = [
   "nav.協賛・取材",
   "nav.実委",
   "nav.新歓",
-  "404.見出し",
 ];
 const h1Characters = keys.map((key) => t(key, "ja"));
 
-const subsetTextRaw = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" + h1Characters;
+const subsetTextRaw =
+  `!"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_abcdefghijklmnopqrstuvwxyz{|}~` + h1Characters;
 
 export const SUBSET_TEXT = encodeURIComponent([...new Set([...subsetTextRaw])].join(""));
