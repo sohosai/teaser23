@@ -35,7 +35,9 @@ const newsId = slug.replace(regex, "");
 
 <section id={newsId}>
   <h2>{entry?.data.title}</h2>
-  <span class="published-at">{dayjs(entry?.data.publishedAt).tz().format("LLL")}</span>
+  <time class="published-at" datetime={dayjs(entry?.data.publishedAt).tz().format("YYYY-MM-DDTHH:mmZ")}
+    >{dayjs(entry?.data.publishedAt).tz().format("LLL")}</time
+  >
   <div class="markdown-body">
     <Content />
   </div>
