@@ -5,6 +5,10 @@ import sitemap from "@astrojs/sitemap";
 
 const defaultLocale = "ja";
 const locales = {
+  ja: "ja-JP",
+  en: "en-US",
+};
+const UNIXlocalesMap = {
   ja: "ja_JP",
   en: "en_US",
 };
@@ -28,6 +32,7 @@ export default defineConfig({
   integrations: [
     i18n({
       defaultLocale,
+      UNIXlocalesMap,
       locales,
     }),
     sitemap({
