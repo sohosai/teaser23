@@ -4,7 +4,7 @@ import type { AstroIntegration } from "astro";
 import type { i18nProps } from "../types";
 import type { i18nAdapterConfig } from "../types";
 
-export default function i18nPlus({ locales, defaultLocale }: i18nProps): AstroIntegration {
+export default function i18nPlus({ locales, UNIXlocalesMap, defaultLocale }: i18nProps): AstroIntegration {
   return {
     name: "astro-i18n-plus",
     hooks: {
@@ -12,7 +12,7 @@ export default function i18nPlus({ locales, defaultLocale }: i18nProps): AstroIn
         const config: i18nAdapterConfig = {
           defaultLocale: defaultLocale,
           supportedLocales: Object.keys(locales),
-          supportedPOSIXLocalesMap: locales,
+          supportedPOSIXLocalesMap: UNIXlocalesMap,
         };
 
         const stringifiedConfig = JSON.stringify(config);
@@ -36,6 +36,7 @@ export default function i18nPlus({ locales, defaultLocale }: i18nProps): AstroIn
         const config: i18nAdapterConfig = {
           defaultLocale: defaultLocale,
           supportedLocales: Object.keys(locales),
+          supportedPOSIXLocalesMap: UNIXlocalesMap,
         };
 
         config.supportedLocales
