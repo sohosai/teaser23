@@ -2,7 +2,7 @@
 import { i18nAdapter, t } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 
 import ContentLayout from "src/layouts/ContentLayout.astro";
 import Container from "src/components/Container.astro";
@@ -18,7 +18,7 @@ import sopotan from "src/assets/sopotan5.png";
       <p>{t("404.説明2")}</p>
     </div>
     <div class="wrapper">
-      <Image src={sopotan} alt={t("404.そぽたん代替テキスト")} />
+      <Picture src={sopotan} formats={["avif", "webp"]} alt={t("404.そぽたん代替テキスト")} />
     </div>
   </Container>
 </ContentLayout>
