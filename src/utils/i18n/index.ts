@@ -7,7 +7,7 @@ export default function i18n({
   exclude = ["pages/api/**/*"],
   locales,
   defaultLocale,
-  UNIXlocalesMap,
+  POSIXlocalesMap,
 }: i18nProps) {
   return [
     i18nAut({
@@ -19,7 +19,7 @@ export default function i18n({
     i18nPlus({
       locales,
       defaultLocale,
-      UNIXlocalesMap,
+      POSIXlocalesMap,
     }),
   ];
 }
