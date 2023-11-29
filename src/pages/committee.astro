@@ -24,9 +24,17 @@ const data = (collection.find((c) => c.id === locale) ?? collection.find((c) => 
     </section>
     <section>
       <h2>{t("committee.各局の概要")}</h2>
-      <dl>
-        {data.map((department) => <DepartmentIntroduction data={department} />)}
-      </dl>
+      {
+        data && data.length > 0 ? (
+          <dl>
+            {data.map((department) => (
+              <DepartmentIntroduction data={department} />
+            ))}
+          </dl>
+        ) : (
+          <p>{t("committee.紹介読み込みエラー")}</p>
+        )
+      }
     </section>
   </Container>
 </ContentLayout>
