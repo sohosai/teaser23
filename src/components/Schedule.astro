@@ -35,8 +35,8 @@ for (let i = dayjs(startDate); i.isSameOrBefore(endDate); i = i.add(1, "d")) {
           {index === 0
             ? item.format("M/D")
             : item.month() === schedule[index - 1].month()
-            ? item.format("D")
-            : item.format("M/D")}
+              ? item.format("D")
+              : item.format("M/D")}
         </span>
         <span class="day-of-week">{item.format("ddd")}</span>
       </time>
