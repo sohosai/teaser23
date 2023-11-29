@@ -8,7 +8,7 @@ const locales = {
   ja: "ja-JP",
   en: "en-US",
 };
-const UNIXlocalesMap = {
+const POSIXlocalesMap = {
   ja: "ja_JP",
   en: "en_US",
 };
@@ -32,7 +32,7 @@ export default defineConfig({
   integrations: [
     i18n({
       defaultLocale,
-      UNIXlocalesMap,
+      POSIXlocalesMap,
       locales,
     }),
     sitemap({
