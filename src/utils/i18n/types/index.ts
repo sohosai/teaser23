@@ -1,6 +1,11 @@
+import type { UserI18nConfig } from "astro-i18n-aut";
+
 export type i18nAdapterConfig = {
   defaultLocale: string;
   supportedLocales: string[];
+  supportedPOSIXLocalesMap: { [key in string]: string };
 };
 
-export type { UserI18nConfig as i18nProps } from "astro-i18n-aut";
+export type i18nProps = UserI18nConfig & {
+  UNIXlocalesMap: Record<string, string>;
+};

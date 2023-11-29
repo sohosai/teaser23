@@ -8,6 +8,10 @@ const locales = {
   ja: "ja-JP",
   en: "en-US",
 };
+const UNIXlocalesMap = {
+  ja: "ja_JP",
+  en: "en_US",
+};
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,6 +32,7 @@ export default defineConfig({
   integrations: [
     i18n({
       defaultLocale,
+      UNIXlocalesMap,
       locales,
     }),
     sitemap({

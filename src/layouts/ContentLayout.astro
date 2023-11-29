@@ -1,10 +1,14 @@
 ---
+import type { Props as HeadProps } from "src/components/BaseHead.astro";
 import BaseLayout from "./BaseLayout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+
+export type Props = HeadProps;
+const { ...head } = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout {...head}>
   <Header />
 
   <main id="content">
@@ -13,14 +17,8 @@ import Footer from "../components/Footer.astro";
   <Footer />
 </BaseLayout>
 
-<script>
-  const navigation = document.getElementById("top-navigation");
-  const main = document.getElementById("content");
-
-  // ナビゲーションバーの高さ(maginを含む)を計測
-  const navigation_height = navigation?.offsetHeight;
-
-  if (main) {
-    main.style.marginTop = `${navigation_height}px`;
+<style lang="scss">
+  main {
+    margin-block-start: $navigation-height;
   }
-</script>
+</style>

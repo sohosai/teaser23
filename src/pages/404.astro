@@ -10,7 +10,7 @@ import Container from "src/components/Container.astro";
 import sopotan from "src/assets/sopotan5.png";
 ---
 
-<ContentLayout>
+<ContentLayout pageName={(locale) => t("404.見出し", locale)}>
   <Container>
     <h1>{t("404.見出し")}</h1>
     <div class="description">
