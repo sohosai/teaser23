@@ -27,9 +27,16 @@ const data = (collection.find((c) => c.id === locale) ?? collection.find((c) => 
       {
         data && data.length > 0 ? (
           <dl>
-            {data.map((department) => (
-              <DepartmentIntroduction data={department} />
-            ))}
+            {data.map((department, i) =>
+              i < data.length - 1 ? (
+                <>
+                  <DepartmentIntroduction data={department} />
+                  <hr />
+                </>
+              ) : (
+                <DepartmentIntroduction data={department} />
+              )
+            )}
           </dl>
         ) : (
           <p>{t("committee.紹介読み込みエラー")}</p>
@@ -42,5 +49,9 @@ const data = (collection.find((c) => c.id === locale) ?? collection.find((c) => 
 <style lang="scss">
   p {
     line-height: 1.8;
+  }
+
+  hr {
+    border-bottom: 2px dashed $light-gray;
   }
 </style>
