@@ -39,16 +39,20 @@ const newsIds = news.map((entry) => entry.slug.replace(regex, ""));
       <h2>{t("top.お知らせ")}</h2>
       <div class="news">
         {
-          news.map((entry, index) => (
-            <p>
-              <time class="date" datetime={dayjs(entry.data.publishedAt).tz().format("YYYY-MM-DD")}>
-                {dayjs(entry.data.publishedAt).tz().format("LL")}
-              </time>
-              <a href={`${l("news")}#${newsIds[index]}`} class="news_link">
-                {entry.data.title}
-              </a>
-            </p>
-          ))
+          news.length >= 1 ? (
+            news.map((entry, index) => (
+              <p>
+                <time class="date" datetime={dayjs(entry.data.publishedAt).tz().format("YYYY-MM-DD")}>
+                  {dayjs(entry.data.publishedAt).tz().format("LL")}
+                </time>
+                <a href={`${l("news")}#${newsIds[index]}`} class="news_link">
+                  {entry.data.title}
+                </a>
+              </p>
+            ))
+          ) : (
+            <p>{t("news.newsなし")}</p>
+          )
         }
       </div>
     </section>
