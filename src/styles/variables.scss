@@ -13,15 +13,15 @@ $side-margin: max(0px, calc((100vw - $content-width) / 2));
 
 $navigation-height: 4rem;
 
-$background: rgb(241, 241, 241);
-$background-translucent: rgb(241, 241, 241, 0.9);
-$background-gray: rgb(224, 224, 224);
+$background: rgb(250, 250, 250);
+$background-translucent: rgba(255, 255, 255, 0.9);
+$background-gray: rgb(238, 238, 238);
 
 $light-gray: rgb(204, 204, 204);
 $dark-gray: rgb(102, 102, 102);
 
 $font-white: #fff;
-$font-black: #000;
+$font-black: rgb(35, 24, 21);
 
 $orange: rgba(237, 109, 31);
 $blue: rgba(30, 184, 203);
