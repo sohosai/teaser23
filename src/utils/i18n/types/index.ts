@@ -7,5 +7,5 @@ export type i18nAdapterConfig = {
 };
 
 export type i18nProps = UserI18nConfig & {
-  UNIXlocalesMap: Record<string, string>;
+  POSIXlocalesMap: Record<string, string>;
 };
