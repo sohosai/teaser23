@@ -104,7 +104,11 @@ const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@",
 
     & a {
       display: block;
-      //border-radius: 0.25rem;
+
+      &:hover {
+        opacity: 0.625;
+        transition: opacity 0.25s ease;
+      }
     }
   }
 
