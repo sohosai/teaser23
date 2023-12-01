@@ -1,0 +1,55 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import ContentLayout from "src/layouts/ContentLayout.astro";
+import Container from "src/components/Container.astro";
+import DepartmentIntroduction from "src/components/DepartmentIntroduction.astro";
+
+import { getCollection } from "astro:content";
+
+const locale = i18nAdapter.locale;
+const defaultLocale = i18nAdapter.defaultLocale;
+
+const collection = await getCollection("committee");
+const data = (collection.find((c) => c.id === locale) ?? collection.find((c) => c.id === defaultLocale))?.data;
+---
+
+<ContentLayout>
+  <Container>
+    <h1>{t("committee.実行委員会とは")}</h1>
+    <section>
+      <h2>{t("committee.委員会の概要")}</h2>
+      <p>{t("committee.概要")}</p>
+    </section>
+    <section>
+      <h2>{t("committee.各局の概要")}</h2>
+      {
+        data && data.length > 0 ? (
+          data.map((department, i) =>
+            i < data.length - 1 ? (
+              <>
+                <DepartmentIntroduction data={department} />
+                <hr />
+              </>
+            ) : (
+              <DepartmentIntroduction data={department} />
+            )
+          )
+        ) : (
+          <p>{t("committee.紹介読み込みエラー")}</p>
+        )
+      }
+    </section>
+  </Container>
+</ContentLayout>
+
+<style lang="scss">
+  p {
+    line-height: 1.8;
+  }
+
+  hr {
+    border-bottom: 2px dashed $light-gray;
+  }
+</style>
