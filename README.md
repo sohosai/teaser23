@@ -1,47 +1,39 @@
+[日本語](./README.md) | [English](./docs/README.en.md)
+
 # teaser23
 
-またの名を準備期間 Web と言います。
+筑波大学学園祭「雙峰祭」のティザーサイトです。
+またの名を「準備期間 Web」と言います。
 
-## 環境
+https://teaser23.pages.dev
 
-とりあえず Astro Starter Kit: Minimal でテンプレートを作成しました。
+## 構成
 
-```
-npm create astro@latest -- --template minimal
-```
-
-### 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
+```sh
 /
 ├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── assets/
+│   ├── components/
+│   ├── content/
+│   ├── icons/
+│   ├── layouts/
+│   ├── middleware/
+│   ├── pages/
+│   ├── styles/
+│   ├── types/
+│   ├── utils/
+│   └── consts.ts
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 開発方法
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+すべてのコマンドはプロジェクトのルートから、ターミナルで実行されます：
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-### 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:3000`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-### 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| コマンド          | 説明                                                 |
+| :---------------- | :--------------------------------------------------- |
+| `npm install`     | 依存関係をインストールします                         |
+| `npm run dev`     | ローカル開発サーバを `localhost:4321` で起動します。 |
+| `npm run build`   | プロダクションサイトを `./dist/` にビルドします      |
+| `npm run preview` | ビルドをローカルでプレビューします                   |
