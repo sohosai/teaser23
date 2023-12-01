@@ -41,10 +41,13 @@ const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@",
       <h3>{t("footer.SNS")}</h3>
       <ul class="sns-logo-wrapper">
         <li>
-          <a id="x" href={xAccountURL}><Image src={xLogo} alt="X" class="sns-logo" /></a>
+          <a id="x" href={xAccountURL} target="_blank" rel="noopener noreferrer"
+            ><Image src={xLogo} alt="X" class="sns-logo" /></a
+          >
         </li>
         <li>
-          <a id="instagram" href={instagramAccountURL}><Image src={instagramLogo} alt="Instagram" class="sns-logo" /></a
+          <a id="instagram" href={instagramAccountURL} target="_blank" rel="noopener noreferrer"
+            ><Image src={instagramLogo} alt="Instagram" class="sns-logo" /></a
           >
         </li>
       </ul>
