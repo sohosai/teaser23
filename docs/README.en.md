@@ -26,7 +26,7 @@ https://teaser23.pages.dev
 └── package.json
 ```
 
-## 開発方法
+## Development
 
 All commands are run from the root of the project, from a terminal:
 
