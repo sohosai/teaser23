@@ -9,9 +9,14 @@ import NewsEntry from "src/components/NewsEntry.astro";
 import { getCollection } from "astro:content";
 
 const locale = i18nAdapter.locale;
-const news = (await getCollection("news"))
-  .filter((n) => n.slug.startsWith(locale))
-  .sort((a, b) => (a.data.publishedAt > b.data.publishedAt ? -1 : 1));
+const newsCollection = await getCollection("news");
+const isNewsExist = Array.isArray(newsCollection) && newsCollection.length >= 1;
+
+const news = isNewsExist
+  ? newsCollection
+      .filter((n) => n.slug.startsWith(locale))
+      .sort((a, b) => (a.data.publishedAt > b.data.publishedAt ? -1 : 1))
+  : [];
 ---
 
 <ContentLayout pageName={(locale) => t("nav.お知らせ", locale)}>

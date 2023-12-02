@@ -22,11 +22,17 @@ dayjs.extend(timezone);
 dayjs.tz.setDefault(DEFAULT_TIMEZONE);
 dayjs.locale(locale);
 
-const news = (await getCollection("news"))
-  .filter((n) => n.slug.startsWith(locale))
-  .sort((a, b) => (a.data.publishedAt > b.data.publishedAt ? -1 : 1));
 const regex = new RegExp(`^${locale}/`);
-const newsIds = news.map((entry) => entry.slug.replace(regex, ""));
+
+const newsCollection = await getCollection("news");
+const isNewsExist = Array.isArray(newsCollection) && newsCollection.length >= 1;
+
+const news = isNewsExist
+  ? newsCollection
+      .filter((n) => n.slug.startsWith(locale))
+      .sort((a, b) => (a.data.publishedAt > b.data.publishedAt ? -1 : 1))
+  : [];
+const newsIds = isNewsExist ? news.map((entry) => entry.slug.replace(regex, "")) : [];
 ---
 
 <TopLayout>
