@@ -30,9 +30,11 @@ https://teaser23.pages.dev
 
 All commands are run from the root of the project, from a terminal:
 
-| Command           | Action                                      |
-| :---------------- | :------------------------------------------ |
-| `npm install`     | Installs dependencies                       |
-| `npm run dev`     | Starts local dev server at `localhost:4321` |
-| `npm run build`   | Build a production site to `./dist/`        |
-| `npm run preview` | Preview a build locally, before deploying   |
+| Command                   | Action                                             |
+| :------------------------ | :------------------------------------------------- |
+| `npm install`             | Installs dependencies                              |
+| `npm run dev`             | Starts local dev server at `localhost:4321`        |
+| `npm run build`           | Build a production site to `./dist/`               |
+| `npm run preview`         | Preview a build locally, before deploying          |
+| `npm run prettier:check`  | Check the code is properly formatted with Prettier |
+| `npm run prettier:format` | Format the code with Prettier                      |
