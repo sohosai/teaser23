@@ -2,7 +2,7 @@
 
 # teaser23
 
-This is the teaser site for the University of Tsukuba's campus festival, known as the "Sohosai" (雙峰祭). It is also referred to as the "Preparation Period Web."
+This is the teaser site for the School Festival of University of Tsukuba, known as "Sohosai" (雙峰祭). It is also referred to as the "Preparation Period Web."
 
 https://teaser23.pages.dev
 
