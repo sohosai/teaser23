@@ -20,8 +20,8 @@ npm: "^>=10.1.0"
 
 ```bash
 git clone && cd ...
-pnpm install
-pnpm run build
+npm install
+npm run build
 ```
 
 ### 開発方法
