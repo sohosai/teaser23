@@ -1,0 +1,27 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import ContentLayout from "src/layouts/ContentLayout.astro";
+import Container from "src/components/Container.astro";
+import NewsEntry from "src/components/NewsEntry.astro";
+
+import { getCollection } from "astro:content";
+
+const locale = i18nAdapter.locale;
+const newsCollection = await getCollection("news");
+const isNewsExist = Array.isArray(newsCollection) && newsCollection.length >= 1;
+
+const news = isNewsExist
+  ? newsCollection
+      .filter((n) => n.slug.startsWith(locale))
+      .sort((a, b) => (a.data.publishedAt > b.data.publishedAt ? -1 : 1))
+  : [];
+---
+
+<ContentLayout pageName={(locale) => t("nav.お知らせ", locale)}>
+  <Container>
+    <h1>{t("nav.お知らせ")}</h1>
+    {news.length >= 1 ? news.map((newsEntry) => <NewsEntry slug={newsEntry.slug} />) : <p>{t("news.newsなし")}</p>}
+  </Container>
+</ContentLayout>

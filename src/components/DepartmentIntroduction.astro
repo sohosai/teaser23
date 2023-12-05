@@ -1,0 +1,44 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type committeeDataType = CollectionEntry<"committee">["data"][number];
+export type Props = {
+  data: committeeDataType;
+};
+
+const { data } = Astro.props;
+---
+
+<div>
+  <h3>{data.name}</h3>
+  <p class="slogan">{data.slogan}</p>
+  <p class="description">{data.description}</p>
+</div>
+<style lang="scss">
+  div {
+    margin-block: 1.5rem;
+  }
+
+  h3 {
+    font-weight: 600;
+    font-size: 1.4em;
+    margin-block: 0.75em;
+  }
+
+  .slogan {
+    color: $font-black;
+    margin-block: 0.5em;
+    font-size: 1.2rem;
+    font-weight: normal;
+
+    text-decoration: underline;
+    text-decoration-thickness: 0.5em;
+    text-decoration-color: $blue-translucent;
+    text-underline-offset: -0.25em;
+    text-decoration-skip-ink: none;
+  }
+
+  .description {
+    white-space: pre-line;
+  }
+</style>

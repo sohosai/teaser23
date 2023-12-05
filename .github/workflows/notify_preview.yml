@@ -1,0 +1,42 @@
+name: Notify the preview link for pull requests
+
+on:
+  pull_request:
+    types: [opened]
+permissions:
+  pull-requests: write
+jobs:
+  add-comment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: get the head branch name and generate message
+      env: 
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH_NAME: ${{ github.head_ref }}
+      run: |
+        #BRANCH_NAMEが英数字または_、-、/のいずれかのみで構成されているなら
+        if [[ ${BRANCH_NAME} =~ ^[0-9a-zA-Z_\/-]*$ ]]; then
+            #アンダーバーとスラッシュをハイフンに変換
+            replaced=$(echo $BRANCH_NAME | sed "s/[_\/]/-/g")
+            #すべて小文字に変換
+            link=${replaced,,}
+
+            message="
+            以下のリンクから${BRANCH_NAME}ブランチのプレビューを参照することができます。\n
+            コミットが追加されると、プレビューも自動更新されます。\n
+            \n
+            https://${link}.teaser23.pages.dev/
+            "
+        else
+            message="
+            プレビューリンクの自動取得に失敗しました。
+            "
+        fi
+        echo -e $message > comment
+
+    - name: Post a comment
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          URL: ${{ github.event.pull_request.html_url }}
+      run:
+          gh pr comment -F ./comment "${URL}"

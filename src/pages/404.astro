@@ -1,0 +1,46 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import { Image } from "astro:assets";
+
+import ContentLayout from "src/layouts/ContentLayout.astro";
+import Container from "src/components/Container.astro";
+
+import sopotan from "src/assets/sopotan_404.png";
+---
+
+<ContentLayout pageName={(locale) => t("404.見出し", locale)}>
+  <Container>
+    <h1>{t("404.見出し")}</h1>
+    <div class="description">
+      <p>{t("404.説明1")}</p>
+      <p>{t("404.説明2")}</p>
+    </div>
+    <div class="wrapper">
+      <Image src={sopotan} alt={t("404.そぽたん代替テキスト")} />
+    </div>
+  </Container>
+</ContentLayout>
+
+<style>
+  .wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .description {
+    margin: 0.5em 0;
+  }
+
+  img {
+    width: max(40%, 20rem);
+    height: auto;
+    display: flex;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+</style>

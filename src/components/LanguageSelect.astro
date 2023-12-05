@@ -1,0 +1,76 @@
+---
+import { i18nAdapter, t, l } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+import { Icon } from "astro-icon";
+
+export type Props = {
+  lang: string;
+  label: string;
+};
+const { lang, label } = Astro.props;
+---
+
+<label>
+  <span class="aria">{label}</span>
+  <Icon name="ic:baseline-language" focusable="false" aria-hidden="true" role="img" />
+  <select name="languages" onchange="window.location.pathname=this.value">
+    {
+      i18nAdapter.locales.map((code) => (
+        <option value={l(Astro.url.pathname, code)} selected={code == lang}>
+          {t("lang", code)}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </option>
+      ))
+    }
+  </select>
+</label>
+
+<script></script>
+
+<style lang="scss">
+  label {
+    width: fit-content;
+    height: fit-content;
+    color: #aeaeae;
+    position: relative;
+    mix-blend-mode: exclusion;
+    > svg {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      pointer-events: none;
+    }
+  }
+  select {
+    width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 3em;
+    padding: 0.55em 1.7rem;
+    line-height: inherit;
+    font-weight: 400;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23aeaeae' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: 105%;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    -webkit-appearance: none;
+    background-color: rgba($font-white, 0.2);
+    outline: 1px lighten($font-black, 50%) solid;
+    border-radius: 0.3em;
+    &:hover {
+      outline: 1px lighten($font-black, 70%) solid;
+    }
+    &:focus {
+      outline: 2px lighten($font-black, 70%) solid;
+    }
+  }
+  option {
+    color: $font-black;
+    font-size: 105%;
+    background-color: $background;
+  }
+
+  html[dir="rtl"] select {
+    background-position: -5%;
+  }
+</style>

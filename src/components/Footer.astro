@@ -1,0 +1,141 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import { Image } from "astro:assets";
+
+import Container from "src/components/Container.astro";
+
+import instagramLogo from "src/assets/instagram-logo.png";
+import xLogo from "src/assets/x-logo.svg";
+
+import { TWITTER_ID, INSTAGRAM_ID } from "src/consts";
+const xAccountURL = "https://twitter.com/" + TWITTER_ID.replace("@", "");
+const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@", "");
+---
+
+<footer>
+  <Container>
+    <section>
+      <h2>{t("base.筑波大学学園祭実行委員会")}</h2>
+      <address>
+        <p class="address">
+          {t("info.住所")}
+        </p>
+        <dl>
+          <dt>{t("footer.Email")}</dt><dd><a href="mailto:info@sohosai.com">info@sohosai.com</a></dd>
+          <dt>{t("footer.TEL/FAX")}</dt><dd>029-853-2899</dd>
+        </dl>
+      </address>
+    </section>
+
+    <section>
+      <h3>{t("footer.外部対応時間")}</h3>
+      <dl>
+        <dt>{t("footer.平日")}</dt><dd>{t("info.平日対応時間")}</dd>
+        <dt>{t("footer.休日")}</dt><dd>{t("info.休日対応時間")}</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h3>{t("footer.SNS")}</h3>
+      <ul class="sns-logo-wrapper">
+        <li>
+          <a id="x" href={xAccountURL} target="_blank" rel="noopener noreferrer"
+            ><Image src={xLogo} alt="X" class="sns-logo" /></a
+          >
+        </li>
+        <li>
+          <a id="instagram" href={instagramAccountURL} target="_blank" rel="noopener noreferrer"
+            ><Image src={instagramLogo} alt="Instagram" class="sns-logo" /></a
+          >
+        </li>
+      </ul>
+    </section>
+
+    <hr />
+    <p class="copy"><small>&copy 2023 筑波大学学園祭実行委員会 All rights reserved.</small></p>
+  </Container>
+</footer>
+
+<style lang="scss">
+  footer {
+    background-color: $background-gray;
+    padding: 2.5rem 0;
+
+    & address {
+      padding: 0.5em 0;
+
+      & .address {
+        padding: 0.25em 0;
+      }
+    }
+  }
+
+  dl {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-content: start;
+    align-content: center;
+    gap: 0.5em 1em;
+
+    margin: 0.75em 0;
+
+    & dt {
+      grid-column: 1/2;
+      padding: 0.125em 0.875em;
+
+      border-radius: 0.25em;
+      background-color: $dark-gray;
+      color: $font-white;
+
+      text-align: center;
+    }
+
+    & dd {
+      grid-column: 2/3;
+    }
+  }
+
+  .sns-logo-wrapper {
+    display: flex;
+    gap: 0.75rem;
+    margin-block: 0.75rem;
+
+    & a {
+      display: block;
+
+      &:hover {
+        opacity: 0.625;
+        transition: opacity 0.25s ease;
+      }
+    }
+  }
+
+  #instagram {
+    & .sns-logo {
+      height: max(2rem, 30px);
+      width: max(2rem, 29px);
+    }
+  }
+
+  #x {
+    color: #000000;
+    & .sns-logo {
+      height: max(2rem, 30px);
+      width: max(2rem, 30px);
+    }
+  }
+
+  hr {
+    background: $light-gray;
+    height: 1px;
+    width: 70%;
+
+    margin: 2em 0 1em 0;
+  }
+
+  .copy {
+    margin: 0.5em 0;
+  }
+</style>

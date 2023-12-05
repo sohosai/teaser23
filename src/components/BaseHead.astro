@@ -1,0 +1,70 @@
+---
+import { i18nAdapter, t, l } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+const currentLocale = i18nAdapter.locale;
+const POSIXLocaleMap = i18nAdapter.supportedPOSIXLocalesMap;
+
+import { DEFAULT_OGP_IMAGE } from "src/consts";
+const DEFAULT_OGP_ALT = t("accessibility.OGP代替テキスト");
+import { TWITTER_ID } from "src/consts";
+
+export type Props = {
+  pageName?: (locale: string) => string;
+  description?: string;
+  ogpImage?: { src: URL; alt: string };
+  pageType?: "website" | "article";
+};
+const {
+  pageName,
+  description = t("base.サイト説明文"),
+  ogpImage = { src: DEFAULT_OGP_IMAGE, alt: t("accessibility.OGP代替テキスト") },
+  pageType = "website",
+} = Astro.props;
+
+const titleList: { [key in string]: string } = {};
+i18nAdapter.locales.map((locale) => (titleList[locale] = pageName ? pageName(locale) : t("base.サイト名", locale)));
+
+const title = pageName ? `${pageName(currentLocale)} - ${t("base.サイト名")}` : t("base.サイト名");
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={t("base.サイト説明文")} />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+{
+  i18nAdapter.locales.map((locale) => (
+    <link
+      rel="alternate"
+      title={titleList[locale]}
+      href={new URL(l(Astro.url.pathname, locale), Astro.site)}
+      hreflang={locale}
+    />
+  ))
+}
+
+<!-- Social Media -->
+<meta property="og:type" content={pageType} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={t("base.サイト名")} />
+<meta property="og:locale" content={POSIXLocaleMap[currentLocale]} />
+{
+  i18nAdapter.locales
+    .filter((l) => l !== currentLocale)
+    .map((locale) => <meta property="og:locale:alternate" content={POSIXLocaleMap[locale]} />)
+}
+<meta property="og:image" content={new URL(ogpImage.src, Astro.site)} />
+<meta property="og:image:alt" content={ogpImage.alt} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={TWITTER_ID} />
+<meta name="twitter:creator" content={TWITTER_ID} />

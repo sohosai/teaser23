@@ -1,0 +1,16 @@
+---
+import i18nAdapter from "./core/state";
+
+export type Props = {
+  key: string;
+  locale?: string;
+};
+
+const { key, locale = i18nAdapter.locale } = Astro.props;
+
+const translate = i18nAdapter.translates[locale][key] || i18nAdapter.translates[i18nAdapter.defaultLocale][key];
+
+const paragraphs = Array.isArray(translate) ? translate : [translate];
+---
+
+{paragraphs.map((paragraph) => <p>{paragraph}</p>)}
