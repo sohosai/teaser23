@@ -313,10 +313,14 @@ const links: HeaderLink[] = [
       margin: 0;
       a {
         position: relative;
-        display: inline-block;
         font-size: 1rem;
         padding: 1em 0;
         text-decoration: none;
+
+        display: inline-block;
+        @media screen and ($sp-query) {
+          display: block;
+        }
       }
     }
     &[aria-hidden="true"] {
