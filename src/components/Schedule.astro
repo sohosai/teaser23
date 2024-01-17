@@ -11,6 +11,23 @@ import "dayjs/locale/ja";
 dayjs.locale(i18nAdapter.locale);
 dayjs.extend(isSameOrBefore);
 
+const isCultureDay = (day: dayjs.Dayjs): boolean => {
+  const Sunday = 0 as const;
+  const Monday = 1 as const;
+  if (day.month() + 1 == 11 && day.date() == 3 && day.day() != Sunday) {
+    // 11月3日かつ、日曜日でなければ祝日
+    return true;
+  }
+
+  if (day.month() + 1 == 11 && day.date() == 4 && day.day() == Monday) {
+    // 11月4日かつ、月曜日なら祝日(振替休日)
+    return true;
+  }
+
+  // それ以外の場合は平日
+  return false;
+};
+
 interface Props {
   startDate: YYYYMMDD;
   endDate: YYYYMMDD;
@@ -38,7 +55,7 @@ for (let i = dayjs(startDate); i.isSameOrBefore(endDate); i = i.add(1, "d")) {
             ? item.format("D")
             : item.format("M/D")}
         </span>
-        <span class="day-of-week">{item.format("ddd")}</span>
+        <span class="day-of-week">{item.format("ddd") + (isCultureDay(item) ? t("top.祝日") : "")}</span>
       </time>
     ))
   }
