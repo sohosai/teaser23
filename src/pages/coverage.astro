@@ -32,19 +32,15 @@ i18nAdapter.init(Astro);
     display: grid;
     grid-template-rows: auto auto;
     gap: 0.5em 1em;
-    align-content: center;
-    justify-content: start;
-
+    place-content: center start;
     margin: 0.75em 0;
 
     & dt {
       grid-column: 1/2;
       padding: 0.125em 0.875em;
       color: $font-black;
-
       text-align: center;
       border: solid 1px $blue;
-
       border-radius: 0.25em;
     }
 

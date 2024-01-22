@@ -5,7 +5,9 @@ plugins:
   - "stylelint-no-unsupported-browser-features"
   - "stylelint-prettier"
 extends:
+  - "stylelint-config-standard-scss"
   - "stylelint-config-recess-order"
+  - "stylelint-config-prettier-scss"
 ignoreFiles:
   - node_modules/**/*
 rules:
@@ -14,6 +16,13 @@ rules:
   plugin/no-unsupported-browser-features:
     - true
     - severity: "warning"
+      ignore: ["css-nesting"]
   font-family-no-missing-generic-family-keyword: true
   declaration-block-no-shorthand-property-overrides: true
   selector-pseudo-element-colon-notation: "double"
+  selector-pseudo-class-no-unknown:
+    - true
+    - ignorePseudoClasses: ["global"]
+  no-duplicate-selectors:
+    - true
+    - severity: "warning"

@@ -76,19 +76,15 @@ const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@",
     display: grid;
     grid-template-rows: auto auto;
     gap: 0.5em 1em;
-    align-content: center;
-    justify-content: start;
-
+    place-content: center start;
     margin: 0.75em 0;
 
     & dt {
       grid-column: 1/2;
       padding: 0.125em 0.875em;
       color: $font-white;
-
       text-align: center;
       background-color: $dark-gray;
-
       border-radius: 0.25em;
     }
 
@@ -120,7 +116,8 @@ const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@",
   }
 
   #x {
-    color: #000000;
+    color: #000;
+
     & .sns-logo {
       width: max(2rem, 30px);
       height: max(2rem, 30px);
@@ -130,8 +127,7 @@ const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@",
   hr {
     width: 70%;
     height: 1px;
-
-    margin: 2em 0 1em 0;
+    margin: 2em 0 1em;
     background: $light-gray;
   }
 
