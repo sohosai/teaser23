@@ -1,0 +1,79 @@
+---
+import { Image } from "astro:assets";
+
+export type Props = {
+  image: ImageMetadata;
+  alt: string;
+};
+
+const { image, alt } = Astro.props;
+---
+
+<div class="wrapper">
+  <div class="icon">
+    <Image src={image} alt={alt} />
+  </div>
+  <div class="balloon">
+    <div class="rect"></div>
+    <div class="container">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .icon {
+    img {
+      width: 5rem;
+      height: auto;
+      margin: 0.5rem;
+    }
+  }
+
+  .wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .balloon {
+      min-height: 4em;
+      padding: 0.75em;
+      margin-inline-start: 1em;
+      border: solid 2px $light-gray;
+      border-radius: 1em;
+      box-shadow: 0.25em 0.25em 0.25em 0 rgb(0 0 0 / 25%);
+    }
+
+    .balloon::before {
+      position: absolute;
+      bottom: calc(50% - 1em);
+      z-index: 1;
+      width: 1.5em;
+      height: 1.5em;
+      margin-inline-start: -2.25em;
+      clip-path: polygon(100% 0, 0% 50%, 100% 100%);
+      content: "";
+      background: $light-gray;
+    }
+
+    .rect {
+      position: absolute;
+      bottom: calc(50% - 1em - 1px);
+      z-index: 2;
+      width: calc(1.5em + 2px);
+      height: calc(1.5em + 2px);
+      margin-inline-start: calc(-2.25em + 3px);
+      clip-path: polygon(100% 0, 0% 50%, 100% 100%);
+      content: "";
+      background: $background;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.125em;
+      line-height: 1.5;
+    }
+  }
+</style>

@@ -1,9 +1,18 @@
 ---
 import { i18nAdapter, l, t } from "src/utils/i18n";
+import P from "src/utils/i18n/P.astro";
 i18nAdapter.init(Astro);
 
 import TopLayout from "src/layouts/TopLayout.astro";
 import Container from "src/components/Container.astro";
+import Balloon from "src/components/Balloon.astro";
+
+import sopotan4_r from "src/assets/sopotan4_reversed.png";
+
+import { Image } from "astro:assets";
+import sopotan1 from "src/assets/sopotan1.png";
+import sopotan4 from "src/assets/sopotan4.png";
+import sopotan7 from "src/assets/sopotan7.png";
 
 import { DEFAULT_TIMEZONE } from "src/consts";
 import { getCollection } from "astro:content";
@@ -38,10 +47,6 @@ const newsIds = isNewsExist ? news.map((entry) => entry.slug.replace(regex, ""))
 <TopLayout>
   <Container>
     <section>
-      <h2>{t("top.雙峰祭とは")}</h2>
-      <p>{t("top.雙峰祭説明文")}</p>
-    </section>
-    <section>
       <h2>{t("top.お知らせ")}</h2>
       <div class="news">
         {
@@ -60,6 +65,24 @@ const newsIds = isNewsExist ? news.map((entry) => entry.slug.replace(regex, ""))
             <p>{t("news.newsなし")}</p>
           )
         }
+      </div>
+    </section>
+    <section class="sohosai-info">
+      <h2>{t("top.雙峰祭のご案内")}</h2>
+      <Balloon image={sopotan4_r} , alt={t("top.そぽたんaltテキスト")}>
+        <span>
+          {t("top.説明1")}
+        </span>
+      </Balloon>
+      <h3>{t("top.雙峰祭とは")}</h3>
+      <p>{t("top.雙峰祭説明文")}</p>
+      <h3>{t("top.そぽたん")}</h3>
+
+      <P key="top.そぽたん説明文" />
+      <div class="sopotan">
+        <Image src={sopotan1} alt={t("top.そぽたん1altテキスト")} />
+        <Image src={sopotan4} alt={t("top.そぽたん4altテキスト")} />
+        <Image src={sopotan7} alt={t("top.そぽたん7altテキスト")} />
       </div>
     </section>
   </Container>
@@ -87,6 +110,39 @@ const newsIds = isNewsExist ? news.map((entry) => entry.slug.replace(regex, ""))
         grid-column: 2/3;
         line-height: 1.25;
       }
+    }
+  }
+
+  h3 {
+    margin-block: 0.75em;
+    font-size: 1.375em;
+    font-weight: 600;
+  }
+
+  .sopotan {
+    display: flex;
+    flex-direction: row;
+    gap: 0 1.25rem;
+    width: 100%;
+    height: 12.5rem;
+    overflow-x: scroll;
+    @media (pointer: fine) {
+      &::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+    }
+
+    img {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  .sohosai-info {
+    margin-inline-start: 0.75rem;
+
+    h2 {
+      margin-inline-start: -0.75rem;
     }
   }
 </style>
