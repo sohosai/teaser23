@@ -11,22 +11,47 @@ const { data } = Astro.props;
 
 <div>
   <h3>{data.name}</h3>
-  <p class="slogan">{data.slogan}</p>
-  <p class="description">{data.description}</p>
+  <div class="department-info">
+    <p class="slogan">{data.slogan}</p>
+    <p class="description">{data.description}</p>
+  </div>
+
+  <div class="sections">
+    {
+      data.sections.map((section) => (
+        <div class="section">
+          <h4>{section.name}</h4>
+          <p>{section.description}</p>
+        </div>
+      ))
+    }
+  </div>
 </div>
 <style lang="scss">
   div {
-    margin-block: 1.5rem;
+    padding-block: 0.25rem;
   }
 
   h3 {
-    margin-block: 0.75em;
     font-size: 1.4em;
     font-weight: 600;
   }
 
+  h4 {
+    padding-block: 0.25em;
+    font-size: 1.125em;
+    font-weight: 600;
+  }
+
+  .department-info {
+    padding-block: 0;
+    padding-inline-start: 1ic;
+    margin-inline-start: 0.7ic; // 1.4 * 0.5
+    border-left: 3px solid $blue;
+  }
+
   .slogan {
-    margin-block: 0.5em;
+    margin-block: 0.25em;
     font-size: 1.2rem;
     font-weight: normal;
     color: $font-black;
@@ -38,6 +63,34 @@ const { data } = Astro.props;
   }
 
   .description {
+    margin-inline-start: 0.5ic;
     white-space: pre-line;
+  }
+
+  .sections {
+    position: relative;
+    padding-block: 0;
+    margin-inline-start: 0.7ic;
+  }
+
+  .section {
+    padding-block: 0.5em;
+    padding-inline-start: 1.125ic;
+  }
+
+  .section:nth-child(-n + 1) {
+    border-left: 3px solid $blue;
+  }
+
+  .section::before {
+    position: absolute;
+    left: 0;
+    width: 0.875ic;
+    height: calc(1.25em + 3px);
+    margin-block-start: -0.5em;
+    font-size: 1.125em;
+    content: "";
+    border-bottom: 3px solid $blue;
+    border-left: 3px solid $blue;
   }
 </style>

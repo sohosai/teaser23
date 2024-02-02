@@ -19,6 +19,12 @@ const committee = defineCollection({
       name: z.string(),
       slogan: z.string(),
       description: z.string(),
+      sections: z
+        .object({
+          name: z.string(),
+          description: z.string(),
+        })
+        .array(),
     })
     .array(),
 });
