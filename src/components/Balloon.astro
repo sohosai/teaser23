@@ -14,7 +14,7 @@ const { image, alt } = Astro.props;
     <Image src={image} alt={alt} />
   </div>
   <div class="balloon">
-    <div class="rect"></div>
+    <div class="rect" aria-hidden="true"></div>
     <div class="container">
       <slot />
     </div>
