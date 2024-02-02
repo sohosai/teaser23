@@ -6,9 +6,11 @@ import sitemap from "@astrojs/sitemap";
 const defaultLocale = "ja";
 const locales = {
   ja: "ja-JP",
+  // en: "en-US",
 };
 const POSIXlocalesMap = {
   ja: "ja_JP",
+  // en: "en_US",
 };
 
 // https://astro.build/config
@@ -22,7 +24,7 @@ export default defineConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: `@import "src/styles/variables.scss";`,
+          additionalData: `@use 'sass:color';@import "src/styles/variables.scss";`,
         },
       },
     },

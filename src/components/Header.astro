@@ -28,6 +28,10 @@ const links: HeaderLink[] = [
     to: "committee",
     textKey: "nav.実委",
   },
+  // {
+  //   to: "shinkan",
+  //   textKey: "nav.新歓",
+  // },
 ];
 ---
 
@@ -169,47 +173,54 @@ const links: HeaderLink[] = [
   [class^="logo"] {
     display: block;
   }
+
   /* ナビゲーション全体のスタイル */
   header {
     position: fixed;
+    z-index: 100;
     width: 100%;
     transition: background-color 0.25s ease;
-    z-index: 100;
+
     /* ナビゲーションが透明のときのスタイルの指定 */
     &[data-navigation_style="transparent"] {
-      background-color: rgba(0, 0, 0, 0.25);
       color: $font-white;
+      background-color: rgb(0 0 0 / 25%);
+
       &[aria-expanded="true"] {
-        background-color: rgba(0, 0, 0, 0.75);
+        background-color: rgb(0 0 0 / 75%);
       }
+
       .logo-black {
         display: none;
       }
+
       li {
         a {
           color: $font-white;
           @media screen and ($pc-query) {
             &::before {
-              content: "";
-              display: inline-block;
-              height: 100%;
-              width: 100%;
               position: absolute;
               top: 0;
               left: 0;
               z-index: -1;
-              border-radius: 1.5rem;
+              display: inline-block;
+              width: 100%;
+              height: 100%;
+              content: "";
               background: linear-gradient($blue, $orange);
               filter: blur(1rem);
+              border-radius: 1.5rem;
               opacity: 0;
               transition: opacity 0.25s ease;
             }
+
             &:hover::before {
-              opacity: 45%;
+              opacity: 0.45;
             }
           }
           @media screen and ($sp-query) {
             transition: color 0.25s ease;
+
             &:hover {
               color: $blue;
             }
@@ -217,34 +228,41 @@ const links: HeaderLink[] = [
         }
       }
     }
+
     /* ナビゲーションが白のときのスタイルの指定 */
     &[data-navigation_style="white"] {
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
       background-color: $background;
+      box-shadow: rgb(0 0 0 / 10%) 0 1px 4px;
+
       .logo-white {
         display: none;
       }
+
       li {
         a {
           color: $font-black;
           transition: color 0.5s ease;
+
           &:hover {
             color: $blue;
           }
         }
       }
       @media screen and ($sp-query) {
-        box-shadow: none;
-        &[aria-expanded="true"] {
-          box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
-        }
         background-color: transparent;
+        box-shadow: none;
+
+        &[aria-expanded="true"] {
+          box-shadow: rgb(0 0 0 / 10%) 0 1px 4px;
+        }
+
         .navigation-menu-wrapper {
-          background-color: $background;
           position: relative;
           z-index: 100;
-          box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
+          background-color: $background;
+          box-shadow: rgb(0 0 0 / 10%) 0 1px 4px;
         }
+
         #navigation-items {
           background-color: $background-translucent;
           backdrop-filter: blur(10px);
@@ -252,94 +270,104 @@ const links: HeaderLink[] = [
       }
     }
   }
+
   .navigation-wrapper {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
-    height: $navigation-height;
     max-width: $content-width;
-    margin-inline: auto;
+    height: $navigation-height;
     padding-inline: $side-padding;
+    margin-inline: auto;
     @media screen and ($sp-query) {
-      height: auto;
       flex-direction: column;
       align-items: flex-start;
       max-width: none;
-      margin: 0;
+      height: auto;
       padding: 0;
+      margin: 0;
     }
   }
+
   .navigation-menu-wrapper {
     display: flex;
-    height: $navigation-height;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    height: $navigation-height;
     @media screen and ($sp-query) {
       width: 100%;
       max-width: $content-width;
-      margin-inline: auto;
       padding-inline: $side-padding;
+      margin-inline: auto;
     }
   }
+
   .logo {
     padding: 0.75em 0;
+
     > img {
-      height: 2.5em;
       width: auto;
+      height: 2.5em;
       margin: 0;
     }
   }
+
   .item-wrapper {
     display: flex;
-    transition: opacity 0.5s ease;
     flex-direction: row;
-    align-items: center;
     gap: 0 1em;
+    align-items: center;
+    transition: opacity 0.5s ease;
     @media screen and ($sp-query) {
       display: contents;
     }
   }
+
   #navigation-items {
     display: contents;
+
     li {
       margin: 0;
+
       a {
         position: relative;
-        font-size: 1rem;
-        padding: 1em 0;
-        text-decoration: none;
-
         display: inline-block;
+        padding: 1em 0;
+        font-size: 1rem;
+        text-decoration: none;
         @media screen and ($sp-query) {
           display: block;
         }
       }
     }
+
     &[aria-hidden="true"] {
       display: none;
     }
+
     &[aria-hidden="false"] {
       height: auto;
     }
     @media screen and ($sp-query) {
       display: flex;
-      transition: opacity 0.5s ease;
       flex-direction: column;
       gap: 0 1em;
       width: 100%;
       max-width: $content-width;
-      margin-inline: auto;
       padding-inline: $side-padding;
+      margin-inline: auto;
+      transition: opacity 0.5s ease;
+
       li {
         width: 100%;
         margin: 0.5em 0;
       }
     }
   }
+
   .language-select {
     &--pc {
       display: contents;
@@ -347,6 +375,7 @@ const links: HeaderLink[] = [
         display: none;
       }
     }
+
     &--sp {
       display: none;
       @media screen and ($sp-query) {
@@ -354,40 +383,47 @@ const links: HeaderLink[] = [
       }
     }
   }
+
   /* ハンバーガーメニュー */
   .button-wrapper {
     display: flex;
     gap: 1.2em;
   }
+
   #hamburger-button {
-    cursor: pointer;
     display: none;
     height: 100%;
     padding: 0.5em;
+    cursor: pointer;
     @media screen and ($sp-query) {
       display: block;
     }
   }
+
   .hamburger-menu-button {
     position: relative;
     width: calc($navigation-height * 0.4);
     height: calc($navigation-height * 0.3);
+
     span {
+      position: absolute;
+      left: 0;
       display: inline-block;
       width: 100%;
       height: 3px;
-      position: absolute;
-      left: 0;
-      transition: all 0.3s;
       background-color: $font-black;
       border-radius: 2px;
+      transition: all 0.3s;
+
       &:nth-of-type(1) {
         top: 0;
       }
+
       &:nth-of-type(2) {
         top: 50%;
         transform: translateY(-50%);
       }
+
       &:nth-of-type(3) {
         top: 100%;
         transform: translateY(-100%);
@@ -397,12 +433,14 @@ const links: HeaderLink[] = [
       }
     }
   }
+
   header {
     &[data-navigation_style="transparent"] {
       .hamburger-menu-button span {
         background-color: $font-white;
       }
     }
+
     &[aria-expanded="true"] {
       .hamburger-menu-button {
         span {
@@ -410,9 +448,11 @@ const links: HeaderLink[] = [
             top: 50%;
             transform: translateY(-50%) rotate(-45deg);
           }
+
           &:nth-of-type(2) {
             opacity: 0;
           }
+
           &:nth-of-type(3) {
             top: 50%;
             transform: translateY(-50%) rotate(45deg);
@@ -431,12 +471,15 @@ const links: HeaderLink[] = [
       &:nth-child(1) {
         animation: $animation-duration ease 0s 1 normal both slidein;
       }
+
       &:nth-child(2) {
         animation: $animation-duration ease ($animation-timing * 1) 1 normal both slidein;
       }
+
       &:nth-child(3) {
         animation: $animation-duration ease ($animation-timing * 2) 1 normal both slidein;
       }
+
       &:nth-child(4) {
         animation: $animation-duration ease ($animation-timing * 3) 1 normal both slidein;
       }
@@ -445,6 +488,7 @@ const links: HeaderLink[] = [
         0% {
           margin-inline-start: -16em;
         }
+
         100% {
           margin-inline-start: 0;
         }
@@ -454,6 +498,7 @@ const links: HeaderLink[] = [
         &:nth-child(n) {
           animation-name: dissolve;
         }
+
         margin: 0;
       }
     }
