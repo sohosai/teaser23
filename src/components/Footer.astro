@@ -41,16 +41,31 @@ const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@",
       <h3>{t("footer.SNS")}</h3>
       <ul class="sns-logo-wrapper">
         <li>
-          <a id="x" href={xAccountURL} target="_blank" rel="noopener noreferrer"
-            ><Image src={xLogo} alt="X" class="sns-logo" /></a
-          >
+          <a id="x" href={xAccountURL} target="_blank" rel="noopener noreferrer">
+            <Image src={xLogo} alt="X" class="sns-logo" />
+          </a>
         </li>
         <li>
-          <a id="instagram" href={instagramAccountURL} target="_blank" rel="noopener noreferrer"
-            ><Image src={instagramLogo} alt="Instagram" class="sns-logo" /></a
-          >
+          <a id="instagram" href={instagramAccountURL} target="_blank" rel="noopener noreferrer">
+            <Image src={instagramLogo} alt="Instagram" class="sns-logo" />
+          </a>
         </li>
       </ul>
+    </section>
+
+    <hr />
+
+    <section>
+      <h3>{t("footer.協賛企業")}</h3>
+      <a href="https://www.sakura.ad.jp/" target="_blank" id="sakura-internet">
+        <Image
+          src="https://www.sakura.ad.jp/brand-assets/images/logo-1.png"
+          alt={t("footer.さくらインターネット")}
+          width="816"
+          height="147"
+        />
+      </a>
+      <p class="thankyou">雙峰祭はさくらインターネット様によって支えられています。</p>
     </section>
 
     <hr />
@@ -91,6 +106,22 @@ const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@",
     & dd {
       grid-column: 2/3;
     }
+  }
+
+  #sakura-internet {
+    display: block;
+    width: fit-content;
+    padding-block: 1.5rem;
+    background: white;
+
+    img {
+      width: min(90%, 300px);
+      height: auto;
+    }
+  }
+
+  .thankyou {
+    font-size: 0.8em;
   }
 
   .sns-logo-wrapper {
