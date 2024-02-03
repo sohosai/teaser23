@@ -42,6 +42,9 @@ const news = isNewsExist
       .sort((a, b) => (a.data.publishedAt > b.data.publishedAt ? -1 : 1))
   : [];
 const newsIds = isNewsExist ? news.map((entry) => entry.slug.replace(regex, "")) : [];
+
+import { SOPOTAN_TWITTER_ID } from "src/consts";
+const xAccountURL = "https://twitter.com/" + SOPOTAN_TWITTER_ID.replace("@", "");
 ---
 
 <TopLayout>
@@ -79,6 +82,9 @@ const newsIds = isNewsExist ? news.map((entry) => entry.slug.replace(regex, ""))
       <h3>{t("top.そぽたん")}</h3>
 
       <P key="top.そぽたん説明文" />
+      <p>
+        <a href={xAccountURL}>{t("top.Twitterアカウント")}</a>
+      </p>
       <div class="sopotan">
         <Image src={sopotan1} alt={t("top.そぽたん1altテキスト")} />
         <Image src={sopotan4} alt={t("top.そぽたん4altテキスト")} />

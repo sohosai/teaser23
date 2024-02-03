@@ -8,6 +8,7 @@ export const DEFAULT_TIMEZONE = "Asia/Tokyo";
 export const TWITTER_ID = "@sohosai";
 export const INSTAGRAM_ID = "@sohosai";
 export const DEFAULT_OGP_IMAGE = "opengraph-image.png";
+export const SOPOTAN_TWITTER_ID = "@spspsptn";
 
 const keys = [
   "base.雙峰祭",
