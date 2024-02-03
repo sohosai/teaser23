@@ -125,12 +125,7 @@ const newsIds = isNewsExist ? news.map((entry) => entry.slug.replace(regex, ""))
     gap: 0 1.25rem;
     width: 100%;
     height: 12.5rem;
-    overflow-x: scroll;
-    @media (pointer: fine) {
-      &::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
-      }
-    }
+    overflow-x: auto;
 
     img {
       width: auto;
