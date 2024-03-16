@@ -29,41 +29,83 @@ const isCultureDay = (day: dayjs.Dayjs): boolean => {
 };
 
 interface Props {
+  zenyasaiDate: YYYYMMDD;
   startDate: YYYYMMDD;
   endDate: YYYYMMDD;
 }
 
-const { startDate, endDate } = Astro.props;
+const { zenyasaiDate, startDate, endDate } = Astro.props;
 
 const schedule = new Array<dayjs.Dayjs>();
+const zenyasai = dayjs(zenyasaiDate);
 
 for (let i = dayjs(startDate); i.isSameOrBefore(endDate); i = i.add(1, "d")) {
   schedule.push(i);
 }
 ---
 
-<p class="schedule">
+<div class="schedule">
   <span class="year">{dayjs(startDate).year()}.</span>
   <br />
-  {
-    schedule.map((item, index) => (
-      <time datetime={item.format("YYYY-MM-DD")}>
+  <dl>
+    <dt><span>{t("top.前夜祭")}</span></dt>
+    <dd>
+      <time datetime={zenyasai.format("YYYY-MM-DD")}>
         <span class="date">
-          {index === 0
-            ? item.format("M/D")
-            : item.month() === schedule[index - 1].month()
-            ? item.format("D")
-            : item.format("M/D")}
+          {zenyasai.format("M/D")}
         </span>
-        <span class="day-of-week">{item.format("ddd") + (isCultureDay(item) ? t("top.祝日") : "")}</span>
+        <span class="day-of-week">{zenyasai.format("ddd") + (isCultureDay(zenyasai) ? t("top.祝日") : "")}</span>
       </time>
-    ))
-  }
-</p>
+    </dd>
+    <dt><span>{t("top.本祭")}</span></dt>
+    <dd>
+      {
+        schedule.map((item, index) => (
+          <time datetime={item.format("YYYY-MM-DD")}>
+            <span class="date">
+              {index === 0
+                ? item.format("M/D")
+                : item.month() === schedule[index - 1].month()
+                ? item.format("D")
+                : item.format("M/D")}
+            </span>
+            <span class="day-of-week">{item.format("ddd") + (isCultureDay(item) ? t("top.祝日") : "")}</span>
+          </time>
+        ))
+      }
+    </dd>
+  </dl>
+</div>
 
 <style lang="scss">
   .schedule {
     margin: 0.5em 0;
+
+    dl {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 0 0.5em;
+      place-content: center start;
+
+      dt {
+        display: flex;
+        grid-column: 1/2;
+        align-items: center;
+        justify-content: stretch;
+        font-family: $fonts-zen, $fonts-japanese;
+        font-size: 1.375rem;
+        text-align: center;
+        text-align-last: justify;
+
+        span {
+          flex-grow: 1;
+        }
+      }
+
+      dd {
+        grid-column: 2/3;
+      }
+    }
 
     time {
       display: inline-flex;
