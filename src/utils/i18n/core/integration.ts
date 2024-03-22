@@ -43,6 +43,16 @@ export default function i18nPlus({ locales, POSIXlocalesMap, defaultLocale }: i1
           .filter((i) => i !== defaultLocale)
           .forEach((locale) => {
             const locale_dir = dir.pathname + locale;
+            try {
+              const target = fs.statSync(`${locale_dir}/404`);
+              if (!target.isDirectory()) {
+                console.log(`Skip "${locale}"`);
+                return;
+              }
+            } catch (err) {
+              console.log(`Skip "${locale}"`);
+              return;
+            }
             fs.rename(`${locale_dir}/404/index.html`, `${locale_dir}/404.html`, (err) => {
               if (err) {
                 console.log("Failed to rename path of 404 files");
