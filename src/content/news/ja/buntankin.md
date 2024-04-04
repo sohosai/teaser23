@@ -13,6 +13,9 @@ publishedAt: 2024-03-29T18:30:00+09:00
 
 ご多用のことと存じますが、ご理解、ご協力いただきますようお願い申し上げます。
 
+[学園祭学生分担金振込説明用紙](https://r2-2024.sohosai.com/gakubunkin.pdf)  
+[学分金(Gakubunkin) transfer instruction](https://r2-2024.sohosai.com/gakubunkin-en.pdf)
+
 本件についてのお問い合わせ先  
-筑波大学学園祭実行委員会 財務局
+筑波大学学園祭実行委員会 財務局  
 info@sohosai.com
