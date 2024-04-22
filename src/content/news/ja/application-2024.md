@@ -14,7 +14,12 @@ publishedAt: 2024-04-22T09:00:00+09:00
 [ステージ企画用募集要項](https://r2-2024.sohosai.com/20240422-stage-application-guidelines.pdf)
 
 応募方法  
-[雙峰祭オンラインシステム](https://entry.sohosai.com/)よりご応募いただけます。
+[雙峰祭オンラインシステム](https://entry.sohosai.com/)よりご応募いただけます。  
+また、雙峰祭オンラインシステムの[使い方動画](https://entry.sohosai.com/how-to-use)もございますので、ご参考にしていただければと存じます。
 
 学園祭実行委員会一同、素晴らしい雙峰祭を皆様と築いていけることを心より楽しみにしております。  
 ご応募お待ちしております。
+
+本件についてのお問い合わせ先  
+筑波大学学園祭実行委員会 総務局  
+project50th@sohosai.com
