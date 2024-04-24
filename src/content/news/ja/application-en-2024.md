@@ -9,7 +9,7 @@ publishedAt: 2024-04-24T20:30:00+09:00
 
 本要項は日本語版の募集要項を自動翻訳ツールによって英訳したものであるため、内容の正誤につきましては保証いたしませんのでご了承ください。
 
-企画は雙峰祭オンラインシステム(entry.sohosai.com)よりご応募いただけます。  
+企画は[雙峰祭オンラインシステム](https://entry.sohosai.com)よりご応募いただけます。  
 ご応募お待ちしております。
 
 本件についてのお問い合わせ  
@@ -24,7 +24,7 @@ An English version of the Application Guideline was released.
 
 Please note that this guideline is an English translation of the Japanese version of the Application Guideline using an automatic translation tool, and we cannot guarantee the correctness of the content.
 
-You can apply for your project through the Sohosai Online System(entry.sohosai.com).
+You can apply for your project through the [Sohosai Online System](https://entry.sohosai.com).
 We are looking forward to your project.
 
 Contact Us  
