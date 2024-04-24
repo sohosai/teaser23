@@ -25,3 +25,9 @@ const news = isNewsExist
     {news.length >= 1 ? news.map((newsEntry) => <NewsEntry slug={newsEntry.slug} />) : <p>{t("news.newsなし")}</p>}
   </Container>
 </ContentLayout>
+
+<style is:global>
+  .markdown-body hr {
+    border: 1px solid #ddd;
+  }
+</style>
