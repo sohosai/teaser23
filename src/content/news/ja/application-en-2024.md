@@ -1,6 +1,6 @@
 ---
 title: 「英語版募集要項」公開のお知らせ/Announcement of the release of the English version of the Application Guideline
-publishedAt: 2024-04-24T20:00:00+09:00
+publishedAt: 2024-04-24T20:30:00+09:00
 ---
 
 募集要項の英語版を公開します。  
