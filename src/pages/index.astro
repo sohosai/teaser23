@@ -48,6 +48,9 @@ const xAccountURL = "https://twitter.com/" + SOPOTAN_TWITTER_ID.replace("@", "")
 ---
 
 <TopLayout>
+  <div class="to-sos">
+    <a href="https://sos24.sohosai.com/">企画応募はこちら</a>
+  </div>
   <Container>
     <section>
       <h2>{t("top.お知らせ")}</h2>
@@ -93,6 +96,32 @@ const xAccountURL = "https://twitter.com/" + SOPOTAN_TWITTER_ID.replace("@", "")
 </TopLayout>
 
 <style lang="scss">
+  .to-sos {
+    padding-block: 2rem;
+
+    > a {
+      display: block;
+      padding-block: 1rem;
+      font-size: 1rem;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      background: $orange;
+    }
+    @media screen and ($pc-query) {
+      width: 100%;
+      max-width: $content-width;
+      padding-inline: $side-padding;
+      margin-inline: auto;
+
+      > a {
+        width: fit-content;
+        padding-inline: 3rem;
+        border-radius: 3px;
+      }
+    }
+  }
+
   .news {
     display: grid;
     grid-template-rows: max-content 1fr;
