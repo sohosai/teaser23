@@ -49,7 +49,7 @@ const xAccountURL = "https://twitter.com/" + SOPOTAN_TWITTER_ID.replace("@", "")
 
 <TopLayout>
   <div class="to-sos">
-    <a href="https://entry.sohosai.com/">企画応募はこちら</a>
+    <a href="https://entry.sohosai.com/"><span>雙峰祭企画応募者はこちら</span></a>
   </div>
   <Container>
     <section>
@@ -100,13 +100,37 @@ const xAccountURL = "https://twitter.com/" + SOPOTAN_TWITTER_ID.replace("@", "")
     padding-block: 2rem;
 
     > a {
+      position: relative;
+      z-index: 0;
       display: block;
-      padding-block: 1rem;
-      font-size: 1rem;
+      padding-block: 1.5rem;
+      overflow: hidden;
+      font-size: 1.25rem;
+      font-weight: 600;
       color: white;
       text-align: center;
       text-decoration: none;
-      background: $orange;
+      background-color: $orange;
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 200;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background-image: url("./sos-sopo.png");
+        background-repeat: no-repeat;
+        background-position: 30% 55%;
+        background-size: 25rem;
+        opacity: 0.3;
+      }
+
+      > span {
+        position: relative;
+        z-index: 300;
+      }
     }
     @media screen and ($pc-query) {
       width: 100%;
@@ -116,8 +140,13 @@ const xAccountURL = "https://twitter.com/" + SOPOTAN_TWITTER_ID.replace("@", "")
 
       > a {
         width: fit-content;
-        padding-inline: 3rem;
-        border-radius: 3px;
+        padding-inline: 2rem;
+        border-radius: 3rem;
+
+        &::before {
+          background-position: 30% 55%;
+          background-size: 20rem;
+        }
       }
     }
   }
