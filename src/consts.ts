@@ -11,6 +11,9 @@ export const INSTAGRAM_ID = "@sohosai";
 export const DEFAULT_OGP_IMAGE = "opengraph-image.png";
 export const SOPOTAN_TWITTER_ID = "@spspsptn";
 
+export const COVERAGE_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScPj-75z77FnULmOZN1O-4JXGmzkeCvBv0fEK1vEYXXhmjdYQ/viewform";
+
 const keys = [
   "base.雙峰祭",
   "top.筑波大学園祭",
