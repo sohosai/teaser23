@@ -46,6 +46,11 @@ const xAccountURL = "https://twitter.com/" + SOPOTAN_TWITTER_ID.replace("@", "")
 
 <TopLayout>
   <Container>
+    <div class="to-live">
+      <a href="https://live.sohosai.com/" target="_blank"
+        ><img src="/src/pages/move-live.PNG" alt="雙峰祭生配信はこちら！" width="25%" height="25%" /></a
+      >
+    </div>
     <section>
       <h2>{t("top.お知らせ")}</h2>
       <div class="news">
@@ -90,6 +95,10 @@ const xAccountURL = "https://twitter.com/" + SOPOTAN_TWITTER_ID.replace("@", "")
 </TopLayout>
 
 <style lang="scss">
+  .to-live {
+    padding-block: 2rem;
+  }
+
   .news {
     display: grid;
     grid-template-rows: max-content 1fr;
