@@ -31,3 +31,55 @@ const news = isNewsExist
     border: 1px solid #ddd;
   }
 </style>
+<style is:global lang="scss">
+  .markdown-body {
+    ul > li {
+      margin-left: 1.5em;
+      line-height: 1.4;
+      list-style: disc;
+    }
+
+    h3 {
+      font-size: 1.2em;
+      font-weight: 600;
+      color: $orange;
+    }
+
+    h4 {
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    .section {
+      margin: 0 0 0 0.5em;
+      white-space: pre-wrap;
+    }
+
+    a {
+      color: $orange;
+      text-decoration: underline;
+      transition: all 0.1s ease-in-out;
+
+      &:hover {
+        text-decoration-color: transparent;
+      }
+    }
+
+    & > .inquiry {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 1rem 1.2rem;
+      background: #0000000a;
+      border-radius: 0.5rem;
+
+      & > .title {
+        font-weight: 600;
+      }
+
+      & > * {
+        line-height: 1.4;
+      }
+    }
+  }
+</style>
