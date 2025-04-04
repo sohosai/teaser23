@@ -33,7 +33,7 @@ const regex = new RegExp(`^(${supportedLocales})/`);
 const newsId = slug.replace(regex, "");
 ---
 
-<section id={newsId}>
+<section id={newsId} class="news-section">
   <h2>{entry?.data.title}</h2>
   <time class="published-at" datetime={dayjs(entry?.data.publishedAt).tz().format("YYYY-MM-DDTHH:mmZ")}
     >{dayjs(entry?.data.publishedAt).tz().format("LLL")}</time
@@ -44,8 +44,17 @@ const newsId = slug.replace(regex, "");
 </section>
 
 <style lang="scss">
+  .news-section {
+    margin: 4rem 0;
+
+    &:first-of-type {
+      margin-top: 1rem;
+    }
+  }
+
   .published-at {
     display: block;
+    margin: 0.5rem 0 1rem;
     font-size: 0.8rem;
     text-align: right;
   }
