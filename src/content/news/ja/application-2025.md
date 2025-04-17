@@ -20,7 +20,7 @@ publishedAt: 2025-04-18T09:00:00+09:00
 
 ### 応募方法
 
-雙峰祭オンラインシステム（<a href="https://sos25.sohosai.com">リンクはこちら</a>になりますが、4月18日現在準備中になります。）よりご応募いただけます。
+雙峰祭オンラインシステム（4月18日現在準備中）よりご応募いただけます。
 また、雙峰祭オンラインシステムの<a href="https://entry.sohosai.com/how-to-use/?utm_campaign=2025spring&utm_source=hp-news&utm_medium=referral" target="_blank">使い方動画 (外部)</a>もございますので、ご参考にしていただければと存じます。
 
 学園祭実行委員会一同、素晴らしい雙峰祭を皆様と築いていけることを心より楽しみにしております。  
