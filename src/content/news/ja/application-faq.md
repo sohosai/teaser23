@@ -16,5 +16,5 @@ publishedAt: 2025-04-20T21:30:00+09:00
 <div class="inquiry">
 <p class="title">本件についてのお問い合わせ先</p>
 <p>筑波大学学園祭実行委員会 推進局</p>
-<p>info@sohosai.com</p>
+<p>project51th@sohosai.com</p>
 </div>
