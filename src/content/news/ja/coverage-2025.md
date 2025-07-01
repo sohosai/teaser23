@@ -15,7 +15,7 @@ publishedAt: 2025-07-01T16:00:00+09:00
 
 協賛していただける場合は、以下のGoogleフォームに必要事項を記入の上、送信をお願いいたします。
 
-[第51回雙峰祭 個人協賛申し込みフォーム](https://docs.google.com/forms/d/e/1FAIpQLSfXDHcNGBytfpcMMS4qkzA82IJc5DpwqWDtbfFgGGST1abTRA/viewform)
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfXDHcNGBytfpcMMS4qkzA82IJc5DpwqWDtbfFgGGST1abTRA/viewform" target="_blank" rel="noopener noreferrer">第51回雙峰祭 個人協賛申し込みフォーム</a>
 
 ### 入金方法
 
