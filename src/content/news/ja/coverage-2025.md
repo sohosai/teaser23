@@ -36,5 +36,5 @@ publishedAt: 2025-07-01T16:00:00+09:00
 <p class="title">本件についてのお問い合わせ先</p>
 <p>筑波大学学園祭実行委員会 渉外局</p>
 <p>電話: 029-853-2899</p>
-<p>Email: project51th@sohosai.com</p>
+<p>Email: sponsorship@sohosai.com</p>
 </div>
