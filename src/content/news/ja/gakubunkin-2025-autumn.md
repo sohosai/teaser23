@@ -1,6 +1,6 @@
 ---
 title: Regarding the collection of School Festival Student Dues
-publishedAt: 2025-07-05T00:00:00+09:00
+publishedAt: 2025-07-05T18:00:00+09:00
 ---
 
 For autumn enrollments in the English program at the University of Tsukuba.
@@ -33,7 +33,7 @@ Please access the link and follow the instructions in the form to pay
 by bank transfer by **31 October**, or visit the Executive Committee Office listed below
 on weekdays after school (18:00-19:00) in person and pay in cash in person.
 
-https://docs.google.com/forms/d/e/1FAIpQLSeB7gMHGAgx01ECTNlKMydxKdLIEeDsIClfqYciD_7npf8-Fw/viewform?usp=dialog
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSeB7gMHGAgx01ECTNlKMydxKdLIEeDsIClfqYciD_7npf8-Fw/viewform?usp=dialog" target="_blank" rel="noopener noreferrer">School Festival Student Dues Form</a>
 
 ### Notes
 
