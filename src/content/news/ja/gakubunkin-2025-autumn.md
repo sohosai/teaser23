@@ -1,6 +1,6 @@
 ---
 title: Regarding the collection of School Festival Student Dues
-publishedAt: 2025-07-05T00:18:00+09:00
+publishedAt: 2025-07-05T18:00:00+09:00
 ---
 
 For autumn enrollments in the English program at the University of Tsukuba.
