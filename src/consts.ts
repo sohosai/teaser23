@@ -1,9 +1,9 @@
 import { t } from "src/utils/i18n";
 
 import type { YYYYMMDD } from "src/types/date";
-export const ZENYASAI_DATE: YYYYMMDD = "2025-11-01";
-export const START_DATE: YYYYMMDD = "2025-11-02";
-export const END_DATE: YYYYMMDD = "2025-11-03";
+export const ZENYASAI_DATE: YYYYMMDD = "2026-10-30";
+export const START_DATE: YYYYMMDD = "2026-10-31";
+export const END_DATE: YYYYMMDD = "2026-11-01";
 export const DEFAULT_TIMEZONE = "Asia/Tokyo";
 
 export const TWITTER_ID = "@sohosai";
