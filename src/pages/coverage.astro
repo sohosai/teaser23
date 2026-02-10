@@ -3,7 +3,9 @@ import ContentLayout from "src/layouts/ContentLayout.astro";
 import Container from "src/components/Container.astro";
 import "src/styles/global.scss";
 import { i18nAdapter, t } from "src/utils/i18n";
-import P from "src/utils/i18n/P.astro";
+import { Content as IntroContent } from "src/content/coverage/ja/intro.md";
+import { Content as CorporateContent } from "src/content/coverage/ja/corporate.md";
+import { Content as PersonalContent } from "src/content/coverage/ja/personal.md";
 i18nAdapter.init(Astro);
 ---
 
@@ -12,15 +14,32 @@ i18nAdapter.init(Astro);
     <h1>{t("coverage.タイトル")}</h1>
     <section>
       <h2>{t("coverage.ご協賛のお願い")}</h2>
-      <P key="coverage.協賛文面" />
+      <div class="intro-content">
+        <IntroContent />
+      </div>
+      <details class="accordion">
+        <summary>{t("coverage.企業協賛詳細見出し")}</summary>
+        <div class="accordion-content">
+          <CorporateContent />
+        </div>
+      </details>
+      <details class="accordion">
+        <summary>{t("coverage.個人協賛見出し")}</summary>
+        <div class="accordion-content">
+          <PersonalContent />
+        </div>
+      </details>
     </section>
     <section>
       <h2>{t("coverage.お問い合わせ・取材")}</h2>
-      <p>{t("base.筑波大学学園祭実行委員会")} {t("base.渉外局")}</p>
+      <p>
+        ご協賛および取材に関して、ご相談やご不明な点などがございましたら、以下の連絡先までお気軽にお問い合わせください。
+      </p>
       <address>
+        <p>{t("base.筑波大学学園祭実行委員会")}</p>
         <dl>
           <dt>{t("footer.Email")}</dt><dd><a href="mailto:info@sohosai.com">info@sohosai.com</a></dd>
-          <dt>{t("footer.TEL/FAX")}</dt><dd>029-853-2899</dd>
+          <dt>{t("footer.TEL")}</dt><dd>029-853-2899</dd>
           <dt>{t("footer.外部対応時間")}</dt><dd>
             {`${t("footer.平日")} ${t("info.平日対応時間")}`}<br />{`${t("footer.休日")} ${t("info.休日対応時間")}`}
           </dd>
@@ -31,27 +50,108 @@ i18nAdapter.init(Astro);
 </ContentLayout>
 
 <style lang="scss">
-  dl {
-    display: grid;
-    grid-template-rows: auto auto;
-    gap: 0.5em 1em;
-    place-content: center start;
-    margin: 0.75em 0;
+  .intro-content {
+    white-space: normal;
 
-    & dt {
-      display: flex;
-      grid-column: 1/2;
+    & :global(p) {
+      margin: 0.5em 0;
+      line-height: 1.8;
+    }
+  }
+
+  .accordion {
+    margin-top: 1rem;
+
+    & summary {
+      display: inline-flex;
+      gap: 0.25em;
       align-items: center;
-      justify-content: center;
-      padding: 0.125em 0.875em;
-      color: $font-black;
-      border: solid 1px $blue;
-      border-radius: 0.25em;
+      font-weight: bold;
+      color: $blue;
+      list-style: none;
+      cursor: pointer;
+
+      &::before {
+        display: inline-block;
+        font-size: 0.7em;
+        content: "▶";
+        transition: transform 0.2s ease;
+      }
+
+      &::-webkit-details-marker {
+        display: none;
+      }
     }
 
-    & dd {
-      grid-column: 2/3;
-      line-height: 1.5rem;
+    &[open] > summary::before {
+      transform: rotate(90deg);
+    }
+  }
+
+  .accordion-content {
+    padding-left: 1.25em;
+    margin-top: 0.5rem;
+    white-space: normal;
+    border-left: 3px solid $blue;
+
+    & :global(h3) {
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    & :global(p) {
+      margin: 0.5em 0;
+      line-height: 1.8;
+    }
+
+    & :global(ul) {
+      padding-left: 0.5em;
+      margin: 0.5em 0;
+      list-style: disc;
+    }
+
+    & :global(li) {
+      margin-left: 0.5em;
+      line-height: 1.8;
+    }
+
+    & :global(ul ul) {
+      margin: 0.25em 0;
+      list-style: circle;
+    }
+
+    & :global(ul ul ul) {
+      list-style: square;
+    }
+  }
+
+  address {
+    margin-top: 1rem;
+
+    dl {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 0.5em 1em;
+      place-content: center start;
+      margin: 0.75em 0;
+
+      & dt {
+        display: flex;
+        grid-column: 1/2;
+        align-items: center;
+        justify-content: center;
+        padding: 0.125em 0.875em;
+        color: $font-black;
+        border: solid 1px $blue;
+        border-radius: 0.25em;
+      }
+
+      & dd {
+        grid-column: 2/3;
+        line-height: 1.5rem;
+      }
     }
   }
 </style>
