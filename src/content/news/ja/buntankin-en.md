@@ -43,3 +43,9 @@ The School Festival Executive Committee requests all students to pay the contrib
 This contribution is an important part of the overall management of the festival. In some cases, organizations applying for General Programs(一般企画) or Stage Programs(ステージ企画) of the festival will not be accepted for this year only if any of their members have not paid the contribution.
 
 Thank you for your understanding and cooperation.
+
+<div class="inquiry">
+<p class="title">本件についてのお問い合わせ先</p>
+<p>筑波大学学園祭実行委員会 財務局</p>
+<p>info@sohosai.com</p>
+</div>
