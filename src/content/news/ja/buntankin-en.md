@@ -11,7 +11,7 @@ We would like to inform you about this year's School Festival Executive Committe
 
 ### Payment Schedule
 
-Members of the School Festival Executive Committee will collect the money in person at the orientation or on other occasions.
+Members of the School Festival Executive Committee will collect the money in person at the orientation or on other occasions.  
 The schedule is as follows(The schedule is subject to change. Please check this page for updated information.):
 
 - College of Humanities: At the orientation on 4/7(15:10～)
