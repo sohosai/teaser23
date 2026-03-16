@@ -7,7 +7,7 @@ publishedAt: 2026-03-18T00:00:00+09:00
 
 さて、今年度の学園祭学生分担金(以下、学分金)を集金させていただきますのでお知らせいたします。集金金額・集金方法は以下の添付資料をご確認ください。
 
-<a href="" target="_blank" rel="noopener noreferrer">学園祭学生分担金の支払いのお願い</a>
+<a href="https://r2-2026.sohosai.com/hp-news/26_%E5%AD%A6%E5%9C%92%E7%A5%AD%E5%AD%A6%E7%94%9F%E5%88%86%E6%8B%85%E9%87%91%E3%81%AE%E6%94%AF%E6%89%95%E3%81%84%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6_jp_web.pdf" target="_blank" rel="noopener noreferrer">学園祭学生分担金の支払いのお願い</a>
 
 ### 対面集金の日程
 
