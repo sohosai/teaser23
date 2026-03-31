@@ -17,20 +17,20 @@ The schedule is as follows(The schedule is subject to change. Please check this 
 - College of Humanities: At the orientation on 4/7(15:10～)
 - College of Comparative Culture: At the orientation on 4/8(11:10～, 11:30～, 11:50～)
 - College of Japanese Language and Culture: At the orientation on 4/8(15:30～)
-- College of Social Science: At the orientation on 4/6
+- College of Social Science: At the orientation on 4/6(16:30～)
 - College of International Studies: At the orientation on 4/6(12:00～)
-- College of Education, College of Psychology, and College of Disability Sciences: We will announce the schedule at a later date.
+- College of Education, College of Psychology, and College of Disability Sciences: At the orientation on 4/8
 - College of Biological Sciences(including 3rd Year Transfer Students): At the orientation on 4/7(16:30～)
 - College of Agro-Biological Resources Sciences: At the orientation on 4/8(10:50～)
-- College of Geoscience: At the orientation on 4/8
-- College of Mathematics(including 3rd Year Transfer Students): At the orientation on 4/8
-- College of Physics(including 3rd Year Transfer Students): At the orientation on 4/8
-- College of Chemistry(including 3rd Year Transfer Students): At the orientation on 4/8
-- College of Engineering Sciences: We will announce the schedule at a later date.
+- College of Geoscience: At the orientation on 4/8(14:00～)
+- College of Mathematics(including 3rd Year Transfer Students): At the orientation on 4/8(15:00～)
+- College of Physics(including 3rd Year Transfer Students): At the orientation on 4/8(16:00～)
+- College of Chemistry(including 3rd Year Transfer Students): At the orientation on 4/8(17:00～)
+- College of Engineering Sciences: At the orientation on 4/6
 - College of Engineering Systems (including 3rd Year Transfer Students): At the orientation on 4/6(16:30～)
-- College of Policy and Planning Sciences(including 3rd Year Transfer Students): At the time of receiving the student ID card on 4/6
+- College of Policy and Planning Sciences(including 3rd Year Transfer Students): At the orientation on 4/6
 - College of Information Science (including 3rd Year Transfer Students): At the orientation on 4/8
-- College of Media Arts, Science and Technology: We will announce the schedule at a later date.
+- College of Media Arts, Science and Technology: At the orientation on 4/8
 - College of Knowledge and Library Sciences (including 3rd Year Transfer Students): At the orientation on 4/8(12:00～)
 - College of Medicine: At the orientation on 4/8(17:00～)
 - College of Nursing: At the orientation on 4/8(14:10～)
