@@ -15,17 +15,17 @@ publishedAt: 2026-04-13T09:00:00+09:00
 
 募集要項は添付資料にございます。なお、一般企画用とステージ企画用に分かれていますので、対象のものをご覧ください。
 
+<p>
+<a href="https://r2-2026.sohosai.com/hp-news/2026%E4%B8%80%E8%88%AC%E4%BC%81%E7%94%BB%E7%94%A8%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf" target="_blank" rel="noopener noreferrer">2026一般規格用募集要項</a>
+<br>
+<a href="https://r2-2026.sohosai.com/hp-news/2026%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%82%99%E4%BC%81%E7%94%BB%E7%94%A8%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf" target="_blank" rel="noopener noreferrer">2026ステージ企画用募集要項</a></p>
+
 ### 応募方法
 
 雙峰祭オンラインシステムよりご応募いただけます。 また、雙峰祭オンラインシステムの使い方動画もございますので、ご参考にしていただければと存じます。
 
 学園祭実行委員会一同、素晴らしい雙峰祭を皆様と築いていけることを心より楽しみにしております。
 ご応募お待ちしております。
-
-<p>
-<a href="https://r2-2026.sohosai.com/hp-news/2026%E4%B8%80%E8%88%AC%E4%BC%81%E7%94%BB%E7%94%A8%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf" target="_blank" rel="noopener noreferrer">2026一般規格用募集要項</a>
-<br>
-<a href="https://r2-2026.sohosai.com/hp-news/2026%E3%82%B9%E3%83%86%E3%83%BC%E3%82%B7%E3%82%99%E4%BC%81%E7%94%BB%E7%94%A8%E5%8B%9F%E9%9B%86%E8%A6%81%E9%A0%85.pdf" target="_blank" rel="noopener noreferrer">2026ステージ企画用募集要項</a></p>
 
 <div class="inquiry">
 <p class="title">本件についてのお問い合わせ先</p>
