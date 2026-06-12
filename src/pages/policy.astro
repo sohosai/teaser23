@@ -1,0 +1,34 @@
+---
+import { i18nAdapter, t } from "src/utils/i18n";
+i18nAdapter.init(Astro);
+
+import ContentLayout from "src/layouts/ContentLayout.astro";
+import Container from "src/components/Container.astro";
+---
+
+<ContentLayout pageName={(locale) => t("policy.タイトル", locale)}>
+  <Container>
+    <h1>{t("policy.タイトル")}</h1>
+
+    <section>
+      <p>
+        <a href="https://r2-2026.sohosai.com/docs/privacy_policy_20251002.pdf" target="_blank" rel="noopener noreferrer"
+          >公式ウェブサイトにおける個人情報の取り扱いに関する方針（PDF）</a
+        >
+      </p>
+      <p>
+        <a
+          href="https://r2-2026.sohosai.com/docs/overall_privacy_policy_20251011.pdf"
+          target="_blank"
+          rel="noopener noreferrer">筑波大学学園祭実行委員会の業務に関するプライバシーポリシー（PDF）</a
+        >
+      </p>
+    </section>
+  </Container>
+
+  <style lang="scss">
+    p {
+      line-height: 1.8;
+    }
+  </style>
+</ContentLayout>

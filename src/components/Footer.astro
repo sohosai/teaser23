@@ -1,5 +1,5 @@
 ---
-import { i18nAdapter, t } from "src/utils/i18n";
+import { i18nAdapter, t, l } from "src/utils/i18n";
 i18nAdapter.init(Astro);
 
 import { Image } from "astro:assets";
@@ -69,7 +69,12 @@ const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@",
     </section>
 
     <hr />
-    <p class="copy"><small>&copy 2026 筑波大学学園祭実行委員会 All rights reserved.</small></p>
+    <div class="footer-bottom">
+      <nav class="footer-links" aria-label={t("footer.関連リンク")}>
+        <a class="footer-link" href={l("policy")}>{t("footer.プライバシーポリシー")}</a>
+      </nav>
+      <p class="copy"><small>&copy 2026 筑波大学学園祭実行委員会 All rights reserved.</small></p>
+    </div>
   </Container>
 </footer>
 
@@ -125,6 +130,25 @@ const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@",
     font-size: 0.8em;
   }
 
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    align-items: flex-start;
+    margin: 0.5em 0;
+  }
+
+  .footer-link {
+    font-size: 0.9rem;
+    color: $dark-gray;
+    text-decoration: underline;
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+
   .sns-logo-wrapper {
     display: flex;
     gap: 0.75rem;
@@ -164,6 +188,6 @@ const instagramAccountURL = "https://instagram.com/" + INSTAGRAM_ID.replace("@",
   }
 
   .copy {
-    margin: 0.5em 0;
+    margin: 0;
   }
 </style>

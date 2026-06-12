@@ -20,6 +20,7 @@ const keys = [
   "nav.実委",
   "nav.新歓",
   "committee.実行委員会とは",
+  "policy.タイトル",
 ];
 const h1Characters = keys.map((key) => t(key, "ja"));
 
