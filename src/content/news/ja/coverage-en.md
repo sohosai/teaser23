@@ -16,7 +16,7 @@ June 1 – November 8
 ### How to donate
 
 Please complete the donation form using the link below and submit your donation.
-<a href="https://docs.google.com/forms/d/e/1FAIpQLScNnQUaSC2ouTC1ZDdgIsTXsYNftYlapoTnKZf9Mnv_Bm8jIA/viewform?usp=header" target="_blank" rel="noopener noreferrer">https://docs.google.com/forms/d/e/1FAIpQLScNnQUaSC2ouTC1ZDdgIsTXsYNftYlapoTnKZf9Mnv_Bm8jIA/viewform?usp=header" target="\_blank" rel="noopener noreferrer</a>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLScNnQUaSC2ouTC1ZDdgIsTXsYNftYlapoTnKZf9Mnv_Bm8jIA/viewform?usp=header" target="_blank" rel="noopener noreferrer">https://docs.google.com/forms/d/e/1FAIpQLScNnQUaSC2ouTC1ZDdgIsTXsYNftYlapoTnKZf9Mnv_Bm8jIA/viewform?usp=header"</a>
 
 ### Donation Amount
 
