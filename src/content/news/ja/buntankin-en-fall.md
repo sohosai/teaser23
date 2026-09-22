@@ -5,7 +5,7 @@ publishedAt: 2026-09-23T00:00:00+09:00
 
 Congratulations on your enrolment. We, the School Festival Executive Committee were looking forward to seeing you all.  
 A school festival is a unique Japanese festival held at schools or universities, organized mainly by students.  
-Food stalls and exhibitions of student creations are held on campus, entertaining visitors from both inside and outside the Institution.
+Food stalls and exhibitions of student creations are held on campus, entertaining visitors from both inside and outside the Institution.  
 The school festival at the University of Tsukuba is called Sohosai (雙峰祭). Sohosai is one of theuniversity’s main events consisting of a pre-festival celebration and the two-day main festival. In 2026, it will be held over three days: the pre-festival celebration on Friday 30th October, the main festival on Saturday 31st October and Sunday 1st November. We look forward to welcoming you.
 
 Sohosai is powered by students across the university. To make the festival enjoyable and run smoothly for everyone, the School Festival Executive is asking students for financial cooperationthrough the School Festival Student Contribution (_GakuensaiGakuseiBuntankinin_ Japanese).  
