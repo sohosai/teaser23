@@ -1,6 +1,6 @@
 ---
 title: Regarding the collection of School Festival Student Contribution for fall enrollment students
-publishedAt: 2026-09-23T00:00:00+09:00
+publishedAt: 2026-09-23T09:00:00+09:00
 ---
 
 Congratulations on your enrolment. We, the School Festival Executive Committee were looking forward to seeing you all.  
@@ -14,9 +14,9 @@ We would like to inform you about this year’s School Festival Student Contribu
 
 Thank you for your understanding and cooperation.
 
-<a href="https://r2-2026.sohosai.com/hp-news/26_%E5%AD%A6%E5%9C%92%E7%A5%AD%E5%AD%A6%E7%94%9F%E5%88%86%E6%8B%85%E9%87%91%E3%81%AE%E6%94%AF%E6%89%95%E3%81%84%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6_en_%E7%A7%8B_%E6%9C%80%E7%B5%82.pdf" target="_blank" rel="noopener noreferrer">Request for Payment of School Festival Student Contribution
+<a href="https://r2-2026.sohosai.com/hp-news/26_%E5%AD%A6%E5%9C%92%E7%A5%AD%E5%AD%A6%E7%94%9F%E5%88%86%E6%8B%85%E9%87%91%E3%81%AE%E6%94%AF%E6%89%95%E3%81%84%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6_en_%E7%A7%8B_0922.pdf" target="_blank" rel="noopener noreferrer">Request for Payment of School Festival Student Contribution
 </a>  
-<a href="https://r2-2026.sohosai.com/hp-news/26_%E5%AD%A6%E5%9C%92%E7%A5%AD%E5%AD%A6%E7%94%9F%E5%88%86%E6%8B%85%E9%87%91%E3%81%AE%E6%94%AF%E6%89%95%E3%81%84%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6_jp_%E7%A7%8B_%E6%9C%80%E7%B5%82.pdf" target="_blank" rel="noopener noreferrer">学園祭学生分担金の支払いのお願い</a>
+<a href="https://r2-2026.sohosai.com/hp-news/26_%E5%AD%A6%E5%9C%92%E7%A5%AD%E5%AD%A6%E7%94%9F%E5%88%86%E6%8B%85%E9%87%91%E3%81%AE%E6%94%AF%E6%89%95%E3%81%84%E3%81%AB%E9%96%A2%E3%81%97%E3%81%A6_jp_%E7%A7%8B_0922.pdf" target="_blank" rel="noopener noreferrer">学園祭学生分担金の支払いのお願い</a>
 
 <div class="inquiry">
 <p class="title">本件についてのお問い合わせ先</p>
